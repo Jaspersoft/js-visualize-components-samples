@@ -1,0 +1,27 @@
+#fieldNewView,
+#measureNewView {
+  display: inline;
+  font-size: 1.3em;
+  color: #3C1A06;
+}
+
+#firstContainerNewView {
+  height: 180px;
+  margin-bottom: 10px;
+}
+
+#secondContainerNewView {
+  height: 250px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+}
+
+.loader p {
+  top: 50px;
+  font: italic bold 1.2em/1 Bodoni, serif;
+  color: #555;
+  text-align: center;
+  animation: fadeIn 1s infinite alternate;
+}

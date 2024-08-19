@@ -1,0 +1,29 @@
+#bindCascadeContainer{
+    width: 1200px
+}
+
+#cascadeIC {
+    width:300px;
+    float:left;
+    padding-right: 15px;
+}
+
+#cascadeReport {
+    width:800px;
+    float:left;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+}
+
+#cascadeReport p {
+    position: relative;
+    top: 50px;
+
+    font: italic bold 1.2em/1 Bodoni, serif;
+    color: #555;
+    text-align: center;
+
+    animation: fadeIn 1s infinite alternate;
+}

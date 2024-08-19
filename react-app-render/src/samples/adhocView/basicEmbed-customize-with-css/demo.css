@@ -1,0 +1,67 @@
+#customizeWithCss {
+  height: 340px;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+/*Datatable headers*/
+#customizeWithCss .jr-mDatatable-header.jr .jr-mDatatable-row.jr .jr-mDatatable-cell.jr {
+  background-color: #8e5f40;
+  font-size: 1.24em;
+  font-weight: bold;
+  color: white;
+}
+
+/*Header for cell text*/
+#customizeWithCss .jr-mDatatable-header.jr .jr-mDatatable-row.jr .jr-mDatatable-cell-text {
+  padding-top: .30em;
+}
+
+/*Header for cell numbers*/
+#customizeWithCss .jr-mDatatable-header.jr .jr-mDatatable-row.jr .jr-mDatatable-cell-number {
+  padding-top: .60em;
+}
+
+/*Datatable cells*/
+#customizeWithCss .jr-mDatatable-cell.jr {
+  color: black;
+  font-size: 1.14em;
+  border: none;
+}
+
+/*Datatable text style*/
+#customizeWithCss .jr-mDatatable-cell-text.jr {
+  line-height: 25px;
+}
+
+/*Datatable odd row*/
+#customizeWithCss .jr-mDatatable-rowOdd.jr .jr-mDatatable-cell.jr.jr-jHyperLink {
+  background-color: #F0E9E0;
+}
+
+/*Datatable even row*/
+#customizeWithCss .jr-mDatatable-rowEven.jr .jr-mDatatable-cell.jr.jr-jHyperLink {
+  background-color: #E5DACD;
+}
+
+/*Datatable row header (when data is in group section of ad hoc view)*/
+#customizeWithCss .jr-mDatatable-cell.jr.jr-jHyperLink {
+  background-color: #E0D2BC;
+}
+
+/*Use to turn off visualization selector*/
+#customizeWithCss .jr-mAdhoc-visualization-launcher.jr {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+}
+
+.loader p {
+  top: 50px;
+  font: italic bold 1.2em/1 Bodoni, serif;
+  color: #555;
+  text-align: center;
+  animation: fadeIn 1s infinite alternate;
+}

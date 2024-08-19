@@ -1,0 +1,15 @@
+#saveReportfolder,
+#saveReportLabel, #saveReportDescription , #saveReportOverwrite{
+    display:block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+}
+
+.loader p {
+    top: 50px;
+    font: italic bold 1.2em/1 Bodoni, serif;
+    color: #555;
+    text-align: center;
+    animation: fadeIn 1s infinite alternate;
+}

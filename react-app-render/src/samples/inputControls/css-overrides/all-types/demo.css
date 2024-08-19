@@ -1,0 +1,49 @@
+/* Boolean */
+#allTypesIC .jr-mInputControlBoolean .jr-mInput-boolean-label{
+   color: green;
+}
+
+/* Text */
+#allTypesIC .jr-mInputControlSingleValueText .jr-mInput-label{
+   color: red;
+}
+
+/* Date */
+#allTypesIC .jr-mInputControlSingleValueDate .jr-mInput-label{
+   color: blue;
+}
+
+/* Time */
+#allTypesIC .jr-mInputControlSingleValueTime .jr-mInput-label{
+   color: white;
+}
+
+/* Datetime */
+#allTypesIC .jr-mInputControlSingleValueDatetime .jr-mInput-label{
+   color: pink;
+}
+
+/* Number */
+#allTypesIC .jr-mInputControlSingleValueNumber .jr-mInput-label{
+   color: orange;
+}
+
+/* SingleSelect */
+#allTypesIC .jr-mInputControlSingleSelect .jr-mInput-label{
+   color: lightgreen;
+}
+
+/* MultiSelect */
+#allTypesIC .jr-mInputControlMultiSelect .jr-mInput-label{
+   color: brown;
+}
+
+/* SingleSelectRadio */
+#allTypesIC .jr-mInputControlSingleSelectRadio .jr-mInput-label{
+   color: slateblue;
+}
+
+/* MultiSelectCheckbox */
+#allTypesIC .jr-mInputControlMultiSelectCheckbox .jr-mInput-label{
+   color: olive;
+}

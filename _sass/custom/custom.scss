@@ -1,0 +1,378 @@
+/*----------------------------------
+   TABLE OF CONTENTS
+
+   0. FONT DEFINITION
+
+  01. BASE RULES
+
+  02. LEFT PANEL
+  -----------------------------------
+  File last modified July 6, 2022
+  ----------------------------------- */
+
+/* --------------------- */
+/*  0. FONT DEFINITION   */
+/* --------------------- */
+@font-face {
+  font-family: 'source_sans_proregular';
+  src: url('../../assets/fonts/sourcesanspro-regular-webfont.woff2') format('woff2'),
+  url('../../assets/fonts/sourcesanspro-regular-webfont.woff') format('woff'),
+  url('../../assets/fonts/sourcesanspro-regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'source_sans_prosemibold';
+  src: url('../../assets/fonts/sourcesanspro-semibold-webfont.woff2') format('woff2'),
+  url('../../assets/fonts/sourcesanspro-semibold-webfont.woff') format('woff'),
+  url('../../assets/fonts/sourcesanspro-semibold.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'source_sans_probold';
+  src: url('../../assets/fonts/sourcesanspro-bold-webfont.woff2') format('woff2'),
+  url('../../assets/fonts/sourcesanspro-bold-webfont.woff') format('woff'),
+  url('../../assets/fonts/sourcesanspro-bold.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ---------------- */
+/* 01. BASE RULES   */
+/* ---------------- */
+a {
+  color: #0078bd;
+}
+
+body {
+  font-family: source_sans_proregular, "Helvetica Neue", Arial, sans-serif;
+}
+
+th, td {
+  background-color: unset;
+  border: none;
+  font-size: unset;
+  min-width: unset;
+  padding: unset;
+}
+
+
+/* ---------------- */
+/* 02. LEFT PANEL   */
+/* ---------------- */
+.side-bar {
+  background-color: #444a55;
+  min-width: 300px;
+  width: 300px;
+}
+
+.site-header {
+  border-bottom: none;
+  margin-top: 1rem;
+  padding: 0 1.25rem;
+}
+
+.site-title {
+  padding: 0 !important;
+}
+
+.site-button:hover {
+  background-image: none;
+}
+
+.site-title:hover {
+  background-image: none;
+}
+
+h2.site-subtitle {
+  color: #ffffff;
+  font-size: 22px;
+  margin: 2rem 0 .25rem 0;
+  padding: 0 1.5rem;
+  width: 100%
+}
+
+.site-description {
+  color: #bdbdbd;
+  font-size: 16px;
+  margin: 0;
+  padding: 0 1.5rem;
+  width: 100%
+}
+
+/* navigation menu */
+.site-nav {
+  padding-top: 1.25rem;
+}
+
+.nav-list {
+  margin-left: 1rem;
+}
+
+a.nav-list-link {
+  color: #ffffff;
+  font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
+}
+
+.nav-list .nav-list-item > .nav-list .nav-list-item .nav-list-link {
+  color: #ffffff;
+  padding-left: 1.5em;
+}
+
+.nav-list .nav-list-item {
+  margin: 0.25rem 0;
+}
+
+.nav-list .nav-list-item .nav-list-link {
+  line-height: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0.125rem 1.75rem;
+}
+
+.nav-list .nav-list-item .nav-list-link:hover {
+  background-image: none;
+  background-color: transparent;
+}
+
+.nav-list .nav-list-item.active > .nav-list .nav-list-item.active .nav-list-link {
+  color: #7fc9f4;
+}
+
+.nav-list .nav-list-item .nav-list-link.active {
+  background-image: none;
+  background-color: transparent;
+  color: #7fc9f4;
+  border-right: 4px solid #7fc9f4;
+}
+
+.nav-list .nav-list-item .nav-list-expander {
+  color: #ffffff;
+  left: 0;
+  right: unset;
+}
+
+.nav-list .nav-list-item .nav-list-expander:hover {
+  background-image: none;
+}
+
+.nav-list .nav-list-item .nav-list-expander svg {
+  transform: none;
+}
+
+.nav-list .nav-list-item.active>.nav-list-expander svg {
+   transform: rotate(90deg);
+}
+
+.site-footer {
+  color: #bdbdbd;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.site-footer a {
+  color: inherit;
+  background-image: none;
+  text-decoration: underline;
+}
+
+/* responsive styles */
+@media (min-width: 66.5rem) { /* 1064px */
+  .site-nav,
+  .site-header,
+  .site-footer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 50rem) { /* 800px */
+  .side-bar {
+    max-width: 100%;
+    padding-bottom: 1.25rem;
+    width: 100%;
+  }
+  .site-logo {
+    width: 300px;
+  }
+  .site-button .icon {
+    color: #ffffff;
+  }
+  h2.site-subtitle {
+    font-size: 26px;
+    margin-top: .5rem;
+  }
+  .site-description {
+    font-size: 20px;
+  }
+  .nav-list .nav-list-item {
+    font-size: 18px !important;
+  }
+  .nav-list .nav-list-item .nav-list-link {
+    line-height: 2.25rem;
+    min-height: 2.25rem;
+    padding: 0.25rem 2.5rem;
+  }
+  .nav-list .nav-list-item .nav-list-link.active {
+    border-right: 10px solid;
+  }
+  .nav-list .nav-list-item .nav-list-expander {
+    height: 2.5rem;
+    padding: .625rem .5rem .5rem .5rem;
+    width: 2.5rem;
+  }
+}
+
+
+/* ------------------ */
+/* 03. MAIN CONTENT   */
+/* ------------------ */
+.main-header {
+  display: none;
+}
+
+@media (min-width: 50rem) { /* 800px */
+  .main {
+    position: relative;
+    max-width: 800px;
+    margin-left: 350px;
+  }
+}
+@media (min-width: 66.5rem) { /* 1064px */
+  .main {
+    margin-left: 350px;
+  }
+}
+
+.main-content-wrap {
+  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+@media (min-width: 50rem) {
+  .main-content-wrap {
+    padding-right: 2rem;
+    padding-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+}
+
+div.highlighter-rouge {
+  padding: 0.5rem;
+  margin-bottom: 2.25rem;
+} /* code snippets */
+
+.main a {
+  background-image: none;
+}
+
+.main a:hover {
+  background-image: none;
+  text-decoration: underline;
+}
+
+/* demo page */
+.demo-section img {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+              rgba(14, 30, 37, 0.22) 0px 2px 16px 0px;
+  outline: 1px solid #f7f7f7;
+}
+
+.demo-section {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5rem;
+}
+
+.demo-section-text {
+  flex: 1 1 40%;
+}
+
+.demo-section-image {
+  flex: 1 1 60%;
+  margin-top: -2rem;
+}
+
+.demo-section-text p {
+  padding-right: 3rem;
+}
+
+@media (max-width: 50rem) { /* 800px */
+  .demo-section {
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
+  .demo-section-image {
+    margin-top: 0;
+  }
+}
+
+//code snippet widget
+.tab{
+    height:35px;
+    padding:5px;
+}
+.tab>li::before{
+  content:'' !important
+}
+.tablinks {
+  list-style: none;
+  float: left;
+  padding: 8px;
+  font-weight: bold;
+  cursor:pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.tablinks.active {
+  border-bottom: 3px solid #0473b7;
+  cursor:auto;
+}
+.tablinks .copy-code , .tablinks .open-fiddle {
+   padding: 6px;
+   background-color: transparent;
+   border-radius: 4px;
+   font-weight: bold;
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   color: #5c5962;
+   font-size: smaller;
+   cursor:pointer;
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  width: auto;
+  height: auto;
+}
+.paper {
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  border-radius:7px;
+  height:100%
+}
+.main-container{
+    padding:10px
+}
+.code-container {
+    overflow: auto;
+    height: auto;
+    max-height: 526px;
+    padding: 10px;
+    background-color: #1c2128;
+}
+.code-container .code-snippet{
+    color: #f0f0f0;    
+    background: transparent;
+    font-family: "SF Mono", "Monaco", "Andale Mono", "Lucida Console", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    line-height: 1.55em;
+    font-size: 12px;
+    overflow-x: auto;   
+}
+
+.main-container #result {
+  overflow-x: auto;
+  height: 526px;
+  padding: 10px;
+}

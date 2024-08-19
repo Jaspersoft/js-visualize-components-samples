@@ -1,0 +1,41 @@
+#drilldownMeasure,#drilldownField  {
+  display: inline;
+  font-size: 1.3em;
+  color: #3C1A06;
+}
+
+#drilldownField {
+  margin-right: 20px;
+}
+
+#drilldownContainer {
+  height: 350px;
+  margin-bottom: 10px;
+}
+
+#drilldownBackButton {
+  display:none;
+  outline: none;
+  position: relative;
+  float: right;
+  top: -10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  font-size: 1.15em;
+  border: 1px solid #524236;
+  border-radius: 20px;
+  background-color: #E8E6DF;
+  color: #3C1A06;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+}
+
+.loader p {
+  top: 50px;
+  font: italic bold 1.2em/1 Bodoni, serif;
+  color: #555;
+  text-align: center;
+  animation: fadeIn 1s infinite alternate;
+}

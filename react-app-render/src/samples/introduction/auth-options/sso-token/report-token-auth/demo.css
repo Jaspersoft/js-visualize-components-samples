@@ -1,0 +1,10 @@
+/* Loader styles */
+@keyframes fadeIn {
+    from { opacity: 0; }
+}
+.loader p {
+    font: italic bold serif;
+    color: #555;
+    text-align: center;
+    animation: fadeIn 1s infinite alternate;
+}

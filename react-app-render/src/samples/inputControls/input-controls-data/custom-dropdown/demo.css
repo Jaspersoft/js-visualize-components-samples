@@ -1,0 +1,20 @@
+#inputDropDown {
+    width: 500px;
+    height: 600px;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; } 
+}
+
+#inputDropDown p,
+#inputDropDown span{
+  position: relative;
+  top: 50px;
+  font: italic bold 1.2em/1 Bodoni, serif;
+  color: #555;
+  text-align: center;
+  
+  animation: fadeIn 1s infinite alternate;
+}
