@@ -1,11 +1,12 @@
 ---
 layout: default
 title: Home
-nav_order: 1
+nav_order: 0
 ---
 
-# Welcome to Jaspersoft UI Central
+# Visualize.js Component Toolkit
 
-Find embedding and customization tips, browse the gallery of industry-specific solutions, and share your ideas and feedback.
+Learn how to use the visualize.js component toolkit to enrich your web application. Harness the power of Jasperreports server utilizing modern ReactJS-based components
+to embed your reporting in an existing application, or to construct your own reporting workflows composed of components built from common use cases.
 {: .fs-6 .fw-300 }
 
