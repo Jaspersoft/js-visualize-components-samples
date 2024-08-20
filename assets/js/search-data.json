@@ -1,0 +1,38 @@
+{"0": {
+    "doc": "Home",
+    "title": "Visualize.js Component Toolkit",
+    "content": "Learn how to use the visualize.js component toolkit to enrich your web application. Harness the power of Jasperreports server utilizing modern ReactJS-based components to embed your reporting in an existing application, or to construct your own reporting workflows composed of components built from common use cases. ",
+    "url": "http://localhost:4000/#visualizejs-component-toolkit",
+    "relUrl": "/#visualizejs-component-toolkit"
+  },"1": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"2": {
+    "doc": "Introduction",
+    "title": "Introduction",
+    "content": "JS Visualize Components is a toolkit of React components that work in conjunction with visualize.js to provide web developers rich, modern UI components that interact with their existing JRS installation. By utilizing these components web developers can forge their own user experience utilizing the reporting concepts found in JRS. ",
+    "url": "http://localhost:4000/pages/introduction.html",
+    "relUrl": "/pages/introduction.html"
+  },"3": {
+    "doc": "Introduction",
+    "title": "Installation",
+    "content": "Installing JS Visualize toolkit is super fun and easy! Here’s how… . npm install @jaspersoft/jv-tools npm install @jaspersoft/jv-input-controls . ",
+    "url": "http://localhost:4000/pages/introduction.html#installation",
+    "relUrl": "/pages/introduction.html#installation"
+  },"4": {
+    "doc": "Introduction",
+    "title": "Requirements",
+    "content": "In order to utilize this library, you will need access to a running instance of Jasperreports Server (version &gt;= 8.0) configured to provide visualize.js . ",
+    "url": "http://localhost:4000/pages/introduction.html#requirements",
+    "relUrl": "/pages/introduction.html#requirements"
+  },"5": {
+    "doc": "Introduction",
+    "title": "Lorem ipsum",
+    "content": "Dolor sit amet, … . ",
+    "url": "http://localhost:4000/pages/introduction.html#lorem-ipsum",
+    "relUrl": "/pages/introduction.html#lorem-ipsum"
+  }
+}
