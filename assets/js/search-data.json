@@ -1,34 +1,70 @@
 {"0": {
+    "doc": "Basic Usage",
+    "title": "Basic example",
+    "content": " ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#basic-example",
+    "relUrl": "/pages/input-controls/basic-usage.html#basic-example"
+  },"1": {
+    "doc": "Basic Usage",
+    "title": "Installation",
+    "content": "Refer to the installation guide for the @jaspersoft/jv-tools and @jaspersoft/jv-input-controls packages. ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#installation",
+    "relUrl": "/pages/input-controls/basic-usage.html#installation"
+  },"2": {
+    "doc": "Basic Usage",
+    "title": "Load the visualize.js into your app",
+    "content": "Once installed, the first step you have to take is to use the jv-tools package to load the visualize.js library into your app. | Import the visualizejsLoader from the @jaspersoft/jv-tools package. | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | . | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#load-the-visualizejs-into-your-app",
+    "relUrl": "/pages/input-controls/basic-usage.html#load-the-visualizejs-into-your-app"
+  },"3": {
+    "doc": "Basic Usage",
+    "title": "Logging in the user",
+    "content": ". | Now that the visualize.js library is loaded in your app, you have to log in the user to be able to fetch resources to JRS. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. Take into consideration that this is a promise, so it’s up to you to handle the success and the error scenarios. | Example of the auth object to provide: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | Once the user is logged in, you’ll get the visualize.js object (more commonly known as v) that is used to interact with the internal API of visualize.js. Make sure to store this reference globally in your app because this will be needed to fetch resources from JRS. | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#logging-in-the-user",
+    "relUrl": "/pages/input-controls/basic-usage.html#logging-in-the-user"
+  },"4": {
+    "doc": "Basic Usage",
+    "title": "Injecting the visualize.js object into the plugin",
+    "content": ". | At this point in time, the visualize.js object is ready to interact with JRS. We recommend providing this object to the InputControls Plugin for an easier interaction between JRS and the new Input Controls provided by @jaspersoft/jv-input-control package. | To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.: const plugin = new InputControls(v), where ‘v’ is the visualize.js object . | you could also provide a second parameter to the class called config. It has the following structure: {hostname?: string; username: string; password: string; tenant: string;} You must provide the same parameters as in the ‘logging in the user’ section. | The InputControl class comes shipped with a method: renderControlPanel. It accepts the following 3 parameters: uri, container, panel definition: . | uri. It’s an string referencing to the report from where the input controls will be fetched. E.g.: /public/viz/Adhoc/Ad_Hoc_View_All_filters_Report | container. This is the containing HTML element where the input controls will be rendered by the InputControl class. It’s up to the user to style the element as he wants. It is mandatory the HTML element is available throughout the DOM structure. | panel definition. This is the place where you’ll define the look and feel of the new input controls, but also it is the place where you’ll interact with the new Input Controls. It has the following structure: { success?: () =&gt; void; error?: (error: any) =&gt; void; exclude?: string[]; config?: InputControlUserConfig; events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; } . Where InputControlUserConfig is: . { bool?: { type: \"switch\" | \"checkbox\"; }; singleValueText?: { type: \"textField\"; }; singleValueNumber?: { type: \"number\"; }; singleValueDate?: { type: \"default\" | \"material\"; }; singleValueDatetime?: { type: \"default\" | \"material\"; }; singleValueTime?: { type: \"default\" | \"material\"; }; } . asdas . | . | . | . | . | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#injecting-the-visualizejs-object-into-the-plugin",
+    "relUrl": "/pages/input-controls/basic-usage.html#injecting-the-visualizejs-object-into-the-plugin"
+  },"5": {
+    "doc": "Basic Usage",
+    "title": "Basic Usage",
+    "content": " ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html",
+    "relUrl": "/pages/input-controls/basic-usage.html"
+  },"6": {
     "doc": "Home",
     "title": "Visualize.js Component Toolkit",
     "content": "Learn how to use the visualize.js component toolkit to enrich your web application. Harness the power of Jasperreports server utilizing modern ReactJS-based components to embed your reporting in an existing application, or to construct your own reporting workflows composed of components built from common use cases. ",
     "url": "http://localhost:4000/#visualizejs-component-toolkit",
     "relUrl": "/#visualizejs-component-toolkit"
-  },"1": {
+  },"7": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
-  },"2": {
+  },"8": {
     "doc": "Introduction",
     "title": "Introduction",
     "content": "JS Visualize Components is a toolkit of React components that work in conjunction with visualize.js to provide web developers rich, modern UI components that interact with their existing JRS installation. By utilizing these components web developers can forge their own user experience utilizing the reporting concepts found in JRS. ",
     "url": "http://localhost:4000/pages/introduction.html",
     "relUrl": "/pages/introduction.html"
-  },"3": {
+  },"9": {
     "doc": "Introduction",
     "title": "Installation",
     "content": "Installing JS Visualize toolkit is super fun and easy! Here’s how… . npm install @jaspersoft/jv-tools npm install @jaspersoft/jv-input-controls . ",
     "url": "http://localhost:4000/pages/introduction.html#installation",
     "relUrl": "/pages/introduction.html#installation"
-  },"4": {
+  },"10": {
     "doc": "Introduction",
     "title": "Requirements",
     "content": "In order to utilize this library, you will need access to a running instance of Jasperreports Server (version &gt;= 8.0) configured to provide visualize.js . ",
     "url": "http://localhost:4000/pages/introduction.html#requirements",
     "relUrl": "/pages/introduction.html#requirements"
-  },"5": {
+  },"11": {
     "doc": "Introduction",
     "title": "Lorem ipsum",
     "content": "Dolor sit amet, … . ",
