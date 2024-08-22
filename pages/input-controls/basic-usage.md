@@ -163,3 +163,35 @@ your app.
                          },
                     }
                     ```
+                * `singleSelect`. This parameter will let you configure the single select input control. All proper validations will be applied automatically depending on the metadata defined for your single select input control. E.g. assume you have defined a list of values as valid values, then this input control will enable only that list of values. Currently there is no additional configurations for this input control. However is listed as one possible input control option.
+        * `events?`. This is a callback that is triggered every time any input control updates its value. It has the following structure:
+            ```
+            {
+                change?: (
+                ic: { [key: string]: any[] },
+                validationResult: { [key: string]: string } | boolean,
+                ) => void;
+            }
+            ```
+            * `change`. This method will be triggered every time any input control updates its value. It will provide 2 parameters:
+                * `ic`. This is an object that contains all the input controls that are being rendered in the HTML element container. The key of this object is the name of the input control and the value is an array of the selected values. Example of this object could be:
+                  * ```
+                    {
+                      "column_boolean_1": [false],
+                      "column_string_1": ["string value"],
+                      "column_date_1": ["2009-09-12"],
+                      "column_time_1": ["23:44:21"],
+                      "column_timestamp_1": ["2014-09-12T15:46:18"],
+                      "id_1": ["1"],
+                      "column_float_1": ["0.33"]
+                    }
+                    ```
+                * `validationResult`. This is an object that contains all the input controls that are being rendered in the HTML element container with information about the validity of the value per each input control. The keys of this object is the id of the input control and the value is a string that represents the result of the validation for the input control. If the input control is valid, then the value will be an empty array. If the input control is invalid, then the value will be a string that contains the error message. Example:
+                  * ```
+                    {
+                        "column_time_1": "Verify the time is before or exactly 22:00:00."
+                        "column_timestamp_1": "Verify the date is before or exactly 2014-09-11T15:00:00.",
+                }
+                  ``` 
+                    * In case all values for all input controls are valid, then the param `validationResult` will be a boolean value `false`. 
+                    * This is an event that is being triggered by the InputControl class. This is because the InputControl class is a controlled component. This means that the InputControl class will handle the state of the input controls and will update the state of the input controls when the user interacts with them. This is why the InputControl class will trigger the `change` event every time the state of the input controls changes. 
