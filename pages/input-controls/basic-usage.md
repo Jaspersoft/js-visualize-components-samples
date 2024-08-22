@@ -71,7 +71,6 @@ your app.
               {
                 success?: () => void;
                 error?: (error: any) => void;
-                exclude?: string[];
                 config?: InputControlUserConfig;
                 events?: {
                   change?: (
@@ -104,4 +103,63 @@ your app.
                   };
               }
               ```
-          asdas
+          * `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
+          * `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
+          * `config?`. This parameter will help to define the styles of the input controls. Refer to the InputControlUserConfig structure for more info.   
+            * `InputControlUserConfig`.
+                * `Bool`. When rendering a boolean input control, you’ll have 2 options: a _switch_ or a _checkbox_ component. To define a switch component, you have to provide the param like this:
+                    ```
+                    {
+                         bool: {
+                            type: "switch",
+                         },
+                    }
+                    ```
+                    To define a checkbox component, you have to provide the param like this:
+                    ```
+                    {
+                         bool: {
+                            type: "checkbox",
+                         },
+                    }
+                    ```
+                * `singleValueText`. This parameter will let you configure the text field input control. Depending on the metadata defined for your text input control, all proper validations will be applied to it automatically. E.g. assume you have defined this input control as **mandatory**, then this input control will be invalid in case the user leaves it empty. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is:
+                    ```
+                    {
+                         singleValueText: {
+                            type: "textField",
+                         },
+                    }
+                    ```
+                * `singleValueNumber`. It will behave similarly to the text field input control, but it also validates the value written in this input control is a number format. All validations related to its metadata will be applied automatically. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is
+                    ```
+                    {
+                         singleValueNumber: {
+                            type: "number",
+                         },
+                    }
+                    ```
+                * `singleValueDate`. This parameter will let you configure the date input control. All proper validations will be applied automatically depending on the metadata defined for your date input control. E.g. assume you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
+                    ```
+                    {
+                         singleValueDate: {
+                            type: "default" | "material",
+                         },
+                    }
+                    ```
+                * `singleValueDatetime`. This parameter will let you configure the datetime input control. All proper validations will be applied automatically depending on the metadata defined for your datetime input control. E.g. assume you have defined a min datetime and a max datetime (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
+                    ```
+                    {
+                         singleValueDatetime: {
+                            type: "default" | "material",
+                         },
+                    }
+                    ```
+                * `singleValueTime`. This parameter will let you configure the time input control. All proper validations will be applied automatically depending on the metadata defined for your time input control. E.g. assume you have defined a min time and a max time (range of times) as valid values, then this input control will enable only that range time. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
+                    ```
+                    {
+                         singleValueTime: {
+                            type: "default" | "material",
+                         },
+                    }
+                    ```
