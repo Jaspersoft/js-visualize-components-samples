@@ -9,7 +9,6 @@
 </code></pre></div></div> <ul> <li>Once the user is logged in, you’ll get the visualize.js object (more commonly known as <em><strong>v</strong></em>) that is used to interact with the internal API of visualize.js. Make sure to store this reference globally in your app because this will be needed to fetch resources from JRS.</li> </ul> <h2 id="injecting-the-visualizejs-object-into-the-plugin"> <a href="#injecting-the-visualizejs-object-into-the-plugin" class="anchor-heading" aria-labelledby="injecting-the-visualizejs-object-into-the-plugin"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Injecting the visualize.js object into the plugin </h2> <ul> <li>At this point in time, the visualize.js object is ready to interact with JRS. We recommend providing this object to the InputControls Plugin for an easier interaction between JRS and the new Input Controls provided by @jaspersoft/jv-input-control package. <ul> <li>To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.: <code class="language-plaintext highlighter-rouge">const plugin = new InputControls(v)</code>, where ‘v’ is the visualize.js object <ul> <li>you could also provide a second parameter to the class called <code class="language-plaintext highlighter-rouge">config</code>. It has the following structure: <code class="language-plaintext highlighter-rouge">{hostname?: string; username: string; password: string; tenant: string;}</code> You must provide the same parameters as in the ‘logging in the user’ section. <ul> <li>The InputControl class comes shipped with a method: <code class="language-plaintext highlighter-rouge">renderControlPanel</code>. It accepts the following 3 parameters: uri, container, panel definition: <ul> <li><code class="language-plaintext highlighter-rouge">uri</code>. It’s an string referencing to the report from where the input controls will be fetched. E.g.: <em>/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report</em></li> <li><code class="language-plaintext highlighter-rouge">container</code>. This is the containing HTML element where the input controls will be rendered by the InputControl class. It’s up to the user to style the element as he wants. It is <strong>mandatory</strong> the HTML element is available throughout the DOM structure.</li> <li><code class="language-plaintext highlighter-rouge">panel definition</code>. This is the place where you’ll define the look and feel of the new input controls, but also it is the place where you’ll interact with the new Input Controls. It has the following structure: <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
   success?: () =&gt; void;
   error?: (error: any) =&gt; void;
-  exclude?: string[];
   config?: InputControlUserConfig;
   events?: {
     change?: (
@@ -38,4 +37,39 @@
        type: "default" | "material";
     };
 }
-</code></pre></div> </div> <p>asdas</p> </li> </ul> </li> </ul> </li> </ul> </li> </ul> </li> </ul> </div> </div> </div> </body> </html>
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">success?: () =&gt; void</code>. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.</li> <li><code class="language-plaintext highlighter-rouge">error?: (error: any) =&gt; void</code>. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.</li> <li><code class="language-plaintext highlighter-rouge">config?</code>. This parameter will help to define the styles of the input controls. Refer to the InputControlUserConfig structure for more info. <ul> <li><code class="language-plaintext highlighter-rouge">InputControlUserConfig</code>. <ul> <li><code class="language-plaintext highlighter-rouge">Bool</code>. When rendering a boolean input control, you’ll have 2 options: a <em>switch</em> or a <em>checkbox</em> component. To define a switch component, you have to provide the param like this: <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       bool: {
+          type: "switch",
+       },
+  }
+</code></pre></div> </div> <p>To define a checkbox component, you have to provide the param like this:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       bool: {
+          type: "checkbox",
+       },
+  }
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">singleValueText</code>. This parameter will let you configure the text field input control. Depending on the metadata defined for your text input control, all proper validations will be applied to it automatically. E.g. assume you have defined this input control as <strong>mandatory</strong>, then this input control will be invalid in case the user leaves it empty. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is: <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       singleValueText: {
+          type: "textField",
+       },
+  }
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">singleValueNumber</code>. It will behave similarly to the text field input control, but it also validates the value written in this input control is a number format. All validations related to its metadata will be applied automatically. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       singleValueNumber: {
+          type: "number",
+       },
+  }
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">singleValueDate</code>. This parameter will let you configure the date input control. All proper validations will be applied automatically depending on the metadata defined for your date input control. E.g. assume you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from <a href="https://mui.com/x/react-date-pickers/date-picker/">MUI</a>). The complete configuration is: <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       singleValueDate: {
+          type: "default" | "material",
+       },
+  }
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">singleValueDatetime</code>. This parameter will let you configure the datetime input control. All proper validations will be applied automatically depending on the metadata defined for your datetime input control. E.g. assume you have defined a min datetime and a max datetime (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from <a href="https://mui.com/x/react-date-pickers/date-picker/">MUI</a>). The complete configuration is: <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       singleValueDatetime: {
+          type: "default" | "material",
+       },
+  }
+</code></pre></div> </div> </li> <li><code class="language-plaintext highlighter-rouge">singleValueTime</code>. This parameter will let you configure the time input control. All proper validations will be applied automatically depending on the metadata defined for your time input control. E.g. assume you have defined a min time and a max time (range of times) as valid values, then this input control will enable only that range time. Additionally, you could either provide a default style (JRS look alike) or a material style (from <a href="https://mui.com/x/react-date-pickers/date-picker/">MUI</a>). The complete configuration is: <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+       singleValueTime: {
+          type: "default" | "material",
+       },
+  }
+</code></pre></div> </div> </li> </ul> </li> </ul> </li> </ul> </li> </ul> </li> </ul> </li> </ul> </li> </ul> </div> </div> </div> </body> </html>
