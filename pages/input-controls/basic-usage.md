@@ -2,6 +2,7 @@
 layout: default
 title: Basic Usage
 nav_order: 1
+parent: Input Controls
 has_children: false
 ---
 
@@ -9,7 +10,7 @@ has_children: false
 
 ## Installation
 
-Refer to the installation guide for the `@jaspersoft/jv-tools` and `@jaspersoft/jv-input-controls` packages.
+Refer to the [installation](/pages/introduction#Installation) guide for the `@jaspersoft/jv-tools` and `@jaspersoft/jv-input-controls` packages.
 
 ## Load the visualize.js into your app
 
@@ -33,7 +34,7 @@ your app.
   into consideration that this is a promise, so it's up to you to handle the success and the error scenarios.
 * Example of the auth object to provide:
 
-```
+``` js
    {
       auth: {
          name: "joeuser",
@@ -67,7 +68,7 @@ your app.
               throughout the DOM structure.
             * `panel definition`. This is the place where you'll define the look and feel of the new input controls, but also it is the place where you'll interact with the new Input Controls. 
                It has the following structure:
-            ```
+            ```json
               {
                 success?: () => void;
                 error?: (error: any) => void;
@@ -81,7 +82,7 @@ your app.
               }
               ```
               Where InputControlUserConfig is:
-              ```
+              ```js
               {
                   bool?: {
                      type: "switch" | "checkbox";
@@ -108,7 +109,7 @@ your app.
           * `config?`. This parameter will help to define the styles of the input controls. Refer to the InputControlUserConfig structure for more info.   
             * `InputControlUserConfig`.
                 * `Bool`. When rendering a boolean input control, you’ll have 2 options: a _switch_ or a _checkbox_ component. To define a switch component, you have to provide the param like this:
-                    ```
+                    ```js
                     {
                          bool: {
                             type: "switch",
@@ -116,7 +117,7 @@ your app.
                     }
                     ```
                     To define a checkbox component, you have to provide the param like this:
-                    ```
+                    ```js
                     {
                          bool: {
                             type: "checkbox",
@@ -124,7 +125,7 @@ your app.
                     }
                     ```
                 * `singleValueText`. This parameter will let you configure the text field input control. Depending on the metadata defined for your text input control, all proper validations will be applied to it automatically. E.g. assume you have defined this input control as **mandatory**, then this input control will be invalid in case the user leaves it empty. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is:
-                    ```
+                    ```js
                     {
                          singleValueText: {
                             type: "textField",
@@ -132,7 +133,7 @@ your app.
                     }
                     ```
                 * `singleValueNumber`. It will behave similarly to the text field input control, but it also validates the value written in this input control is a number format. All validations related to its metadata will be applied automatically. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is
-                    ```
+                    ```js
                     {
                          singleValueNumber: {
                             type: "number",
@@ -140,7 +141,7 @@ your app.
                     }
                     ```
                 * `singleValueDate`. This parameter will let you configure the date input control. All proper validations will be applied automatically depending on the metadata defined for your date input control. E.g. assume you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
-                    ```
+                    ```js
                     {
                          singleValueDate: {
                             type: "default" | "material",
@@ -148,7 +149,7 @@ your app.
                     }
                     ```
                 * `singleValueDatetime`. This parameter will let you configure the datetime input control. All proper validations will be applied automatically depending on the metadata defined for your datetime input control. E.g. assume you have defined a min datetime and a max datetime (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
-                    ```
+                    ```js
                     {
                          singleValueDatetime: {
                             type: "default" | "material",
@@ -156,7 +157,7 @@ your app.
                     }
                     ```
                 * `singleValueTime`. This parameter will let you configure the time input control. All proper validations will be applied automatically depending on the metadata defined for your time input control. E.g. assume you have defined a min time and a max time (range of times) as valid values, then this input control will enable only that range time. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
-                    ```
+                    ```js
                     {
                          singleValueTime: {
                             type: "default" | "material",
@@ -164,34 +165,4 @@ your app.
                     }
                     ```
                 * `singleSelect`. This parameter will let you configure the single select input control. All proper validations will be applied automatically depending on the metadata defined for your single select input control. E.g. assume you have defined a list of values as valid values, then this input control will enable only that list of values. Currently there is no additional configurations for this input control. However is listed as one possible input control option.
-        * `events?`. This is a callback that is triggered every time any input control updates its value. It has the following structure:
-            ```
-            {
-                change?: (
-                ic: { [key: string]: any[] },
-                validationResult: { [key: string]: string } | boolean,
-                ) => void;
-            }
-            ```
-            * `change`. This method will be triggered every time any input control updates its value. It will provide 2 parameters:
-                * `ic`. This is an object that contains all the input controls that are being rendered in the HTML element container. The key of this object is the name of the input control and the value is an array of the selected values. Example of this object could be:
-                  * ```
-                    {
-                      "column_boolean_1": [false],
-                      "column_string_1": ["string value"],
-                      "column_date_1": ["2009-09-12"],
-                      "column_time_1": ["23:44:21"],
-                      "column_timestamp_1": ["2014-09-12T15:46:18"],
-                      "id_1": ["1"],
-                      "column_float_1": ["0.33"]
-                    }
-                    ```
-                * `validationResult`. This is an object that contains all the input controls that are being rendered in the HTML element container with information about the validity of the value per each input control. The keys of this object is the id of the input control and the value is a string that represents the result of the validation for the input control. If the input control is valid, then the value will be an empty array. If the input control is invalid, then the value will be a string that contains the error message. Example:
-                  * ```
-                    {
-                        "column_time_1": "Verify the time is before or exactly 22:00:00."
-                        "column_timestamp_1": "Verify the date is before or exactly 2014-09-11T15:00:00.",
-                }
-                  ``` 
-                    * In case all values for all input controls are valid, then the param `validationResult` will be a boolean value `false`. 
-                    * This is an event that is being triggered by the InputControl class. This is because the InputControl class is a controlled component. This means that the InputControl class will handle the state of the input controls and will update the state of the input controls when the user interacts with them. This is why the InputControl class will trigger the `change` event every time the state of the input controls changes. 
+        * `events?`. More information can be found at [Events](/pages/input-controls/events) 
