@@ -56,113 +56,65 @@ your app.
   @jaspersoft/jv-input-control package.
   * To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.:
     ``const plugin = new InputControls(v)``, where 'v' is the visualize.js object
-      * you could also provide a second parameter to the class called ``config``. It has the following structure:
-        ``{hostname?: string;  username: string;  password: string;  tenant: string;}``
-        You must provide the same parameters as in the 'logging in the user' section.
-        * The InputControl class comes shipped with a method: ``renderControlPanel``. It accepts the following 3 parameters:
-          uri, container, panel definition:
-            * `uri`. It's an string referencing to the report from where the input controls will be fetched. E.g.:
-              _/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report_
-            * `container`. This is the containing HTML element where the input controls will be rendered by the InputControl
-              class. It's up to the user to style the element as he wants. It is **mandatory** the HTML element is available
-              throughout the DOM structure.
-            * `panel definition`. This is the place where you'll define the look and feel of the new input controls, but also it is the place where you'll interact with the new Input Controls. 
-               It has the following structure:
-            ```json
-              {
-                success?: () => void;
-                error?: (error: any) => void;
-                config?: InputControlUserConfig;
-                events?: {
-                  change?: (
-                  ic: { [key: string]: any[] },
-                  validationResult: { [key: string]: string } | boolean,
-                  ) => void;
-                };
-              }
-              ```
-              Where InputControlUserConfig is:
-              ```js
-              {
-                  bool?: {
-                     type: "switch" | "checkbox";
-                  };
-                  singleValueText?: {
-                     type: "textField";
-                  };
-                  singleValueNumber?: {
-                     type: "number";
-                  };
-                  singleValueDate?: {
-                     type: "default" | "material";
-                  };
-                  singleValueDatetime?: {
-                     type: "default" | "material";
-                  };
-                  singleValueTime?: {
-                     type: "default" | "material";
-                  };
-              }
-              ```
-          * `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
-          * `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
-          * `config?`. This parameter will help to define the styles of the input controls. Refer to the InputControlUserConfig structure for more info.   
-            * `InputControlUserConfig`.
-                * `Bool`. When rendering a boolean input control, you’ll have 2 options: a _switch_ or a _checkbox_ component. To define a switch component, you have to provide the param like this:
-                    ```js
-                    {
-                         bool: {
-                            type: "switch",
-                         },
-                    }
-                    ```
-                    To define a checkbox component, you have to provide the param like this:
-                    ```js
-                    {
-                         bool: {
-                            type: "checkbox",
-                         },
-                    }
-                    ```
-                * `singleValueText`. This parameter will let you configure the text field input control. Depending on the metadata defined for your text input control, all proper validations will be applied to it automatically. E.g. assume you have defined this input control as **mandatory**, then this input control will be invalid in case the user leaves it empty. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is:
-                    ```js
-                    {
-                         singleValueText: {
-                            type: "textField",
-                         },
-                    }
-                    ```
-                * `singleValueNumber`. It will behave similarly to the text field input control, but it also validates the value written in this input control is a number format. All validations related to its metadata will be applied automatically. So far we only have 1 style, so you could ignore passing any attribute to this input control. However, the complete configuration is
-                    ```js
-                    {
-                         singleValueNumber: {
-                            type: "number",
-                         },
-                    }
-                    ```
-                * `singleValueDate`. This parameter will let you configure the date input control. All proper validations will be applied automatically depending on the metadata defined for your date input control. E.g. assume you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
-                    ```js
-                    {
-                         singleValueDate: {
-                            type: "default" | "material",
-                         },
-                    }
-                    ```
-                * `singleValueDatetime`. This parameter will let you configure the datetime input control. All proper validations will be applied automatically depending on the metadata defined for your datetime input control. E.g. assume you have defined a min datetime and a max datetime (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
-                    ```js
-                    {
-                         singleValueDatetime: {
-                            type: "default" | "material",
-                         },
-                    }
-                    ```
-                * `singleValueTime`. This parameter will let you configure the time input control. All proper validations will be applied automatically depending on the metadata defined for your time input control. E.g. assume you have defined a min time and a max time (range of times) as valid values, then this input control will enable only that range time. Additionally, you could either provide a default style (JRS look alike) or a material style (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). The complete configuration is:
-                    ```js
-                    {
-                         singleValueTime: {
-                            type: "default" | "material",
-                         },
-                    }
-                    ```
-                * `singleSelect`. This parameter will let you configure the single select input control. All proper validations will be applied automatically depending on the metadata defined for your single select input control. E.g. assume you have defined a list of values as valid values, then this input control will enable only that list of values. Currently there is no additional configurations for this input control. However is listed as one possible input control option.
-        * `events?`. More information can be found at [Events](/pages/input-controls/events) 
+* you could also provide a second parameter to the class called ``config``. It has the following structure:
+  ``{hostname?: string;  username: string;  password: string;  tenant: string;}``
+  You must provide the same parameters as in the [logging in the user section](/pages/input-controls/basic-usage#logging-in-the-user) section.
+
+## Rendering the control panel
+The InputControl class comes shipped with a method: ``renderControlPanel``. It accepts the following 3 parameters:
+uri, container, panel definition:
+* `uri`. It's a string referencing to the report from where the input controls will be fetched. E.g.: _/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report_
+* `container`. This is the containing HTML element where the input controls will be rendered by the InputControl
+class. It's up to the user to style the element as he wants. It is **mandatory** the HTML element is available 
+throughout the DOM structure.
+* `panel definition`. This is the place where you'll define the look and feel of the new input controls, but also it is
+the place where you'll interact with the new Input Controls. It has the following structure:
+```ts
+{
+    success?: () => void;
+    error?: (error: any) => void;
+    config?: InputControlUserConfig;
+    events?: {
+      change?: (
+      ic: { [key: string]: any[] },
+      validationResult: { [key: string]: string } | boolean,
+      ) => void;
+    };
+}
+```
+* For more information about the `config`parameter, refer to this [section](/pages/input-controls/basic-usage#configuration-of-the-input-controls)
+* `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
+* `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
+* `config?`. This parameter will help to define the styles of the input controls. Refer to the
+[next](/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info about the structure.
+* `events?`. More information can be found at [Events](/pages/input-controls/events)
+
+## Configuration of the input controls
+Each and every input control could be defined by the user in the `config` parameter. This parameter is a wrapper that
+allows the user to define the type of component to render, receive any modification done by the user in the UI, and
+receive (if any) information about the validity of the values the user could have typed in any of the input controls.
+The `config` parameter has the following structure:
+```js
+{
+  bool?: {
+     type: "switch" | "checkbox";
+  };
+  singleValueText?: {
+     type: "textField";
+  };
+  singleValueNumber?: {
+     type: "number";
+  };
+  singleValueDate?: {
+     type: "default" | "material";
+  };
+  singleValueDatetime?: {
+     type: "default" | "material";
+  };
+  singleValueTime?: {
+     type: "default" | "material";
+  };
+}
+``` 
+If you want to see more information about the different types of components for the input controls, refer to
+this [guide](/pages/input-controls/all-ics).
