@@ -13,8 +13,10 @@ JS Visualize Components is a toolkit of React components that work in conjunctio
 
 Installing JS Visualize toolkit is super fun and easy! Here's how...
 
-`npm install @jaspersoft/jv-tools`
-`npm install @jaspersoft/jv-input-controls`
+``` bash
+> npm install --save @jaspersoft/jv-tools
+> npm install --save @jaspersoft/jv-input-controls
+```
 
 ## Requirements
 

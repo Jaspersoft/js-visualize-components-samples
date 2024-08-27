@@ -1,34 +1,154 @@
 {"0": {
+    "doc": "All Input Controls",
+    "title": "List of all Input Controls",
+    "content": "The input controls plugin enables you with different set of UI components to render input controls in your web application. You may want to use a specific UI component for a specific input control type. This guide will help you understand how to use different UI components for specific input control types. ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#list-of-all-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#list-of-all-input-controls"
+  },"1": {
+    "doc": "All Input Controls",
+    "title": "Boolean input controls",
+    "content": "For boolean input controls, you can use the Checkbox or the Switch component. As mentioned in the Input Controls guide, you could use the Checkbox for rendering boolean input controls, however, you might want to use the Switch component instead. Switch component . To define a switch component, you have to provide the param like this: . { bool: { type: \"switch\" } } . Checkbox component . To define a checkbox component, you have to provide the param like this: . { bool: { type: \"checkbox\" } } . ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#boolean-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#boolean-input-controls"
+  },"2": {
+    "doc": "All Input Controls",
+    "title": "Text input controls",
+    "content": "For text input controls, you can use the textField component. Depending on the metadata defined for your text input control, all proper validations will be applied to it automatically. E.g. assume you have defined the input control as mandatory, then the input control will be invalid in case the user leaves it empty. So far only 1 style has been defined for this component, so you could ignore passing any attribute to this input control. However, the full configuration is: . { singleValueText: { type: \"textField\" } } . ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#text-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#text-input-controls"
+  },"3": {
+    "doc": "All Input Controls",
+    "title": "Number input controls",
+    "content": "For number input controls, you can use the number component. Depending on the metadata defined for your number input control, all proper validations will be applied to it automatically. It will behave similarly to the text field input control, but it also validates the value written in this input control is a number format. So far only 1 style has been defined for this component, so you could ignore passing any attribute to this input control. However, the full configuration is: . { singleValueNumber: { type: \"number\" } } . ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#number-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#number-input-controls"
+  },"4": {
+    "doc": "All Input Controls",
+    "title": "Date input controls",
+    "content": "For date input controls, you can use the date component. All proper validations will be applied automatically depending on the metadata defined for your date input control. E.g. assume you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from MUI). JRS look alike component . To define a date component with JRS look alike, you have to provide the configuration like this: . { singleValueDate: { type: \"default\" } } . Note: By default, this is the style that will be used if you don’t provide any configuration. Material component . To define a date component with Material look alike, you have to provide the configuration like this: . { singleValueDate: { type: \"material\" } } . ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#date-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#date-input-controls"
+  },"5": {
+    "doc": "All Input Controls",
+    "title": "Date time input controls",
+    "content": "For date time input controls, you can use the datetime component. All proper validations will be applied automatically depending on the metadata defined for your datetime input control. E.g. assume you have defined a min datetime and a max datetime (range of dates) as valid values, then this input control will enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material style (from MUI). JRS look alike component . To define a date time component with JRS look alike, you have to provide the configuration like this: . { singleValueDatetime: { type: \"default\" } } . Note: By default, this is the style that will be used if you don’t provide any configuration. Material component . To define a date time component with Material look alike, you have to provide the configuration like this: . { singleValueDatetime: { type: \"material\" } } . ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#date-time-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#date-time-input-controls"
+  },"6": {
+    "doc": "All Input Controls",
+    "title": "Time input controls",
+    "content": "For time input controls, you can use the time component. All proper validations will be applied automatically depending on the metadata defined for your time input control. E.g. assume you have defined a min time and a max time (range of times) as valid values, then this input control will enable only that range time. Additionally, you could either provide a default style (JRS look alike) or a material style (from MUI). JRS look alike component . To define a time component with JRS look alike, you have to provide the configuration like this: . { singleValueTime: { type: \"default\" } } . Note: By default, this is the style that will be used if you don’t provide any configuration. Material component . To define a time component with Material look alike, you have to provide the configuration like this: . { singleValueTime: { type: \"material\" } } . ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#time-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#time-input-controls"
+  },"7": {
+    "doc": "All Input Controls",
+    "title": "Single select input controls",
+    "content": "All proper validations will be applied automatically depending on the metadata defined for your single select input control. E.g. assume you have defined a list of values as valid values, then this input control will enable only that list of values. Currently, there is no additional configurations for this input control. However, it is listed as one possible input control option. ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html#single-select-input-controls",
+    "relUrl": "/pages/input-controls/all-ics.html#single-select-input-controls"
+  },"8": {
+    "doc": "All Input Controls",
+    "title": "All Input Controls",
+    "content": " ",
+    "url": "http://localhost:4000/pages/input-controls/all-ics.html",
+    "relUrl": "/pages/input-controls/all-ics.html"
+  },"9": {
+    "doc": "Basic Usage",
+    "title": "Basic example",
+    "content": " ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#basic-example",
+    "relUrl": "/pages/input-controls/basic-usage.html#basic-example"
+  },"10": {
+    "doc": "Basic Usage",
+    "title": "Installation",
+    "content": "Refer to the installation guide for the @jaspersoft/jv-tools and @jaspersoft/jv-input-controls packages. ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#installation",
+    "relUrl": "/pages/input-controls/basic-usage.html#installation"
+  },"11": {
+    "doc": "Basic Usage",
+    "title": "Load the visualize.js into your app",
+    "content": "Once installed, the first step you have to take is to use the jv-tools package to load the visualize.js library into your app. | Import the visualizejsLoader from the @jaspersoft/jv-tools package. | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | . | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#load-the-visualizejs-into-your-app",
+    "relUrl": "/pages/input-controls/basic-usage.html#load-the-visualizejs-into-your-app"
+  },"12": {
+    "doc": "Basic Usage",
+    "title": "Logging in the user",
+    "content": ". | Now that the visualize.js library is loaded in your app, you have to log in the user to be able to fetch resources to JRS. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. Take into consideration that this is a promise, so it’s up to you to handle the success and the error scenarios. | Example of the auth object to provide: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | Once the user is logged in, you’ll get the visualize.js object (more commonly known as v) that is used to interact with the internal API of visualize.js. Make sure to store this reference globally in your app because this will be needed to fetch resources from JRS. | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#logging-in-the-user",
+    "relUrl": "/pages/input-controls/basic-usage.html#logging-in-the-user"
+  },"13": {
+    "doc": "Basic Usage",
+    "title": "Injecting the visualize.js object into the plugin",
+    "content": ". | At this point in time, the visualize.js object is ready to interact with JRS. We recommend providing this object to the InputControls Plugin for an easier interaction between JRS and the new Input Controls provided by @jaspersoft/jv-input-control package. | To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.: const plugin = new InputControls(v), where ‘v’ is the visualize.js object | . | you could also provide a second parameter to the class called config. It has the following structure: {hostname?: string; username: string; password: string; tenant: string;} You must provide the same parameters as in the logging in the user section section. | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#injecting-the-visualizejs-object-into-the-plugin",
+    "relUrl": "/pages/input-controls/basic-usage.html#injecting-the-visualizejs-object-into-the-plugin"
+  },"14": {
+    "doc": "Basic Usage",
+    "title": "Rendering the control panel",
+    "content": "The InputControl class comes shipped with a method: renderControlPanel. It accepts the following 3 parameters: uri, container, panel definition: . | uri. It’s a string referencing to the report from where the input controls will be fetched. E.g.: /public/viz/Adhoc/Ad_Hoc_View_All_filters_Report | container. This is the containing HTML element where the input controls will be rendered by the InputControl class. It’s up to the user to style the element as he wants. It is mandatory the HTML element is available throughout the DOM structure. | panel definition. This is the place where you’ll define the look and feel of the new input controls, but also it is the place where you’ll interact with the new Input Controls. It has the following structure: { success?: () =&gt; void; error?: (error: any) =&gt; void; config?: InputControlUserConfig; events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; } . | For more information about the configparameter, refer to this section | success?: () =&gt; void. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided. | error?: (error: any) =&gt; void. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree. | config?. This parameter will help to define the styles of the input controls. Refer to the next section for more info about the structure. | events?. More information can be found at Events | . ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#rendering-the-control-panel",
+    "relUrl": "/pages/input-controls/basic-usage.html#rendering-the-control-panel"
+  },"15": {
+    "doc": "Basic Usage",
+    "title": "Configuration of the input controls",
+    "content": "Each and every input control could be defined by the user in the config parameter. This parameter is a wrapper that allows the user to define the type of component to render, receive any modification done by the user in the UI, and receive (if any) information about the validity of the values the user could have typed in any of the input controls. The config parameter has the following structure: . { bool?: { type: \"switch\" | \"checkbox\"; }; singleValueText?: { type: \"textField\"; }; singleValueNumber?: { type: \"number\"; }; singleValueDate?: { type: \"default\" | \"material\"; }; singleValueDatetime?: { type: \"default\" | \"material\"; }; singleValueTime?: { type: \"default\" | \"material\"; }; } . If you want to see more information about the different types of components for the input controls, refer to this guide. ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html#configuration-of-the-input-controls",
+    "relUrl": "/pages/input-controls/basic-usage.html#configuration-of-the-input-controls"
+  },"16": {
+    "doc": "Basic Usage",
+    "title": "Basic Usage",
+    "content": " ",
+    "url": "http://localhost:4000/pages/input-controls/basic-usage.html",
+    "relUrl": "/pages/input-controls/basic-usage.html"
+  },"17": {
+    "doc": "Events",
+    "title": "Events",
+    "content": "The events prop is an object that allows you to listen to events that are emitted by the input control. It is part of the panel definition object explained in the Input Controls page. It is optional. If you don’t provide it, the input control will not emit any events. events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; . ",
+    "url": "http://localhost:4000/pages/input-controls/events.html",
+    "relUrl": "/pages/input-controls/events.html"
+  },"18": {
+    "doc": "Events",
+    "title": "Parameters",
+    "content": "The params of the events.change event are: . | ic. This is an object that contains all the input controls that are being rendered in the HTML element container. The key of this object is the ID of the input control and the value is an array of the selected values. Example of this object could be: { \"column_boolean_1\": [false], \"column_string_1\": [\"string value\"], \"column_date_1\": [\"2009-09-12\"], \"column_time_1\": [\"23:44:21\"], \"column_timestamp_1\": [\"2014-09-12T15:46:18\"], \"id_1\": [\"1\"], \"column_float_1\": [\"0.33\"] } . | validationResult. This is an object that contains all the input controls that are being rendered in the HTML element container with information about the validity of the value per each input control. The keys of this object is the ID of the input control and the value is a string that represents the result of the validation for the input control. If the input control is valid, the value will be an empty array. If the input control is invalid, the value will be a string that contains the error message. Example: { \"column_time_1\": \"Verify the time is before or exactly 22:00:00.\" \"column_timestamp_1\": \"Verify the date is before or exactly 2014-09-11T15:00:00.\", } . Notes . | In case all values for all input controls are valid, the param validationResult will be a boolean value false. | This is an event that is being triggered by the InputControl class. This is because the InputControl class is a controlled component. This means that the InputControl class will handle the state of the input controls and will update the state of the input controls when the user interacts with them. This is why the InputControl class will trigger the change event every time the state of the input controls changes. | . ",
+    "url": "http://localhost:4000/pages/input-controls/events.html#parameters",
+    "relUrl": "/pages/input-controls/events.html#parameters"
+  },"19": {
     "doc": "Home",
     "title": "Visualize.js Component Toolkit",
     "content": "Learn how to use the visualize.js component toolkit to enrich your web application. Harness the power of Jasperreports server utilizing modern ReactJS-based components to embed your reporting in an existing application, or to construct your own reporting workflows composed of components built from common use cases. ",
     "url": "http://localhost:4000/#visualizejs-component-toolkit",
     "relUrl": "/#visualizejs-component-toolkit"
-  },"1": {
+  },"20": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
-  },"2": {
+  },"21": {
+    "doc": "Input Controls",
+    "title": "Input Controls",
+    "content": "The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
+    "url": "http://localhost:4000/pages/input-controls/",
+    "relUrl": "/pages/input-controls/"
+  },"22": {
     "doc": "Introduction",
     "title": "Introduction",
     "content": "JS Visualize Components is a toolkit of React components that work in conjunction with visualize.js to provide web developers rich, modern UI components that interact with their existing JRS installation. By utilizing these components web developers can forge their own user experience utilizing the reporting concepts found in JRS. ",
     "url": "http://localhost:4000/pages/introduction.html",
     "relUrl": "/pages/introduction.html"
-  },"3": {
+  },"23": {
     "doc": "Introduction",
     "title": "Installation",
-    "content": "Installing JS Visualize toolkit is super fun and easy! Here’s how… . npm install @jaspersoft/jv-tools npm install @jaspersoft/jv-input-controls . ",
+    "content": "Installing JS Visualize toolkit is super fun and easy! Here’s how… . &gt; npm install --save @jaspersoft/jv-tools &gt; npm install --save @jaspersoft/jv-input-controls . ",
     "url": "http://localhost:4000/pages/introduction.html#installation",
     "relUrl": "/pages/introduction.html#installation"
-  },"4": {
+  },"24": {
     "doc": "Introduction",
     "title": "Requirements",
     "content": "In order to utilize this library, you will need access to a running instance of Jasperreports Server (version &gt;= 8.0) configured to provide visualize.js . ",
     "url": "http://localhost:4000/pages/introduction.html#requirements",
     "relUrl": "/pages/introduction.html#requirements"
-  },"5": {
+  },"25": {
     "doc": "Introduction",
     "title": "Lorem ipsum",
     "content": "Dolor sit amet, … . ",
