@@ -13,7 +13,18 @@ These default styles are applied to the input controls when they are rendered in
 In order to prevent any conflicts with your app's styles, the input control styles have been scoped to the input
 control container by using a prefix class. The prefix class is `jv-`.
 
-## How to override the default styles
+## The default styles
+
+The package `@jaspersoft/jv-ui-components` provides a stylesheet that contains the default styles for the input controls.
+This file can be located in the following path: `node_modules/@jaspersoft/jv-ui-components/dist/jv-ui.css`.
+By default, it is imported in the sample app's `index.html` file. E.g:
+``` html
+    <link rel="stylesheet" href="jv-ui.css" type="text/css" />
+```
+
+You can choose not to import it at all, or you can import it and override the styles as needed.
+
+## How to overwrite the default styles
 
 Consider the following code that is rendered when using a `checkbox` component for a boolean input control:
 ``` html
@@ -41,13 +52,10 @@ To override this style, you can add the following CSS to your app:
 ```
 Which will make the background color of the switch red when it is checked.
 
-## The default styles
+## UI Components
+All UI components are based on the [material UI](https://v5.mui.com/material-ui/getting-started/) components v5.
+(Check the list of all available input controls [here](/js-visualize-components-samples/pages/input-controls/all-ics)).
 
-The package `@jaspersoft/jv-ui-components` provides a stylesheet that contains the default styles for the input controls.
-This file can be located in the following path: `node_modules/@jaspersoft/jv-ui-components/dist/jv-ui.css`.
-By default, it is imported in the sample app's `index.html` file. E.g: 
-``` html
-    <link rel="stylesheet" href="jv-ui.css" type="text/css" />
-```
-
-You can choose not to import it at all, or you can import it and override the styles as needed.
+As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the 
+material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, 
+you'll get a version of those components with styling of our own.   
