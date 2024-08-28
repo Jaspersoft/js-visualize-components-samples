@@ -203,18 +203,42 @@
     "url": "/js-visualize-components-samples/pages/tools/loading-vizjs.html",
     "relUrl": "/pages/tools/loading-vizjs.html"
   },"34": {
+    "doc": "Override Styles",
+    "title": "Overriding default styles",
+    "content": "Currently, all input controls are shipped with default styles. These default styles are applied to the input controls when they are rendered in the HTML element container. In order to prevent any conflicts with your app’s styles, the input control styles have been scoped to the input control container by using a prefix class. The prefix class is jv-. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#overriding-default-styles",
+    "relUrl": "/pages/input-controls/override-styles.html#overriding-default-styles"
+  },"35": {
+    "doc": "Override Styles",
+    "title": "How to override the default styles",
+    "content": "Consider the following code that is rendered when using a checkbox component for a boolean input control: . &lt;div class=\"jv-mInput jv-mInputSwitch jv-mInputInline jv-mInputLarge mui\"&gt; &lt;label class=\"jv-MuiFormControlLabel-root jv-MuiFormControlLabel-labelPlacementEnd\"&gt; &lt;span class=\"jv-MuiSwitch-root jv-MuiSwitch-sizeMedium jv-mInput-switch mui\"&gt; &lt;span class=\"jv-PrivateSwitchBase-root jv-MuiSwitch-switchBase jv-MuiSwitch-colorPrimary Mui-checked\"&gt; &lt;input class=\"jv-PrivateSwitchBase-input jv-MuiSwitch-input\" type=\"checkbox\" checked=\"\"&gt; &lt;span class=\"jv-MuiSwitch-thumb\"&gt;&lt;/span&gt; &lt;span class=\"jv-MuiTouchRipple-root\"&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=\"jv-MuiSwitch-track\"&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=\"jv-MuiTypography-root jv-MuiFormControlLabel-label jv-mInput-label mui\"&gt;column_boolean&lt;/span&gt; &lt;/label&gt; &lt;/div&gt; . The component that is being rendered contains the CSS rule: .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track which is in charge of the background color of the switch when it is checked. To override this style, you can add the following CSS to your app: .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track { background-color: red; } . Which will make the background color of the switch red when it is checked. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#how-to-override-the-default-styles",
+    "relUrl": "/pages/input-controls/override-styles.html#how-to-override-the-default-styles"
+  },"36": {
+    "doc": "Override Styles",
+    "title": "The default styles",
+    "content": "The package @jaspersoft/jv-ui-components provides a stylesheet that contains the default styles for the input controls. This file can be located in the following path: node_modules/@jaspersoft/jv-ui-components/dist/jv-ui.css. By default, it is imported in the sample app’s index.html file. E.g: . &lt;link rel=\"stylesheet\" href=\"jv-ui.css\" type=\"text/css\" /&gt; . You can choose not to import it at all, or you can import it and override the styles as needed. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#the-default-styles",
+    "relUrl": "/pages/input-controls/override-styles.html#the-default-styles"
+  },"37": {
+    "doc": "Override Styles",
+    "title": "Override Styles",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html",
+    "relUrl": "/pages/input-controls/override-styles.html"
+  },"38": {
     "doc": "Visualize Types in TypeScript",
     "title": "TypeScript Types",
     "content": "The jv-tools package also exports some types that can be used while writing TypeScript. Currently this is under development, but some types are availble for use now. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#typescript-types",
     "relUrl": "/pages/tools/visualize-types.html#typescript-types"
-  },"35": {
+  },"39": {
     "doc": "Visualize Types in TypeScript",
     "title": "Using types in your project",
     "content": "The types are exported in the jv-tools package, and should be available in your IDE once you’ve added @jaspersoft/jv-tools as a dependency to your project. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#using-types-in-your-project",
     "relUrl": "/pages/tools/visualize-types.html#using-types-in-your-project"
-  },"36": {
+  },"40": {
     "doc": "Visualize Types in TypeScript",
     "title": "Visualize Types in TypeScript",
     "content": " ",
