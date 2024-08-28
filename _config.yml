@@ -1,4 +1,5 @@
 theme: just-the-docs
+baseurl: /js-visualize-components-samples
 search_enabled: false
 exclude:
   - react-app-render/
