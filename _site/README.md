@@ -1,4 +1,4 @@
-# Jaspersoft UI Central
+# Jaspersoft Visualize Components Samples
 
 ## How to set up the GitHub pages locally.
 
@@ -51,3 +51,10 @@
 3. Run ```bundle exec jekyll serve```
 4. Access the project at [http://localhost:4000](http://localhost:4000/)
 
+
+### Steps to deploy to GitHub Pages 
+
+1. Build project using `bundle exec jekyll build`
+1. Commit `_site` subtree to `gh-pages` branch: `git subtree split --branch gh-pages --prefix _site/`
+1. Wait for GitHub deployment to finish
+1. Access site at [GitHub Pages URL](https://jaspersoft.github.io/js-visualize-components-samples/).
