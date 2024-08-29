@@ -13,7 +13,7 @@ This guide will help you understand how to use different UI components for speci
 
 ##  Boolean input controls
 For boolean input controls, you can use the `Checkbox` or the `Switch` component.
-As mentioned in the [Input Controls](/pages/input-controls/basic-usage#panel-definition) guide, you could use the 
+As mentioned in the [Input Controls]({{site.baseurl}}/pages/input-controls/basic-usage#panel-definition) guide, you could use the 
 `Checkbox` for rendering boolean input controls, however, you might want to use the `Switch` component instead.
 
 #### Switch component

@@ -54,7 +54,7 @@ Which will make the background color of the switch red when it is checked.
 
 ## UI Components
 All UI components are based on the [material UI](https://v5.mui.com/material-ui/getting-started/) components v5.
-(Check the list of all available input controls [here](/js-visualize-components-samples/pages/input-controls/all-ics)).
+(Check the list of all available input controls [here]({{site.baseurl}}/pages/input-controls/all-ics)).
 
 As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the 
 material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, 

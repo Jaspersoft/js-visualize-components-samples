@@ -10,7 +10,7 @@ has_children: false
 
 ## Installation
 
-Refer to the [installation](/pages/introduction#Installation) guide for the `@jaspersoft/jv-tools` and `@jaspersoft/jv-input-controls` packages.
+Refer to the [installation]({{site.baseurl}}/pages/introduction#Installation) guide for the `@jaspersoft/jv-tools` and `@jaspersoft/jv-input-controls` packages.
 
 ## Load the visualize.js into your app
 
@@ -58,7 +58,7 @@ your app.
     ``const plugin = new InputControls(v)``, where 'v' is the visualize.js object
 * you could also provide a second parameter to the class called ``config``. It has the following structure:
   ``{hostname?: string;  username: string;  password: string;  tenant: string;}``
-  You must provide the same parameters as in the [logging in the user section](/pages/input-controls/basic-usage#logging-in-the-user) section.
+  You must provide the same parameters as in the [logging in the user section]({{site.baseurl}}/pages/input-controls/basic-usage#logging-in-the-user) section.
 
 ## Rendering the control panel
 The InputControl class comes shipped with a method: ``renderControlPanel``. It accepts the following 3 parameters:
@@ -82,12 +82,12 @@ the place where you'll interact with the new Input Controls. It has the followin
     };
 }
 ```
-* For more information about the `config`parameter, refer to this [section](/pages/input-controls/basic-usage#configuration-of-the-input-controls)
+* For more information about the `config`parameter, refer to this [section]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls)
 * `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
 * `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
 * `config?`. This parameter will help to define the styles of the input controls. Refer to the
-[next](/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info about the structure.
-* `events?`. More information can be found at [Events](/pages/input-controls/events)
+[next]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info about the structure.
+* `events?`. More information can be found at [Events]({{site.baseurl}}/pages/input-controls/events)
 
 ## Configuration of the input controls
 Each and every input control could be defined by the user in the `config` parameter. This parameter is a wrapper that
@@ -117,4 +117,4 @@ The `config` parameter has the following structure:
 }
 ``` 
 If you want to see more information about the different types of components for the input controls, refer to
-this [guide](/pages/input-controls/all-ics).
+this [guide]({{site.baseurl}}/pages/input-controls/all-ics).
