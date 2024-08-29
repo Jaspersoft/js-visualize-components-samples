@@ -50,28 +50,19 @@ import {
 
 ## Preparing Input Control Component
 
-To properly render the controls for a report or ad hoc view, the component must first be instantiated. During this step you must have access to visualize.js's v object and provide it at instantiation.
+To use the Input Control component, you can instantiate it and provide visualize.js's v object to enable it to access JRS.
+
 ```js
 const inputControlComponent = new InputControls(v);
 ```
-* At thishe visualize.js object is ready to interact with JRS. We recommend providing this object to
-  the InputControls Plugin for an easier interaction between JRS and the new Input Controls provided by
-  @jaspersoft/jv-input-control package.
-  * To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.:
-    ``const plugin = new InputControls(v)``, where 'v' is the visualize.js object
-* you could also provide a second parameter to the class called ``config``. It has the following structure:
-  ``{hostname?: string;  username: string;  password: string;  tenant: string;}``
-  You must provide the same parameters as in the [logging in the user section]({{site.baseurl}}/pages/input-controls/basic-usage#logging-in-the-user) section.
+Now you can interact with the component's javascript api as described in the following sections.
 
 ## Rendering the control panel
-The InputControl class comes shipped with a method: ``renderControlPanel``. It accepts the following 3 parameters:
-uri, container, panel definition:
-* `uri`. It's a string referencing to the report from where the input controls will be fetched. E.g.: _/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report_
-* `container`. This is the containing HTML element where the input controls will be rendered by the InputControl
-class. It's up to the user to style the element as he wants. It is **mandatory** the HTML element is available 
-throughout the DOM structure.
-* `panel definition`. This is the place where you'll define the look and feel of the new input controls, but also it is
-the place where you'll interact with the new Input Controls. It has the following structure:
+InputControls component has a method `renderControlPanel` that accepts 3 parameters: uri, container, panel configuration.
+
+* `uri`: (string) path to report or ad hoc view _(/path/to/my/reports/SalesReport)_
+* `container`: (DivElement) <div> element from the DOM where the input controls should be rendered 
+* `panel configuration`: (JSON) object containing configuration for panel look and feel and event handling
 ```ts
 {
     success?: () => void;
@@ -85,7 +76,7 @@ the place where you'll interact with the new Input Controls. It has the followin
     };
 }
 ```
-* For more information about the `config`parameter, refer to this [section](/pages/input-controls/basic-usage#configuration-of-the-input-controls)
+* For more information about the `config` parameter, refer to this [section](/pages/input-controls/basic-usage#configuration-of-the-input-controls)
 * `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
 * `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
 * `config?`. This parameter will help to define the styles of the input controls. Refer to the
