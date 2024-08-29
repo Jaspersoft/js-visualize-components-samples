@@ -8,31 +8,31 @@ has_children: false
 
 # Basic example
 
-## Installation
+## Load visualize.js 
 
-Refer to the [installation](/pages/introduction#Installation) guide for the `@jaspersoft/jv-tools` and `@jaspersoft/jv-input-controls` packages.
+1. Import the visualizejsLoader function from the @jaspersoft/jv-tools package.
+```js 
+import {
+  Authentication,
+  VisualizeFactory,
+  visualizejsLoader,
+  VisualizeType,
+} from "@jaspersoft/jv-tools";
+```
 
-## Load the visualize.js into your app
+1. Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded.
+1. In case you don't provide a URL because the visualize.js is already loaded into the window object, then this
+   package will automatically take it from there.
+1. If you provide a valid URL, this method will add a new script tag in your app's document referencing the URL you
+   provided, making the visualize.js library available for your app.
+1. visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory).
+   Make sure to store this reference in your app because it will be needed later for logging in the user to JRS.
 
-Once installed, the first step you have to take is to use the jv-tools package to load the visualize.js library into
-your app.
+## Authentication
 
-1. Import the visualizejsLoader from the @jaspersoft/jv-tools package.
-2. Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded.
-    3. In case you don't provide a URL because the visualize.js is already loaded into the window object, then this
-       package will automatically take it from there.
-    4. If you provide a valid URL, this method will add a new script tag in your app's document referencing the URL you
-       provided, making the visualize.js library available for your app.
-    5. visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory).
-       Make sure to store this reference in your app because it will be needed later for logging in the user to JRS.
-
-## Logging in the user
-
-* Now that the visualize.js library is loaded in your app, you have to log in the user to be able to fetch resources to
-  JRS.
-* Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. Take
-  into consideration that this is a promise, so it's up to you to handle the success and the error scenarios.
-* Example of the auth object to provide:
+* Now that the visualize.js library is loaded in your app, you must authenticate with Jasperreports Server.
+* Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. As this is a promise, handling the success and error cases is an exercise for the user.
+* Example authentication object:
 
 ``` js
    {
@@ -45,30 +45,24 @@ your app.
    }
 ```
 
-* Once the user is logged in, you'll get the visualize.js object (more commonly known as _**v**_) that is used to
-  interact with the internal API of visualize.js. Make sure to store this reference globally in your app because this
-  will be needed to fetch resources from JRS.
+* After authenticating the visualize.js object ("V object") is returned. This is used to
+  interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other operations with visualize.js such as loading a report viewer.
 
-## Injecting the visualize.js object into the plugin
+## Preparing Input Control Component
 
-* At this point in time, the visualize.js object is ready to interact with JRS. We recommend providing this object to
-  the InputControls Plugin for an easier interaction between JRS and the new Input Controls provided by
-  @jaspersoft/jv-input-control package.
-  * To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.:
-    ``const plugin = new InputControls(v)``, where 'v' is the visualize.js object
-* you could also provide a second parameter to the class called ``config``. It has the following structure:
-  ``{hostname?: string;  username: string;  password: string;  tenant: string;}``
-  You must provide the same parameters as in the [logging in the user section](/pages/input-controls/basic-usage#logging-in-the-user) section.
+To use the Input Control component, you can instantiate it and provide visualize.js's v object to enable it to access JRS.
+
+```js
+const inputControlComponent = new InputControls(v);
+```
+Now you can interact with the component's javascript api as described in the following sections.
 
 ## Rendering the control panel
-The InputControl class comes shipped with a method: ``renderControlPanel``. It accepts the following 3 parameters:
-uri, container, panel definition:
-* `uri`. It's a string referencing to the report from where the input controls will be fetched. E.g.: _/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report_
-* `container`. This is the containing HTML element where the input controls will be rendered by the InputControl
-class. It's up to the user to style the element as he wants. It is **mandatory** the HTML element is available 
-throughout the DOM structure.
-* `panel definition`. This is the place where you'll define the look and feel of the new input controls, but also it is
-the place where you'll interact with the new Input Controls. It has the following structure:
+InputControls component has a method `renderControlPanel` that accepts 3 parameters: uri, container, panel configuration.
+
+* `uri`: (string) path to report or ad hoc view _(/path/to/my/reports/SalesReport)_
+* `container`: (DivElement) <div> element from the DOM where the input controls should be rendered 
+* `panel configuration`: (JSON) object containing configuration for panel look and feel and event handling
 ```ts
 {
     success?: () => void;
@@ -82,7 +76,7 @@ the place where you'll interact with the new Input Controls. It has the followin
     };
 }
 ```
-* For more information about the `config`parameter, refer to this [section](/pages/input-controls/basic-usage#configuration-of-the-input-controls)
+* For more information about the `config` parameter, refer to this [section](/pages/input-controls/basic-usage#configuration-of-the-input-controls)
 * `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
 * `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
 * `config?`. This parameter will help to define the styles of the input controls. Refer to the
@@ -117,4 +111,4 @@ The `config` parameter has the following structure:
 }
 ``` 
 If you want to see more information about the different types of components for the input controls, refer to
-this [guide](/pages/input-controls/all-ics).
+this [guide]({{site.baseurl}}/pages/input-controls/all-ics).

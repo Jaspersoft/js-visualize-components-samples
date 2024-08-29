@@ -78,143 +78,137 @@
     "relUrl": "/pages/input-controls/basic-usage.html#basic-example"
   },"13": {
     "doc": "Basic Usage",
-    "title": "Installation",
-    "content": "Refer to the installation guide for the @jaspersoft/jv-tools and @jaspersoft/jv-input-controls packages. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#installation",
-    "relUrl": "/pages/input-controls/basic-usage.html#installation"
+    "title": "Load visualize.js",
+    "content": ". | Import the visualizejsLoader function from the @jaspersoft/jv-tools package. import { Authentication, VisualizeFactory, visualizejsLoader, VisualizeType, } from \"@jaspersoft/jv-tools\"; . | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | . ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#load-visualizejs",
+    "relUrl": "/pages/input-controls/basic-usage.html#load-visualizejs"
   },"14": {
     "doc": "Basic Usage",
-    "title": "Load the visualize.js into your app",
-    "content": "Once installed, the first step you have to take is to use the jv-tools package to load the visualize.js library into your app. | Import the visualizejsLoader from the @jaspersoft/jv-tools package. | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | . | . ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#load-the-visualizejs-into-your-app",
-    "relUrl": "/pages/input-controls/basic-usage.html#load-the-visualizejs-into-your-app"
+    "title": "Authentication",
+    "content": ". | Now that the visualize.js library is loaded in your app, you must authenticate with Jasperreports Server. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. As this is a promise, handling the success and error cases is an exercise for the user. | Example authentication object: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | After authenticating the visualize.js object (“V object”) is returned. This is used to interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other operations with visualize.js such as loading a report viewer. | . ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#authentication",
+    "relUrl": "/pages/input-controls/basic-usage.html#authentication"
   },"15": {
     "doc": "Basic Usage",
-    "title": "Logging in the user",
-    "content": ". | Now that the visualize.js library is loaded in your app, you have to log in the user to be able to fetch resources to JRS. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. Take into consideration that this is a promise, so it’s up to you to handle the success and the error scenarios. | Example of the auth object to provide: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | Once the user is logged in, you’ll get the visualize.js object (more commonly known as v) that is used to interact with the internal API of visualize.js. Make sure to store this reference globally in your app because this will be needed to fetch resources from JRS. | . ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#logging-in-the-user",
-    "relUrl": "/pages/input-controls/basic-usage.html#logging-in-the-user"
+    "title": "Preparing Input Control Component",
+    "content": "To use the Input Control component, you can instantiate it and provide visualize.js’s v object to enable it to access JRS. const inputControlComponent = new InputControls(v); . Now you can interact with the component’s javascript api as described in the following sections. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#preparing-input-control-component",
+    "relUrl": "/pages/input-controls/basic-usage.html#preparing-input-control-component"
   },"16": {
     "doc": "Basic Usage",
-    "title": "Injecting the visualize.js object into the plugin",
-    "content": ". | At this point in time, the visualize.js object is ready to interact with JRS. We recommend providing this object to the InputControls Plugin for an easier interaction between JRS and the new Input Controls provided by @jaspersoft/jv-input-control package. | To provide the visualize.js object to the InputControlsPlugin, you have to instantiate an object of this class. E.g.: const plugin = new InputControls(v), where ‘v’ is the visualize.js object | . | you could also provide a second parameter to the class called config. It has the following structure: {hostname?: string; username: string; password: string; tenant: string;} You must provide the same parameters as in the logging in the user section section. | . ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#injecting-the-visualizejs-object-into-the-plugin",
-    "relUrl": "/pages/input-controls/basic-usage.html#injecting-the-visualizejs-object-into-the-plugin"
-  },"17": {
-    "doc": "Basic Usage",
     "title": "Rendering the control panel",
-    "content": "The InputControl class comes shipped with a method: renderControlPanel. It accepts the following 3 parameters: uri, container, panel definition: . | uri. It’s a string referencing to the report from where the input controls will be fetched. E.g.: /public/viz/Adhoc/Ad_Hoc_View_All_filters_Report | container. This is the containing HTML element where the input controls will be rendered by the InputControl class. It’s up to the user to style the element as he wants. It is mandatory the HTML element is available throughout the DOM structure. | panel definition. This is the place where you’ll define the look and feel of the new input controls, but also it is the place where you’ll interact with the new Input Controls. It has the following structure: { success?: () =&gt; void; error?: (error: any) =&gt; void; config?: InputControlUserConfig; events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; } . | For more information about the configparameter, refer to this section | success?: () =&gt; void. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided. | error?: (error: any) =&gt; void. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree. | config?. This parameter will help to define the styles of the input controls. Refer to the next section for more info about the structure. | events?. More information can be found at Events | . ",
+    "content": "InputControls component has a method renderControlPanel that accepts 3 parameters: uri, container, panel configuration. | uri: (string) path to report or ad hoc view (/path/to/my/reports/SalesReport) | container: (DivElement) &lt;div&gt; element from the DOM where the input controls should be rendered | panel configuration: (JSON) object containing configuration for panel look and feel and event handling { success?: () =&gt; void; error?: (error: any) =&gt; void; config?: InputControlUserConfig; events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; } . | For more information about the config parameter, refer to this section | success?: () =&gt; void. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided. | error?: (error: any) =&gt; void. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree. | config?. This parameter will help to define the styles of the input controls. Refer to the next section for more info about the structure. | events?. More information can be found at Events | . ",
     "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#rendering-the-control-panel",
     "relUrl": "/pages/input-controls/basic-usage.html#rendering-the-control-panel"
-  },"18": {
+  },"17": {
     "doc": "Basic Usage",
     "title": "Configuration of the input controls",
     "content": "Each and every input control could be defined by the user in the config parameter. This parameter is a wrapper that allows the user to define the type of component to render, receive any modification done by the user in the UI, and receive (if any) information about the validity of the values the user could have typed in any of the input controls. The config parameter has the following structure: . { bool?: { type: \"switch\" | \"checkbox\"; }; singleValueText?: { type: \"textField\"; }; singleValueNumber?: { type: \"number\"; }; singleValueDate?: { type: \"default\" | \"material\"; }; singleValueDatetime?: { type: \"default\" | \"material\"; }; singleValueTime?: { type: \"default\" | \"material\"; }; } . If you want to see more information about the different types of components for the input controls, refer to this guide. ",
     "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#configuration-of-the-input-controls",
     "relUrl": "/pages/input-controls/basic-usage.html#configuration-of-the-input-controls"
-  },"19": {
+  },"18": {
     "doc": "Basic Usage",
     "title": "Basic Usage",
     "content": " ",
     "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html",
     "relUrl": "/pages/input-controls/basic-usage.html"
-  },"20": {
+  },"19": {
     "doc": "Events",
     "title": "Events",
-    "content": "The events prop is an object that allows you to listen to events that are emitted by the input control. It is part of the panel definition object explained in the Input Controls page. It is optional. If you don’t provide it, the input control will not emit any events. events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; . ",
+    "content": "In order to work with user input, you may provide a callback function which is called when certain events occur. Currently we only support change events. When configuring the input controls component, you may provide a JSON object in the events property of your configuration object. See Input Controls for more information on configuring the input controls component. In read-only scenarios where you do not wish to process user input, you may omit this configuration. events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; . ",
     "url": "/js-visualize-components-samples/pages/input-controls/events.html",
     "relUrl": "/pages/input-controls/events.html"
-  },"21": {
+  },"20": {
     "doc": "Events",
     "title": "Parameters",
-    "content": "The params of the events.change event are: . | ic. This is an object that contains all the input controls that are being rendered in the HTML element container. The key of this object is the ID of the input control and the value is an array of the selected values. Example of this object could be: { \"column_boolean_1\": [false], \"column_string_1\": [\"string value\"], \"column_date_1\": [\"2009-09-12\"], \"column_time_1\": [\"23:44:21\"], \"column_timestamp_1\": [\"2014-09-12T15:46:18\"], \"id_1\": [\"1\"], \"column_float_1\": [\"0.33\"] } . | validationResult. This is an object that contains all the input controls that are being rendered in the HTML element container with information about the validity of the value per each input control. The keys of this object is the ID of the input control and the value is a string that represents the result of the validation for the input control. If the input control is valid, the value will be an empty array. If the input control is invalid, the value will be a string that contains the error message. Example: { \"column_time_1\": \"Verify the time is before or exactly 22:00:00.\" \"column_timestamp_1\": \"Verify the date is before or exactly 2014-09-11T15:00:00.\", } . Notes . | In case all values for all input controls are valid, the param validationResult will be a boolean value false. | This is an event that is being triggered by the InputControl class. This is because the InputControl class is a controlled component. This means that the InputControl class will handle the state of the input controls and will update the state of the input controls when the user interacts with them. This is why the InputControl class will trigger the change event every time the state of the input controls changes. | . ",
+    "content": "The events.change property accepts a callback which is given the following parameters when called: . | ic: contains a representation of all the input controls that are being rendered in the HTML element container. The format of the object matches the format used by visualize.js when working with input controls. Keys are input control IDs and values are an array of values. For example: { \"column_boolean_1\": [false], \"column_string_1\": [\"string value\"], \"column_date_1\": [\"2009-09-12\"], \"column_time_1\": [\"23:44:21\"], \"column_timestamp_1\": [\"2014-09-12T15:46:18\"], \"id_1\": [\"1\"], \"column_float_1\": [\"0.33\"] } . | validationResult: contains any validation errors that may be present. The keys of this object represent the input control IDs while the value will either be an empty array when no validation errors occur, or a string value with a user-readable message regarding the validation failure. When all controls have valid input, this parameter will be a boolean value: false. | . For example: . { \"column_time_1\": [], \"column_timestamp_1\": \"Verify the date is before or exactly 2014-09-11T15:00:00.\", } . Notes . | In case all values for all input controls are valid, the param validationResult will be a boolean value false. | This is an event that is being triggered by the InputControl class. This is because the InputControl class is a controlled component. This means that the InputControl class will handle the state of the input controls and will update the state of the input controls when the user interacts with them. This is why the InputControl class will trigger the change event every time the state of the input controls changes. | . ",
     "url": "/js-visualize-components-samples/pages/input-controls/events.html#parameters",
     "relUrl": "/pages/input-controls/events.html#parameters"
-  },"22": {
+  },"21": {
     "doc": "Input Controls",
     "title": "Input Controls",
     "content": "The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
     "url": "/js-visualize-components-samples/pages/input-controls/",
     "relUrl": "/pages/input-controls/"
-  },"23": {
+  },"22": {
     "doc": "Home",
     "title": "Visualize.js Component Toolkit",
     "content": "Learn how to use the visualize.js component toolkit to enrich your web application. Harness the power of Jasperreports server utilizing modern ReactJS-based components to embed your reporting in an existing application, or to construct your own reporting workflows composed of components built from common use cases. ",
     "url": "/js-visualize-components-samples/#visualizejs-component-toolkit",
     "relUrl": "/#visualizejs-component-toolkit"
-  },"24": {
+  },"23": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "/js-visualize-components-samples/",
     "relUrl": "/"
-  },"25": {
+  },"24": {
     "doc": "Introduction",
     "title": "Introduction",
     "content": "JS Visualize Components is a toolkit of React components that work in conjunction with visualize.js to provide web developers rich, modern UI components that interact with their existing JRS installation. By utilizing these components web developers can forge their own user experience utilizing the reporting concepts found in JRS. ",
     "url": "/js-visualize-components-samples/pages/introduction.html",
     "relUrl": "/pages/introduction.html"
-  },"26": {
+  },"25": {
     "doc": "Introduction",
     "title": "About Visualize Components Toolkit",
     "content": "The aim of this project is to provide components that are ready-to-use, modern, customizable, accessible and open source. ",
     "url": "/js-visualize-components-samples/pages/introduction.html#about-visualize-components-toolkit",
     "relUrl": "/pages/introduction.html#about-visualize-components-toolkit"
-  },"27": {
+  },"26": {
     "doc": "Introduction",
     "title": "Requirements",
     "content": "In order to utilize this library, you will need access to a running instance of Jasperreports Server (version &gt;= 8.0) configured to provide visualize.js. You can utilize these packages in your existing ReactJS project, or utilize them in another framework. ",
     "url": "/js-visualize-components-samples/pages/introduction.html#requirements",
     "relUrl": "/pages/introduction.html#requirements"
-  },"28": {
+  },"27": {
     "doc": "Introduction",
     "title": "Installation",
-    "content": "Installation of packages can be done with either npm or yarn, as you see fit for your project. Packages are hosted on the public npm registry, and should be available without any additional configurations. Packages utilize the @jaspersoft scope. &gt; npm install --save @jaspersoft/jv-tools &gt; npm install --save @jaspersoft/jv-input-controls . ",
+    "content": "Installation of packages can be done with either npm or yarn, as you see fit for your project. Packages are hosted on the public npm registry, and should be available without any additional configurations. Packages are organized under the @jaspersoft scope. &gt; npm install --save @jaspersoft/jv-tools &gt; npm install --save @jaspersoft/jv-input-controls . ",
     "url": "/js-visualize-components-samples/pages/introduction.html#installation",
     "relUrl": "/pages/introduction.html#installation"
-  },"29": {
+  },"28": {
     "doc": "Introduction",
     "title": "Getting Started",
-    "content": "In order to work with many of these packages, you will need to be familiar with visualize.js, and have it loaded in the page where embedding happens. To do this you can utilize the jv-tools package included, or you can add a script tag to the page where the components will be used. ",
+    "content": "You need to have access to visualize.js on the pages where these components will be used. To do this you can include it using a script tag or utilize the jv-tools package to load the script programatically. ",
     "url": "/js-visualize-components-samples/pages/introduction.html#getting-started",
     "relUrl": "/pages/introduction.html#getting-started"
-  },"30": {
+  },"29": {
     "doc": "jv-tools",
     "title": "jv-tools Package",
     "content": "The jv-tools package is a collection of utility functions for working with the component toolkit. Currently this is the home of two important pieces: a loader and typescript interfaces for working with visualize in your IDE. ",
     "url": "/js-visualize-components-samples/pages/tools/jv-tools.html#jv-tools-package",
     "relUrl": "/pages/tools/jv-tools.html#jv-tools-package"
-  },"31": {
+  },"30": {
     "doc": "jv-tools",
     "title": "Installation",
     "content": "Installing the jv-tools package can be done with your package tool, npm or yarn . npm install @jaspersoft/jv-tools or yarn add @jaspersoft/jv-tools . visualizeJsLoader . The main utility you will use from jv-tools is the visualizeJsLoader function. This function allows you to load visualize from a provided URL. It will then create a script tag to load the script, making it available to work with in code. Optionally you can maintain loading of visualize on your own and allowing it to be set on the global scope, if this is done visualizeJsLoader will return the one from global scope instead of loading a new one. Authentication . To authenticate to your JRS server, you must provide credentials, you can do this with an Authentication object. { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . Parameters . | name - username for the JRS server where the visualize.js script will be loaded from | password - password for the JRS server where the visualize.js script will be loaded from | organization - (optional) organization for the user | locale - (optional) user locale to use | . ",
     "url": "/js-visualize-components-samples/pages/tools/jv-tools.html#installation",
     "relUrl": "/pages/tools/jv-tools.html#installation"
-  },"32": {
+  },"31": {
     "doc": "jv-tools",
     "title": "jv-tools",
     "content": " ",
     "url": "/js-visualize-components-samples/pages/tools/jv-tools.html",
     "relUrl": "/pages/tools/jv-tools.html"
-  },"33": {
+  },"32": {
     "doc": "Loading visualize.js",
     "title": "Loading visualize.js",
     "content": "Loading visualize.js . This function works in a browser environment (assumes access to DOM), by dynamically inserting a script tag to load visualize.js. In your own code, when initializing your page, you can use this utility method to more easily load and store as you wish the visualize.js object. Alternatively, if you are already including visulize using a script tag on the page, it will be stored in a global scope and will simply be returned by this function. In a react based application, you can use the useEffect hook to handle this as in the example below. const credentials: Authentication = { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", }; const [visualizeFactoryContainer, setVisualizeFactoryContainer] = useState( null as { viz: VisualizeFactory } | null, ); const [vContainer, setVContainer] = useState( null as { v: VisualizeType } | null, ); const [plugin, setPlugin] = useState&lt;InputControls&gt;(); useEffect(() =&gt; { const loadVisualize = visualizejsLoader(visualizeUrl); loadVisualize().then((visualizeFactory: VisualizeFactory) =&gt; { setVisualizeFactoryContainer({ viz: visualizeFactory }); }); }, []); useEffect(() =&gt; { if (credentials &amp;&amp; visualizeFactoryContainer) { new Promise&lt;VisualizeType&gt;((resolve, reject) =&gt; { visualizeFactoryContainer.viz( { auth: { name: credentials.name, password: credentials.password, organization: credentials.organization || null, locale: \"en_US\", }, }, resolve, reject, ); }) .then((v: VisualizeType) =&gt; { setVContainer({ v }); }) .catch((e: any) =&gt; { console.log(String(e)); }); } }, [visualizeFactoryContainer]); useEffect(() =&gt; { vContainer &amp;&amp; setPlugin(new InputControls(vContainer.v)); }, [vContainer]); . In this sample, we eventually set vContainer which has one property, v, containing what is called the V Object, which can be used across several of the visualize components. ",
     "url": "/js-visualize-components-samples/pages/tools/loading-vizjs.html",
     "relUrl": "/pages/tools/loading-vizjs.html"
-  },"34": {
+  },"33": {
     "doc": "Visualize Types in TypeScript",
     "title": "TypeScript Types",
     "content": "The jv-tools package also exports some types that can be used while writing TypeScript. Currently this is under development, but some types are availble for use now. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#typescript-types",
     "relUrl": "/pages/tools/visualize-types.html#typescript-types"
-  },"35": {
+  },"34": {
     "doc": "Visualize Types in TypeScript",
     "title": "Using types in your project",
     "content": "The types are exported in the jv-tools package, and should be available in your IDE once you’ve added @jaspersoft/jv-tools as a dependency to your project. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#using-types-in-your-project",
     "relUrl": "/pages/tools/visualize-types.html#using-types-in-your-project"
-  },"36": {
+  },"35": {
     "doc": "Visualize Types in TypeScript",
     "title": "Visualize Types in TypeScript",
     "content": " ",

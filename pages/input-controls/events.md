@@ -8,10 +8,12 @@ has_children: false
 
 # Events
 
-The `events` prop is an object that allows you to listen to events that are emitted by the input control. It is part of
-the panel definition object explained in the
-[Input Controls](/pages/input-controls/basic-usage#injecting-the-visualizejs-object-into-the-plugin) page.
-It is optional. If you don't provide it, the input control will not emit any events.
+In order to work with user input, you may provide a callback function which is called when certain events occur. Currently we only support change events. 
+
+When configuring the input controls component, you may provide a JSON object in the events property of your configuration object.
+
+See [Input Controls](/pages/input-controls/basic-usage#injecting-the-visualizejs-object-into-the-plugin) for more information on configuring the input controls component.
+In read-only scenarios where you do not wish to process user input, you may omit this configuration.
 ``` js
 events?: {
     change?: (
@@ -23,11 +25,10 @@ events?: {
 
 ## Parameters
 
-The params of the `events.change` event are:
+The `events.change` property accepts a callback which is given the following parameters when called:
 
-* `ic`. This is an object that contains all the input controls that are being rendered in the HTML element container.
-The key of this object is the ID of the input control and the value is an array of the selected values. Example of
-this object could be:
+* `ic`: contains a representation of all the input controls that are being rendered in the HTML element container. The format of the object matches the format used by visualize.js when working with input controls.
+Keys are input control IDs and values are an array of values. For example:
 ``` json
 {
   "column_boolean_1": [false],
@@ -39,14 +40,14 @@ this object could be:
   "column_float_1": ["0.33"]
 }
 ```
-* `validationResult`. This is an object that contains all the input controls that are being rendered in the HTML element
-container with information about the _validity_ of the value per each input control. The keys of this object is the ID
-of the input control and the value is a string that represents the result of the validation for the input control.
-If the input control is valid, the value will be an **empty array**. If the input control is invalid, the value
-will be **a string** that contains the error message. Example:
+* `validationResult`: contains any validation errors that may be present.
+The keys of this object represent the input control IDs while the value will either be an empty array when no validation errors occur, or a string value with a user-readable message regarding the validation failure.
+When all controls have valid input, this parameter will be a boolean value: `false`.
+
+For example:
 ``` json
 {
-  "column_time_1": "Verify the time is before or exactly 22:00:00."
+  "column_time_1": [],
   "column_timestamp_1": "Verify the date is before or exactly 2014-09-11T15:00:00.",
 }
 ```
