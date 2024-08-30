@@ -12,7 +12,7 @@ In order to work with user input, you may provide a callback function which is c
 
 When configuring the input controls component, you may provide a JSON object in the events property of your configuration object.
 
-See [Input Controls](/pages/input-controls/basic-usage#injecting-the-visualizejs-object-into-the-plugin) for more information on configuring the input controls component.
+See [Input Controls]({{site.baseurl}}/pages/input-controls/basic-usage#rendering-the-control-panel) for more information on configuring the input controls component.
 In read-only scenarios where you do not wish to process user input, you may omit this configuration.
 ``` js
 events?: {
@@ -57,3 +57,80 @@ For example:
 controlled component. This means that the InputControl class will handle the state of the input controls and will 
 update the state of the input controls when the user interacts with them. This is why the InputControl class will
 trigger the `change` event every time the state of the input controls changes.
+
+## Handling validations
+
+To handle validations on the developer side, you have to use the
+[events.change]({{site.baseurl}}/pages/input-controls/events) method when calling
+the `renderControlPanel`. This method will return a second parameter that contains all validations.
+E.g.:
+
+```javascript
+    plugin.renderControlPanel(
+      '/My/URI',
+      document.getElementById("my-container"),
+      {
+        events: {
+          change: (ics, validationResult) => {
+              console.log("ics => ", ics);
+              console.log("validationResult => ", validationResult);
+          }
+        }
+      }
+    )
+```
+
+### What to expect in case the input control is invalid
+
+For every change that happens in the input control, the events.change method will be executed.
+Suppose you have defined a mandatory text input control. This means the input control must have a value. Let's
+assume the user has not entered any value in the input control. In this case, the validationResult will contain:
+```json 
+{"id_1": "Specify a valid value for type number."}
+```
+where:
+* id_1: is the id of the input control
+* Specify a valid value for type number: is the message that is displayed in the UI.
+
+In case all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
+
+## Handling errors
+To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will 
+return an error object when trying to render the input controls, in case of an error.
+E.g.: 
+```javascript
+    plugin.renderControlPanel(
+      '/My/URI',
+      document.getElementById("my-container"),
+      {
+        error: (error) => {
+            console.log("error => ", error);
+        }
+      }
+    )
+```
+
+### When the container provided is not visible
+
+A possible situation is when the container provided is not visible. In this case, the error object will contain:
+```json
+{
+  "message": "createRoot(...): Target container is not a DOM element"
+}
+```
+
+### When the report URL is not found in the JRS server.
+Another possible situation is when the report URL is not found in the JRS server. In this case, the error object
+will contain:
+```json
+{
+  "message": "Resource URI:<URI_of_the_report> Type:com.jaspersoft.jasperserver.api.metadata.common.domain.InputControlsContainer not found.",
+  "errorCode": "resource.not.found",
+  "parameters": [
+    "URI:<URI_of_the_report> Type:com.jaspersoft.jasperserver.api.metadata.common.domain.InputControlsContainer"
+  ]
+}
+```
+
+
+

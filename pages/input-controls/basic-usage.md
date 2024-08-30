@@ -80,8 +80,8 @@ InputControls component has a method `renderControlPanel` that accepts 3 paramet
 * `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided.
 * `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree.
 * `config?`. This parameter will help to define the styles of the input controls. Refer to the
-[next](/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info about the structure.
-* `events?`. More information can be found at [Events](/pages/input-controls/events)
+[next]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info about the structure.
+* `events?`. More information can be found at [Events]({{site.baseurl}}/pages/input-controls/events)
 
 ## Configuration of the input controls
 Each and every input control could be defined by the user in the `config` parameter. This parameter is a wrapper that
