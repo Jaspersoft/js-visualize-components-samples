@@ -23,7 +23,7 @@ In order to utilize this library, you will need access to a running instance of 
 
 Installation of packages can be done with either npm or yarn, as you see fit for your project. Packages are hosted on the public npm registry, and should be available without any additional configurations.
 
-Packages utilize the `@jaspersoft` scope.
+Packages are organized under the `@jaspersoft` scope.
 
 ``` bash
 > npm install --save @jaspersoft/jv-tools
@@ -33,5 +33,6 @@ Packages utilize the `@jaspersoft` scope.
 
 ## Getting Started
 
-In order to work with many of these packages, you will need to be familiar with visualize.js, and have it loaded in the page where embedding happens. To do this you can utilize the jv-tools package included, or you can add a script tag to the page where the components will be used. 
+You need to have access to visualize.js on the pages where these components will be used. To do this you can include it using a script tag or utilize the jv-tools package to load the script programatically.
+
 
