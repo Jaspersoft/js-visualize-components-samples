@@ -52,18 +52,15 @@ For example:
 }
 ```
 ##### **_Notes_**
-* In case all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
-* This is an event that is being triggered by the InputControl class. This is because the InputControl class is a
-controlled component. This means that the InputControl class will handle the state of the input controls and will 
-update the state of the input controls when the user interacts with them. This is why the InputControl class will
-trigger the `change` event every time the state of the input controls changes.
+* When all input controls are valid, the `validationResult` will be the boolean value `false`.
+* Events are triggered by the InputControl class, a controlled component. Therefore, the class will handle the state of the input controls and update the state when users interact. InputControls will trigger the `change` event every time the state changes, irregardless of the validity of the values.
 
 ## Handling validations
 
-To handle validations on the developer side, you have to use the
+To handle validations on the developer side, use the
 [events.change]({{site.baseurl}}/pages/input-controls/events) method when calling
 the `renderControlPanel`. This method will return a second parameter that contains all validations.
-E.g.:
+For example:
 
 ```javascript
     plugin.renderControlPanel(
@@ -82,21 +79,15 @@ E.g.:
 
 ### What to expect in case the input control is invalid
 
-For every change that happens in the input control, the events.change method will be executed.
-Suppose you have defined a mandatory text input control. This means the input control must have a value. Let's
-assume the user has not entered any value in the input control. In this case, the validationResult will contain:
+Every change to an input control state will execute the `events.change` method.
+
+For example, given an input control, `id_1`, that is mandatory, in the case it has no value, a validationResult is returned:
 ```json 
 {"id_1": "Specify a valid value for type number."}
 ```
-where:
-* id_1: is the id of the input control
-* Specify a valid value for type number: is the message that is displayed in the UI.
-
-In case all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
 
 ## Handling errors
-To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will 
-return an error object when trying to render the input controls, in case of an error.
+To handle errors, use the `error` property when calling `renderControlPanel`. Errors will be provided as a parameter to the callback provided. 
 E.g.: 
 ```javascript
     plugin.renderControlPanel(
