@@ -5,20 +5,17 @@ nav_order: 2
 parent: Input Controls
 has_children: false
 ---
-# List of all Input Controls
+# Types of Input Controls
 
-The input controls plugin enables you with different set of UI components to render input controls in your web
-application. You may want to use a specific UI component for a specific input control type.
-This guide will help you understand how to use different UI components for specific input control types.
+Input controls plugin can render controls in an existing web application for a given report or ad hoc view from a Jasperreports Server instance. The plugin permits customization for look and feel, which is done using a configuration object. Following are some descriptions of the types of input controls available.
 
-##  Boolean input controls
-For boolean input controls, you can use the `Checkbox` or the `Switch` component.
-As mentioned in the [Input Controls]({{site.baseurl}}/pages/input-controls/basic-usage#panel-definition) guide, you could use the 
-`Checkbox` for rendering boolean input controls, however, you might want to use the `Switch` component instead.
 
-#### Switch component
+##  Boolean
+Depending on a desired look and feel, boolean input controls may be represented by either a `Checkbox` or a `Switch` component. If no configuration is provided, boolean inputs will be shown as a `Checkbox`. 
 
-To define a switch component, you have to provide the param like this:
+#### Switch
+
+Switch components can be used if configured as below:
   ```js
   {
        bool: {
@@ -27,9 +24,9 @@ To define a switch component, you have to provide the param like this:
   }
   ```
 
-#### Checkbox component
-  To define a checkbox component, you have to provide the param like this:
-  ```js
+#### Checkbox
+For checkbox components configuration may be omitted or specified as below:
+```js
   {
        bool: {
           type: "checkbox"
@@ -37,16 +34,9 @@ To define a switch component, you have to provide the param like this:
   }
   ```
 
-##  Text input controls
-For text input controls, you can use the `textField` component.
-Depending on the metadata defined for your text input control, all proper validations will be applied to it
-automatically.
+##  Text
+For text input controls, use the `textField` component. This component has some validations that may occur and errors can be displayed when the value is invalid. These validations are part of the input control and defined in JRS.
 
-E.g. assume you have defined the input control as **mandatory**, then the input control will be invalid
-in case the user leaves it empty.
-
-So far only 1 style has been defined for this component, so you could ignore passing any attribute to this
-input control. However, the full configuration is:
   ```js
   {
        singleValueText: {
@@ -56,14 +46,9 @@ input control. However, the full configuration is:
   ```
 
 
-##  Number input controls
-For number input controls, you can use the `number` component.
-Depending on the metadata defined for your number input control, all proper validations will be applied to it
-automatically. It will behave similarly to the text field input control, but it also validates the value written in this
-input control is a number format.
+##  Number
+For number input controls, use the `number` component.
 
-So far only 1 style has been defined for this component, so you could ignore passing any attribute to this
-input control. However, the full configuration is:
   ```js
   {
        singleValueNumber: {
@@ -72,8 +57,8 @@ input control. However, the full configuration is:
   }
   ```
 
-##  Date input controls
-For date input controls, you can use the `date` component.
+##  Date
+For date input controls, use the `date` component.
 All proper validations will be applied automatically depending on the metadata defined for your date input control.
 E.g. assume you have defined a min date and a max date (range of dates) as valid values, then this input control will
 enable only that range date. Additionally, you could either provide a default style (JRS look alike) or a material
