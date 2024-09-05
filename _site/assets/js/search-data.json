@@ -239,18 +239,30 @@
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html",
     "relUrl": "/pages/input-controls/override-styles.html"
   },"40": {
+    "doc": "React Component",
+    "title": "React Component for Input Controls",
+    "content": "In addition to being able to render using JavaScript, it is also possible to use the provided InputControlsPanel component in an existing React application. Similar to the JavaScript approach, the V object, uri and an optional configuration can be provided when adding the component to your page. export default function MyPanel() { const reportUri = '/path/to/report'; const panelDefinition = { config: {bool: {type: 'switch'}}, events: { change: (controls: any, validations: any) =&gt; { if (validations === false) {console.log(controls)} } }, }; return ( &lt;&gt; &lt;h1&gt; {reportUri} &lt;/h1&gt; &lt;InputControlsPanel vObject={visualize} uri={reportUri} panelDef={panelDefinition} /&gt; &lt;/&gt; ); } . ",
+    "url": "/js-visualize-components-samples/pages/input-controls/react-panel.html#react-component-for-input-controls",
+    "relUrl": "/pages/input-controls/react-panel.html#react-component-for-input-controls"
+  },"41": {
+    "doc": "React Component",
+    "title": "React Component",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/input-controls/react-panel.html",
+    "relUrl": "/pages/input-controls/react-panel.html"
+  },"42": {
     "doc": "Visualize Types in TypeScript",
     "title": "TypeScript Types",
     "content": "The jv-tools package also exports some types that can be used while writing TypeScript. Currently this is under development, but some types are availble for use now. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#typescript-types",
     "relUrl": "/pages/tools/visualize-types.html#typescript-types"
-  },"41": {
+  },"43": {
     "doc": "Visualize Types in TypeScript",
     "title": "Using types in your project",
     "content": "The types are exported in the jv-tools package, and should be available in your IDE once you’ve added @jaspersoft/jv-tools as a dependency to your project. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#using-types-in-your-project",
     "relUrl": "/pages/tools/visualize-types.html#using-types-in-your-project"
-  },"42": {
+  },"44": {
     "doc": "Visualize Types in TypeScript",
     "title": "Visualize Types in TypeScript",
     "content": " ",
