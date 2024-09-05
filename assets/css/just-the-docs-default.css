@@ -570,7 +570,7 @@ hr {
 .site-logo {
   width: 100%;
   height: 100%;
-  background-image: url("http://localhost:4000/js-visualize-components-samples/assets/images/logo-white-js.svg");
+  background-image: url("/js-visualize-components-samples/assets/images/logo-white-js.svg");
   background-repeat: no-repeat;
   background-position: left center;
   background-size: contain;
