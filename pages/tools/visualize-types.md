@@ -3,7 +3,7 @@ layout: default
 title: Visualize Types in TypeScript
 nav_order: 2
 has_children: false
-parent: jv-tools
+parent: JV tools
 ---
 
 # TypeScript Types

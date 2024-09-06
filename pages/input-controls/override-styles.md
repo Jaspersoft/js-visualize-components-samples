@@ -16,13 +16,15 @@ control container by using a prefix class. The prefix class is `jv-`.
 ## The default styles
 
 The package `@jaspersoft/jv-ui-components` provides a stylesheet that contains the default styles for the input controls.
-This file can be located in the following path: `node_modules/@jaspersoft/jv-ui-components/dist/jv-ui.css`.
-By default, it is imported in the sample app's `index.html` file. E.g:
-``` html
-    <link rel="stylesheet" href="jv-ui.css" type="text/css" />
+This file can be located in the following path: `@jaspersoft/jv-ui-components/dist/jv-ui.css`.
+By default, it is imported in the sample app's `App.tsx` file. E.g:
+``` ts
+    import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
+    import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
+**_Note_**: _The second import is to configure the styles to be applied only to the input controls UI components._
 
-You can choose not to import it at all, or you can import it and override the styles as needed.
+You can choose not to import them at all, or you can import them and override the styles as needed.
 
 ## How to overwrite the default styles
 
@@ -58,4 +60,4 @@ All UI components are based on the [material UI](https://v5.mui.com/material-ui/
 
 As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the 
 material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, 
-you'll get a version of those components with styling of our own.   
+you'll get a version of those components with styling of our own.
