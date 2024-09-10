@@ -49,7 +49,7 @@
 1. cd to the repo
 2. Run ```bundle install```
 3. Run ```bundle exec jekyll serve```
-4. Access the project at [http://localhost:4000](http://localhost:4000/)
+4. Access the project at [http://localhost:4000/js-visualize-components-samples/](http://localhost:4000/js-visualize-components-samples/)
 
 
 ### Steps to deploy to GitHub Pages 
