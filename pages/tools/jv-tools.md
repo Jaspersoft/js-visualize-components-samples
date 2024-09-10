@@ -1,6 +1,6 @@
 ---
 layout: default
-title: jv-tools
+title: JV tools
 nav_order: 3
 has_children: true
 ---

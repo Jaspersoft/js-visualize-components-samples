@@ -3,7 +3,7 @@ layout: default
 title: Loading visualize.js
 nav_order: 1
 has_children: false
-parent: jv-tools
+parent: JV tools
 ---
 
 ### Loading visualize.js
@@ -69,5 +69,5 @@ In a react based application, you can use the `useEffect` hook to handle this as
 
 ```
 
-In this sample, we eventually set vContainer which has one property, v, containing what is called the **V Object**, which can be used across several of the visualize components.
+In this sample, we eventually set vContainer which has one property, `v`, containing what is called the **V Object**, which can be used across several of the visualize components.
 

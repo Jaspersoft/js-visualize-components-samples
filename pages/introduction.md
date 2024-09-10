@@ -16,23 +16,25 @@ The aim of this project is to provide components that are ready-to-use, modern, 
 
 ## Requirements
 
-In order to utilize this library, you will need access to a running instance of Jasperreports Server (version >= 8.0) configured to provide visualize.js. You can utilize these packages in your existing ReactJS project, or utilize them in another framework.
+In order to utilize this library, you will need access to a running instance of JasperReports Server (version >= 8.0)
+configured to provide visualize.js. You can utilize these packages in your existing ReactJS project, or utilize them in another framework.
 
 
 ## Installation
 
-Installation of packages can be done with either npm or yarn, as you see fit for your project. Packages are hosted on the public npm registry, and should be available without any additional configurations.
+Installation of packages can be done with either `npm` or `yarn`, as you see fit for your project. Packages are 
+hosted on the public npm registry, and should be available without any additional configurations.
 
 Packages are organized under the `@jaspersoft` scope.
 
 ``` bash
-> npm install --save @jaspersoft/jv-tools
-> npm install --save @jaspersoft/jv-input-controls
+> npm install --save @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components
 ```
 
 
 ## Getting Started
 
-You need to have access to visualize.js on the pages where these components will be used. To do this you can include it using a script tag or utilize the jv-tools package to load the script programatically.
+You need to have access to visualize.js on the pages where these components will be used. To do this you can include 
+it using a script tag or utilize the jv-tools package to load the script programmatically.
 
 
