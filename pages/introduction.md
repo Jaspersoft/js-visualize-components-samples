@@ -27,14 +27,19 @@ hosted on the public npm registry, and should be available without any additiona
 
 Packages are organized under the `@jaspersoft` scope.
 
+#### npm
 ``` bash
 > npm install --save @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components
 ```
-
+#### yarn
+``` bash
+> yarn add @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components
+```
 
 ## Getting Started
 
 You need to have access to visualize.js on the pages where these components will be used. To do this you can include 
-it using a script tag or utilize the jv-tools package to load the script programmatically.
+it using a script tag or utilize the jv-tools package to load the script programmatically. More info about this can 
+be found here: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 
