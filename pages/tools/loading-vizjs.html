@@ -5,50 +5,67 @@
     <span class="na">organization</span><span class="p">:</span> <span class="dl">"</span><span class="s2">organization_1</span><span class="dl">"</span><span class="p">,</span>
   <span class="p">};</span>
 
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">visualizeFactoryContainer</span><span class="p">,</span> <span class="nx">setVisualizeFactoryContainer</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span>
-    <span class="kc">null</span> <span class="k">as</span> <span class="p">{</span> <span class="na">viz</span><span class="p">:</span> <span class="nx">VisualizeFactory</span> <span class="p">}</span> <span class="o">|</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="p">);</span>
-
   <span class="kd">const</span> <span class="p">[</span><span class="nx">vContainer</span><span class="p">,</span> <span class="nx">setVContainer</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span>
     <span class="kc">null</span> <span class="k">as</span> <span class="p">{</span> <span class="na">v</span><span class="p">:</span> <span class="nx">VisualizeType</span> <span class="p">}</span> <span class="o">|</span> <span class="kc">null</span><span class="p">,</span>
   <span class="p">);</span>
 
-  <span class="kd">const</span> <span class="p">[</span><span class="nx">plugin</span><span class="p">,</span> <span class="nx">setPlugin</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">InputControls</span><span class="o">&gt;</span><span class="p">();</span>
-
   <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">loadVisualize</span> <span class="o">=</span> <span class="nx">visualizejsLoader</span><span class="p">(</span><span class="nx">visualizeUrl</span><span class="p">);</span>
-    <span class="nx">loadVisualize</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="na">visualizeFactory</span><span class="p">:</span> <span class="nx">VisualizeFactory</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">setVisualizeFactoryContainer</span><span class="p">({</span> <span class="na">viz</span><span class="p">:</span> <span class="nx">visualizeFactory</span> <span class="p">});</span>
-    <span class="p">});</span>
+      <span class="kd">const</span> <span class="nx">loadVisualize</span> <span class="o">=</span> <span class="nx">visualizejsLoader</span><span class="p">(</span><span class="nx">visualizeUrl</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Loading visualize.js...</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">loadVisualize</span><span class="p">()</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="na">visualizeFactory</span><span class="p">:</span> <span class="nx">VisualizeFactory</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="c1">// Connecting to JRS.</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">visualize.js loaded. Connecting to JRS...</span><span class="dl">"</span><span class="p">);</span>
+              <span class="nx">visualizeFactory</span><span class="p">(</span>
+                  <span class="p">{</span>
+                      <span class="na">auth</span><span class="p">:</span> <span class="p">{</span>
+                          <span class="p">...</span><span class="nx">credentials</span><span class="p">,</span>
+                          <span class="na">locale</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en_US</span><span class="dl">"</span><span class="p">,</span>
+                      <span class="p">},</span>
+                  <span class="p">},</span>
+                  <span class="p">(</span><span class="na">v</span><span class="p">:</span> <span class="nx">VisualizeClient</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Visualize client connected.</span><span class="dl">"</span><span class="p">);</span>
+                      <span class="nx">setVContainer</span><span class="p">({</span> <span class="nx">v</span> <span class="p">});</span>
+                  <span class="p">},</span>
+                  <span class="p">(</span><span class="na">e</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
+                  <span class="p">},</span>
+              <span class="p">);</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="na">error</span><span class="p">:</span> <span class="nb">Error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error loading visualize.js: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+          <span class="p">});</span>
   <span class="p">},</span> <span class="p">[]);</span>
 
   <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">credentials</span> <span class="o">&amp;&amp;</span> <span class="nx">visualizeFactoryContainer</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">new</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">VisualizeType</span><span class="o">&gt;</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">visualizeFactoryContainer</span><span class="p">.</span><span class="nx">viz</span><span class="p">(</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">vContainer</span> <span class="o">||</span> <span class="o">!</span><span class="nx">vContainer</span><span class="p">.</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nx">renderInputControls</span><span class="p">(</span>
+          <span class="nx">vContainer</span><span class="p">.</span><span class="nx">v</span><span class="p">,</span>
+          <span class="nx">reportUri</span><span class="p">,</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">basic-controls-section</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="nx">HTMLElement</span><span class="p">,</span>
           <span class="p">{</span>
-            <span class="na">auth</span><span class="p">:</span> <span class="p">{</span>
-              <span class="na">name</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
-              <span class="na">password</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span>
-              <span class="na">organization</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">organization</span> <span class="o">||</span> <span class="kc">null</span><span class="p">,</span>
-              <span class="na">locale</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en_US</span><span class="dl">"</span><span class="p">,</span>
-            <span class="p">},</span>
+              <span class="na">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Basic controls rendered successfully</span><span class="dl">"</span><span class="p">);</span>
+              <span class="p">},</span>
+              <span class="na">error</span><span class="p">:</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error when rendering the Basic controls: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+              <span class="p">},</span>
+              <span class="na">config</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">bool</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">switch</span><span class="dl">"</span>
+                  <span class="p">},</span>
+              <span class="p">},</span>
+              <span class="na">events</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="na">change</span><span class="p">:</span> <span class="p">(</span><span class="nx">ics</span><span class="p">,</span> <span class="nx">validationResult</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">validationResult =&gt; </span><span class="dl">"</span><span class="p">,</span> <span class="nx">validationResult</span><span class="p">);</span>
+                      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">ics =&gt; </span><span class="dl">"</span><span class="p">,</span> <span class="nx">ics</span><span class="p">);</span>
+                  <span class="p">},</span>
+              <span class="p">},</span>
           <span class="p">},</span>
-          <span class="nx">resolve</span><span class="p">,</span>
-          <span class="nx">reject</span><span class="p">,</span>
-        <span class="p">);</span>
-      <span class="p">})</span>
-        <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="na">v</span><span class="p">:</span> <span class="nx">VisualizeType</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">setVContainer</span><span class="p">({</span> <span class="nx">v</span> <span class="p">});</span>
-        <span class="p">})</span>
-        <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="na">e</span><span class="p">:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="nx">e</span><span class="p">));</span>
-        <span class="p">});</span> 
-    <span class="p">}</span>
-  <span class="p">},</span> <span class="p">[</span><span class="nx">visualizeFactoryContainer</span><span class="p">]);</span>
-
-  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">vContainer</span> <span class="o">&amp;&amp;</span> <span class="nx">setPlugin</span><span class="p">(</span><span class="k">new</span> <span class="nx">InputControls</span><span class="p">(</span><span class="nx">vContainer</span><span class="p">.</span><span class="nx">v</span><span class="p">));</span>
+      <span class="p">);</span>
   <span class="p">},</span> <span class="p">[</span><span class="nx">vContainer</span><span class="p">]);</span>
+
 
 </code></pre></div></div> <p>In this sample, we eventually set vContainer which has one property, <code class="language-plaintext highlighter-rouge">v</code>, containing what is called the <strong>V Object</strong>, which can be used across several of the visualize components.</p> </div> </div> </div> </body> </html>
