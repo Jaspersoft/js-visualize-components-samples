@@ -17,9 +17,11 @@ control container by using a prefix class. The prefix class is `jv-`.
 
 The package `@jaspersoft/jv-ui-components` provides a stylesheet that contains the default styles for the input controls.
 This file can be located in the following path: `@jaspersoft/jv-ui-components/dist/jv-ui.css`.
-By default, it is imported in the sample app's `App.tsx` file. E.g:
+By default, it is imported in the sample app's `index.css` and `App.tsx` files. E.g:
+```css
+@import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
+```
 ``` ts
-    import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
     import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
 **_Note_**: _The second import is to configure the styles to be applied only to the input controls UI components._
