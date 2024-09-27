@@ -13,7 +13,7 @@ nav_order: 0
         <a class="cta-text" href="pages/introduction.html">Get started</a>
     </div>
     <div class="image">
-        <img src="assets/images/placeholder.png">
+        <img src="assets/images/hero.svg">
     </div>
 </div>
 

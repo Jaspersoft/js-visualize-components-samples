@@ -11,7 +11,7 @@
 
   05. MAIN CONTENT
   -----------------------------------
-  File last modified Sep 24, 2024
+  File last modified Sep 26, 2024
   ----------------------------------- */
 
 /* --------------------- */
@@ -246,6 +246,18 @@ a.nav-list-link {
     //padding-bottom: 1.25rem;
     width: 100%;
   }
+  .side-bar:has(.site-nav:not(.nav-open)) .site-footer {
+    display: none;
+  }
+  .side-bar:has(.site-nav.nav-open) {
+    position: relative;
+  }
+  .side-bar:has(.site-nav.nav-open) .site-nav.nav-open {
+    margin-bottom: 74px;
+  }
+  .side-bar:has(.site-nav.nav-open) .site-nav.nav-open + .site-footer .socials {
+    margin-left: 32px;
+  }
   .site-header {
     height: 40px;
   }
@@ -373,11 +385,11 @@ a.nav-list-link {
   border-radius: 8px;
   display: block;
   //height: 400px;
-  box-shadow: -54px 94px 30px 0 rgba(14, 53, 83, 0.00),
+/*  box-shadow: -54px 94px 30px 0 rgba(14, 53, 83, 0.00),
   -35px 60px 28px 0 rgba(14, 53, 83, 0.01),
   -19px 34px 23px 0 rgba(14, 53, 83, 0.03),
   -9px 15px 17px 0 rgba(14, 53, 83, 0.04),
-  -2px 4px 10px 0 rgba(14, 53, 83, 0.05);
+  -2px 4px 10px 0 rgba(14, 53, 83, 0.05);*/
   margin: 48px 0;
   width: 696px;
 }
@@ -415,7 +427,23 @@ a.nav-list-link {
 }
 
 /* responsive */
+@media only screen and (max-width: 1110px) {
+  #homepage .hero  {
+    height: 620px;
+  }
+  #homepage .hero .image {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  #homepage .hero img {
+    width: 500px;
+  }
+}
+
 @media only screen and (max-width: 1040px) {
+  #homepage .hero  {
+    height: 600px;
+  }
   #homepage .hero .title {
     font-size: 56px;
   }
@@ -425,32 +453,92 @@ a.nav-list-link {
 }
 
 @media only screen and (max-width: 950px) {
+  #homepage .hero  {
+    height: 580px;
+  }
   #homepage .hero .title {
     font-size: 48px;
   }
   #homepage .hero .text {
     font-size: 18px;
+    margin: 32px;
   }
 }
 
 @media only screen and (max-width: 880px) {
+  #homepage .hero  {
+    height: 500px;
+  }
   #homepage .hero .title {
     font-size: 40px;
   }
   #homepage .hero .text {
     font-size: 16px;
   }
+  #homepage .hero img {
+    width: 400px;
+  }
 }
 
 @media only screen and (max-width: 799px) {
   .main:has(#homepage) {
+    //margin-left: 20px;
     margin-left: 0;
+  }
+  #homepage .hero  {
+    height: 640px;
   }
   #homepage .hero .title {
     font-size: 64px;
   }
   #homepage .hero .text {
     font-size: 20px;
+  }
+  #homepage .hero img {
+    width: 550px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  #homepage .hero  {
+    height: 600px;
+  }
+  #homepage .hero .title {
+    font-size: 56px;
+  }
+  #homepage .hero .text {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  #homepage .hero  {
+    height: 580px;
+  }
+  #homepage .hero .title {
+    font-size: 48px;
+  }
+  #homepage .hero .text {
+    font-size: 18px;
+    margin: 32px;
+  }
+  #homepage .hero img {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #homepage .hero  {
+    height: 500px;
+  }
+  #homepage .hero .title {
+    font-size: 40px;
+  }
+  #homepage .hero .text {
+    font-size: 16px;
+  }
+  #homepage .hero img {
+    width: 400px;
   }
 }
 
@@ -517,12 +605,29 @@ a.nav-list-link {
 }
 
 /* responsive */
+@media only screen and (max-width: 1110px) {
+  #homepage .benefits {
+    margin-top: 150px;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   #homepage .benefits {
     flex-direction: column;
   }
   #homepage .benefits > .card {
     width: 100%;
+  }
+}
+@media only screen and (max-width: 799px) {
+  #homepage .benefits {
+    margin-top: 200px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  #homepage .benefits {
+    margin-top: 150px;
   }
 }
 
