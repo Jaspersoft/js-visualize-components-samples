@@ -119,150 +119,264 @@
     "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html",
     "relUrl": "/pages/input-controls/basic-usage.html"
   },"20": {
+    "doc": "Basic Usage",
+    "title": "Basic example",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#basic-example",
+    "relUrl": "/pages/scheduler/basic-usage.html#basic-example"
+  },"21": {
+    "doc": "Basic Usage",
+    "title": "Changes in JRS",
+    "content": ". | Navigate to Path_to_tomcat/webapps/jasperserver-pro/WEB-INF/applicationContext-security-pro-web.xml | Add the following entries to &lt;property name=\"allowedHeaders\"&gt; property: &lt;value&gt;Fetch-Csrf-Token&lt;/value&gt; &lt;value&gt;Owasp_csrftoken&lt;/value&gt; | . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#changes-in-jrs",
+    "relUrl": "/pages/scheduler/basic-usage.html#changes-in-jrs"
+  },"22": {
+    "doc": "Basic Usage",
+    "title": "Configure the default styles",
+    "content": "At the top of your main typescript or javascript file, import the CSS file that will allow you to use the default styles for the scheduler: . import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . Consequently, import the following file to configure the previous CSS file to be used in the Scheduler UI component only: . import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Having this configuration enables you to use the default styles for the Scheduler UI components. Also, it won’t affect the styles of your application, it will only affect the styles of the scheduler. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#configure-the-default-styles",
+    "relUrl": "/pages/scheduler/basic-usage.html#configure-the-default-styles"
+  },"23": {
+    "doc": "Basic Usage",
+    "title": "Load visualize.js",
+    "content": ". | Import the visualize.js Loader function from the @jaspersoft/jv-tools package. | . import { Authentication, VisualizeFactory, visualizejsLoader, VisualizeType, } from \"@jaspersoft/jv-tools\"; . | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#load-visualizejs",
+    "relUrl": "/pages/scheduler/basic-usage.html#load-visualizejs"
+  },"24": {
+    "doc": "Basic Usage",
+    "title": "Authentication",
+    "content": ". | Now that the visualize.js library is loaded in your app, you must authenticate with JasperReports Server. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. As this is a promise, handling the success and error cases is an exercise for the user. | Example authentication object: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | After authenticating the visualize.js object (“V object”) is returned. This is used to interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other operations with visualize.js such as loading a report viewer. | . More info about the JVTools can be found in this guide. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#authentication",
+    "relUrl": "/pages/scheduler/basic-usage.html#authentication"
+  },"25": {
+    "doc": "Basic Usage",
+    "title": "Rendering the scheduler plugin",
+    "content": "The JavaScript approach . Import . import { renderScheduler, SchedulerConfig } from \"@jaspersoft/jv-scheduler\"; . Scheduler component has a method renderScheduler that accepts 3 parameters: container, visualize object, scheduler configuration. SchedulerConfig is a typing for scheduler configuration object. renderScheduler( document.getElementById(\"my-container\"), visualize_object, schedulerUIConfig, ); . | container: (DivElement) &lt;div&gt; element from the DOM where the scheduler should be rendered | visualize_object: (any) visualization object in format {v: visualize_object} | schedulerUIConfig: (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. reference . | For more information about the scheduler configuration parameter, refer to this section | . The React approach . Import . import { Scheduler, SchedulerConfigProps } from \"@jaspersoft/jv-scheduler\"; . The package @jaspersoft/jv-scheduler provides a React component that uses the Scheduler methods to render the Scheduler UI component. This component is called Scheduler and can be used as follows: . &lt;Scheduler schedulerUIConfig={schedulerUIConfig} visualize={visualize} /&gt; . The attributes the Scheduler component receives are very similar to what has been explained in the JavaScript approach. The only difference is that it isn’t needed to provide the HTML element because the React component will render the scheduler in the DOM. More info about the vContainer can be found in this guide. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#rendering-the-scheduler-plugin",
+    "relUrl": "/pages/scheduler/basic-usage.html#rendering-the-scheduler-plugin"
+  },"26": {
+    "doc": "Basic Usage",
+    "title": "Basic Usage",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html",
+    "relUrl": "/pages/scheduler/basic-usage.html"
+  },"27": {
+    "doc": "Configuration",
+    "title": "Configuration",
+    "content": "| Name | Type | Default | Description | Required | . | server | string | | URI of server where JRS is hosted. e.g.http://localhost:8080/jasperserver-pro | Yes | . | contextPath | string | | Context path of JRS where it is host e.g. /jasperserver-pro | Yes | . | resourceURI | string | | URI of JRS resource to which you want implement schedule. | Yes | . | stepper | object | reference | If specifies stepper properties. reference | No | . | tabs | object | reference | It specifies tab properties. reference | No | . | events | object | {} | Callback function which is called when certain events occur. reference | No | . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/configuration.html",
+    "relUrl": "/pages/scheduler/configuration.html"
+  },"28": {
+    "doc": "Configuration",
+    "title": "Stepper configuration",
+    "content": "Default . stepper: { show: true } . Props . | Name | Type | Default | Description | Required | Supported Values | . | show | boolean | true | If `true` then stepper will be shown. | Yes | `true` `false` | . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/configuration.html#stepper-configuration",
+    "relUrl": "/pages/scheduler/configuration.html#stepper-configuration"
+  },"29": {
+    "doc": "Configuration",
+    "title": "Tabs configuration",
+    "content": "Default . { \"tabsOrder\": [\"schedule\", \"parameters\", \"notifications\", \"output\"], \"tabsData\": { \"schedule\": { \"label\": { \"showField\": true, \"value\": \"\" }, \"description\": { \"value\": \"\", \"showField\": true }, \"recurrenceInterval\": { \"showField\": true, \"value\": 1 }, \"recurrenceIntervalUnit\": { \"showField\": true, \"value\": \"DAY\" }, \"startTime\": { \"showField\": true, \"value\": \"\" } }, \"output\": { \"baseOutputFilename\": { \"showField\": true, \"value\": \"\" }, \"outputDescription\": { \"showField\": true, \"value\": \"\" }, \"outputFormat\": { \"showField\": true, \"value\": [\"pdf\"] }, \"outputTimeZone\": { \"showField\": true, \"value\": \"America/Los_Angeles\" } }, \"parameters\": { }, \"notifications\": { \"address\": { \"showField\": true, \"value\": [] }, \"subject\": { \"showField\": true, \"value\": \"\" }, \"messageText\": { \"value\": \"\" }, \"reportAccessType\": { \"showField\": true, \"value\": \"\" } } } } . Props . | Name | Type | Default | Description | Required | Supported Values | . | tabsOrder | Array | [\"schedule\", \"parameters\", \"notifications\", \"output\"] | If specified, it shows the tabs in the order mentioned by the user. If user doesn't mention any tab, that tab will be hidden. | No | `schedule` `parameters` `notifications` `output` | . | schedule | object | | It specifies schedule tab properties.reference | No | | . | parameters | object | | It specifies parameters tab properties.reference | No | | . | notifications | object | | It specifies notifications tab properties. reference | No | | . | output | object | | It specifies output tab properties. reference | No | | . Schedule tab configuration . | Name | Type | Default | Description | Required | Supported Values | . | label | object | { showField: true, value: \"\" } | It manages visibility and default value of label field | If showField is false, then value is required. | - The maximum length of value is 100 characters. | . | description | object | { showField: true, value: \"\" } | It manages visibility and default value of description field | No | - The maximum length is 250 characters. | . | recurrenceInterval | object | { showField: true, value: \"1\" } | It manages visibility and default value of timezone field | No | - The recurrence interval must be an integer greater than 0. | . | recurrenceIntervalUnit | object | { showField: true, value: \"DAY\" } | It manages visibility and default value of startDate field | No | - The supported values are `HOUR` `DAY` `WEEK` | . | startTime | object | { showField: true, value: \"\" } | It manages visibility and default value of startTime field | No | The start date and time should not be empty and must be in the future. | . Parameters tab configuration . | Name | Type | Default | Description | Required | . Notifications tab configuration . | Name | Type | Default | Description | Required | Supported Values | . | address | object | { showField: true, value: \"\" } | It manages visibility and default value of address field | If showField is false, then value is required. | - One or more email addresses should be valid. | . | subject | object | { showField: true, value: \"\" } | It manages visibility and default value of subject field | If showField is false, then value is required. | - The maximum length is 100 characters. | . | messageText | object | { showField: true, value: \"\" } | It manages visibility and default value of message field | No | - The maximum length is 2000 characters. | . | reportAccessType | object | { showField: true, value: \"\" } | It manages visibility and default value of report access field | No | - The folder should not contain invalid characters. | . Output tab configuration . | Name | Type | Default | Description | Required | Supported Values | . | baseOutputFilename | object | { showField: true, value: \"\" } | It manages visibility and default value of output file field | No | - The maximum length is 200 characters. - The output filename should not contains invalid characters. | . | outputDescription | object | { showField: true, value: \"\" } | It manages visibility and default value of output description field | No | | . | outputFormat | object | { showField: true, value: [\"pdf\"] } | It manages visibility and default value of output formats field | No | - It should be supported output format by JRS. | . | outputTimeZone | object | { showField: true, value: \"\" } | It manages visibility and default value of output timezone field | No | - It should be supported timezone by JRS | . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/configuration.html#tabs-configuration",
+    "relUrl": "/pages/scheduler/configuration.html#tabs-configuration"
+  },"30": {
+    "doc": "Events",
+    "title": "Events",
+    "content": "In order to work with user input, you may provide a callback function which is called when certain events occur. When configuring the scheduler component, you may provide an object in the events property of your configuration object. In read-only scenarios where you do not wish to process user input, you may omit this configuration. events?: { success?: () =&gt; void, error: ( error: {[key:string]: string} ) =&gt; void, cancelBtnClick: () =&gt; void, scheduleBtnClick: () =&gt; void, }; . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/events.html",
+    "relUrl": "/pages/scheduler/events.html"
+  },"31": {
+    "doc": "Events",
+    "title": "Handling validations",
+    "content": "To handle validations on the developer side, you have to use the events.error method when calling the renderControlPanel. This method will return an error parameter that contains all the validations. E.g.: . plugin.renderControlPanel( document.getElementById(\"my-container\"), visualizeObj, { events: { success: () =&gt; { console.log(\"Success\"); }, error: (error: any) =&gt; { console.log(\"Error\", error); }, cancelBtnClick: () =&gt; { console.log(\"Cancel button is clicked\"); }, scheduleBtnClick: () =&gt; { console.log(\"Create schedule button is clicked\"); }, } } ) . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/events.html#handling-validations",
+    "relUrl": "/pages/scheduler/events.html#handling-validations"
+  },"32": {
+    "doc": "Events",
+    "title": "Handling errors",
+    "content": "To handle errors, you can use the error property when calling the renderControlPanel method. This method will return an error object when trying to render the input controls, in case of an error. E.g.: . plugin.renderControlPanel( '/My/URI', document.getElementById(\"my-container\"), { error: (error) =&gt; { console.log(\"error =&gt; \", error); } } ) . When the container provided is not found . A possible situation is when the container provided is not available in the DOM. In this case, the error object will contain: . { \"container.not.found\": \"Root element is not found\" } . When the resourceURI is not present in the config object. Another possible situation is, when resourceURI is not present in the scheduler configuration object. In this case, the error object will contain: . { \"resource.uri.missing.configuration\": \"resourceURI is required in the configuration\" } . When the server is not present in the config object. Another possible situation is when server is not present in the scheduler configuration object. In this case, the error object will contain: . { \"server.missing.configuration\": \"server is required in the configuration\" } . When the contextPath is not present in the config object. Another possible situation is when contextPath is not present in the scheduler configuration object. In this case, the error object will contain: . { \"contextPath.missing.configuration\": \"contextPath is required in the configuration\" } . When the resourceURI is not found in the JRS server. Another possible situation is when the resourceURI is not found in the JRS server or is incorrect. In this case, the error object will contain: . { \"resource.uri.not.found\": \"Resource URI was not found\" } . When the user doesn’t have permission to schedule specific resource. Another possible situation is when user doesn’t have permission to schedule a resource. In this case, the error object will contain: . { \"resource.access.denied\": \"You don't have permission to schedule this resource\" } . When the schedule tab is hidden and user hasn’t specified value for label field in the configuration. Another possible situation is when schedule tab is hidden and user doesn’t mention value for the mandatory label field in the configuration. In this case, the error object will contain: . { \"label.missing.value.schedule.tab.hidden.configuration\": \"Value for label is required in the configuration when schedule tab is hidden\" } . When the output tab is hidden and user hasn’t specified value for baseOutputFilename field in the configuration. Another possible situation is when output tab is hidden and user doesn’t mention value for the mandatory baseOutputFilename field in the configuration. In this case, the error object will contain: . { \"baseOutputFilename.hidden.missing.value.output.tab.hidden.configuration\": \"Value for baseOutputFilename is required in the configuration when output tab is hidden\" } . When the notification tab is hidden and user hasn’t specified value for address or subject fields in the configuration. Another possible scenario occurs when the notification tab is hidden, and the user fails to provide a value for the mandatory address or subject field in the configuration. In this case, the error object will contain: . { \"address.hidden.missing.value.notification.tab.hidden.configuration\": \"Value for address is required in the configuration when notifications tab is hidden\" } . { \"subject.hidden.missing.value.notification.tab.hidden.configuration\": \"Value for subject is required in the configuration when notifications tab is hidden\" } . When the label, address, subject or baseOutputFilename fields are hidden and user hasn’t specified values for it in the configuration. Another possible scenario is when the user sets showField to false for any of the mandatory fields—label, address, subject, or baseOutputFilename—and does not provide values for them. In this case, the error object will include the corresponding error based on the missing field. { \"label.hidden.missing.value.configuration\": \"Value for label is required in the configuration when label is hidden\" } . { \"address.hidden.missing.value.configuration\": \"Value for address is required in the configuration when address is hidden\" } . { \"subject.hidden.missing.value.configuration\": \"Value for subject is required in the configuration when subject is hidden\" } . { \"baseOutputFilename.hidden.missing.value.configuration\": \"Value for baseOutputFilename is required in the configuration when baseOutputFilename is hidden\" } . When the value for label is empty or length is more than 100 characters. Another possible scenario arises when the user provides a value for the label field in the configuration, but it is either empty or exceeds 100 characters. In this case, the error object will include: . { \"label.invalid\": \"Scheduled job name should not be empty.\" } . { \"label.invalid\": \"The scheduled job name is too long. The maximum length is 100 characters.\" } . When the length of value for description is more than 100 characters. Another possible situation occurs when the user specifies a value for the label field in the configuration, but the value is either empty or longer than 100 characters. In this case, the error object will contain: . { \"label.invalid\": \"Scheduled job name should not be empty.\" } . { \"label.invalid\": \"The scheduled job name is too long. The maximum length is 100 characters.\" } . When the value for recurrenceInterval is empty or not an integer. Another possible scenario arises when the user specifies a value for the recurrenceInterval field in the configuration, but the value is either empty or not an integer. In this case, the error object will contain:```json { “error.recurrence”: “Recurrence interval should not be empty.” } . ```json { \"error.recurrence.must.be.integer\": \"The recurrence interval must be an integer greater than 0.\" } . When the value for startType is 2 and startDate is empty/invalid or past date. Another possible scenario occurs when the user specifies a value of 2 for startType, but the startDate is either empty, invalid, or a past date in the configuration. In this case, the error object will contain: . { \"error.start.date\": \"Start date and time should not be empty or invalid\" } . { \"error.past.date\": \"Start date and time is in the past. The start date and time must be in the future.\" } . When the value for address is empty or invalid. Another possible scenario arises when the user specifies a value for the address field in the configuration, but the value is either empty or not an integer. In this case, the error object will contain:```json { “error.notifications.email.empty”: “Email address should not be empty.Please one or more email addresses.” } . ```json { \"error.email.address\": \"One or more email addresses are invalid.\" } . When the value for subject is empty or length is more than 100 characters. Another possible scenario occurs when the user specifies a value for the subject field in the configuration, but the value is either empty or exceeds 100 characters. In this case, the error object will contain: . { \"error.enter.subject\": \"Subject should not be empty.\" } . { \"error.subject.too.long\": \"The subject is too long.\" } . When the length of value for messageText is more than 2000 characters. Another possible scenario arises when the user specifies a value for the messageText field in the configuration, but the length exceeds 2000 characters. In this case, the error object will contain: . { \"error.message.too.long\": \"The message is too long.\" } . When the value for baseOutputFilename is empty or length is more than 200 characters. Another possible scenario occurs when the user specifies a value for the baseOutputFilename field in the configuration, but the value is either empty, exceeds 200 characters, or is otherwise invalid. In this case, the error object will contain: . { \"error.file.name\": \"File name should not be empty.\" } . { \"error.file.name.too.long\": \"The file name is too long. It must be 200 characters or less.\" } . { \"error.invalid.file.name\": \"The base output name contains invalid characters. You might have mistyped it.\" } . When the value for outputFormat is empty. Another possible scenario arises when the user specifies a value for the label field in the configuration, but the value is empty. In this case, the error object will contain: . { \"error.output.format\": \"Formats should not be empty\" } . When the value for folderURI is empty. Another possible scenario occurs when the user specifies a value for the folderURI field in the configuration, but the value is either empty or has an invalid format. In this case, the error object will contain: . { \"error.output.format\": \"Formats should not be empty\" } . { \"error.report.schedule.output.folder.notwriteable\": \"The scheduled job output folder has restricted access.\" } . ",
+    "url": "/js-visualize-components-samples/pages/scheduler/events.html#handling-errors",
+    "relUrl": "/pages/scheduler/events.html#handling-errors"
+  },"33": {
     "doc": "Events",
     "title": "Events",
     "content": "In order to work with user input, you may provide a callback function which is called when certain events occur. Currently we only support change events. When configuring the input controls component, you may provide a JSON object in the events property of your configuration object. See Input Controls for more information on configuring the input controls component. In read-only scenarios where you do not wish to process user input, you may omit this configuration. events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; . ",
     "url": "/js-visualize-components-samples/pages/input-controls/events.html",
     "relUrl": "/pages/input-controls/events.html"
-  },"21": {
+  },"34": {
     "doc": "Events",
     "title": "Parameters",
     "content": "The events.change property accepts a callback which is given the following parameters when called: . | ic: contains a representation of all the input controls that are being rendered in the HTML element container. The format of the object matches the format used by visualize.js when working with input controls. Keys are input control IDs and values are an array of values. For example: { \"column_boolean_1\": [false], \"column_string_1\": [\"string value\"], \"column_date_1\": [\"2009-09-12\"], \"column_time_1\": [\"23:44:21\"], \"column_timestamp_1\": [\"2014-09-12T15:46:18\"], \"id_1\": [\"1\"], \"column_float_1\": [\"0.33\"] } . | validationResult: contains any validation errors that may be present. The keys of this object represent the input control IDs while the value will either be an empty array when no validation errors occur, or a string value with a user-readable message regarding the validation failure. When all controls have valid input, this parameter will be a boolean value: false. | . For example: . { \"column_time_1\": [], \"column_timestamp_1\": \"Verify the date is before or exactly 2014-09-11T15:00:00.\", } . Notes . | In case all values for all input controls are valid, the param validationResult will be a boolean value false. | This is an event that is being triggered by the InputControl class. This is because the InputControl class is a controlled component. This means that the InputControl class will handle the state of the input controls and will update the state of the input controls when the user interacts with them. This is why the InputControl class will trigger the change event every time the state of the input controls changes. | . ",
     "url": "/js-visualize-components-samples/pages/input-controls/events.html#parameters",
     "relUrl": "/pages/input-controls/events.html#parameters"
-  },"22": {
+  },"35": {
     "doc": "Events",
     "title": "Handling validations",
     "content": "To handle validations on the developer side, you have to use the events.change method when calling the renderInputControls. This method will return a second parameter that contains all validations. E.g.: . renderInputControls( vContainer.v, '/My/URI', document.getElementById(\"my-container\"), { events: { change: (ics, validationResult) =&gt; { console.log(\"ics =&gt; \", ics); console.log(\"validationResult =&gt; \", validationResult); } } } ) . What to expect in case the input control is invalid . For every change that happens in the input control, the events.change method will be executed. Suppose you have defined a mandatory text input control. This means the input control must have a value. Let’s assume the user has not entered any value in the input control. In this case, the validationResult will contain: . {\"id_1\": \"Specify a valid value for type number.\"} . where: . | id_1: is the id of the input control | Specify a valid value for type number: is the message that is displayed in the UI. | . In case all values for all input controls are valid, the param validationResult will be a boolean value false. ",
     "url": "/js-visualize-components-samples/pages/input-controls/events.html#handling-validations",
     "relUrl": "/pages/input-controls/events.html#handling-validations"
-  },"23": {
+  },"36": {
     "doc": "Events",
     "title": "Handling errors",
     "content": "To handle errors, you can use the error property when calling the renderInputControls method. This method will return an error object when trying to render the input controls, in case of an error. E.g.: . renderInputControls( vContainer.v, '/My/URI', document.getElementById(\"my-container\"), { error: (error) =&gt; { console.log(\"error =&gt; \", error); } } ) . When the container provided is not visible . A possible situation is when the container provided is not visible. In this case, the error object will contain: . { \"message\": \"createRoot(...): Target container is not a DOM element\" } . When the report URL is not found in the JRS server. Another possible situation is when the report URL is not found in the JRS server. In this case, the error object will contain: . { \"message\": \"Resource URI:&lt;URI_of_the_report&gt; Type:com.jaspersoft.jasperserver.api.metadata.common.domain.InputControlsContainer not found.\", \"errorCode\": \"resource.not.found\", \"parameters\": [ \"URI:&lt;URI_of_the_report&gt; Type:com.jaspersoft.jasperserver.api.metadata.common.domain.InputControlsContainer\" ] } . ",
     "url": "/js-visualize-components-samples/pages/input-controls/events.html#handling-errors",
     "relUrl": "/pages/input-controls/events.html#handling-errors"
-  },"24": {
-    "doc": "Input Controls",
-    "title": "Input Controls",
-    "content": "The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/",
-    "relUrl": "/pages/input-controls/"
-  },"25": {
+  },"37": {
     "doc": "Home",
     "title": "JaspersoftVisualize Components",
     "content": "Enhance your web app with JasperReports Server, embed reports, or build custom workflows using modern ReactJS components. Get started Modern . Built with TypeScript, Vite, ReactJS, and Material UI components this project seeks to provide a cutting-edge development experience. These tools enable developers to build components at a faster pace with higher quality than vanilla JavaScript experience. Configurable . This project aims to be highly configurable for the end user to have control over the look and feel of their application. While the project will offer some configuration options, most components will allow users to implement their own components with a shared interface. Accessible . Visualize Toolkit aims to provide components that are built to be accessible out of the box. Keyboard navigation and screen reader support should be available for all components. Open Source . Visualize Toolkit will be open source and free to use, modify and redistribute as part of your own application. We also welcome contributions back to the project. ",
     "url": "/js-visualize-components-samples/",
     "relUrl": "/"
-  },"26": {
+  },"38": {
     "doc": "Home",
     "title": "Components",
     "content": "Input Controls . The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReports Server reports and visualizations. Get started Scheduler UI . The Scheduler UI is a plugin that can be embedded in a web application that allows you to schedule reports and dashboards. The plugin uses the Visualize.js API to interface with JasperReports Server reports and visualizations. Get started ",
     "url": "/js-visualize-components-samples/",
     "relUrl": "/"
-  },"27": {
+  },"39": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "/js-visualize-components-samples/",
     "relUrl": "/"
-  },"28": {
+  },"40": {
+    "doc": "Input Controls",
+    "title": "Input Controls",
+    "content": "The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/",
+    "relUrl": "/pages/input-controls/"
+  },"41": {
+    "doc": "Scheduler",
+    "title": "Scheduler",
+    "content": "The Scheduler plugin is a set of components that allows you to render scheduler ui in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/",
+    "relUrl": "/pages/scheduler/"
+  },"42": {
     "doc": "Introduction",
     "title": "Introduction",
     "content": "JS Visualize Components is a toolkit of React components that work in conjunction with visualize.js to provide web developers rich, modern UI components that interact with their existing JRS installation. By utilizing these components web developers can forge their own user experience utilizing the reporting concepts found in JRS. ",
     "url": "/js-visualize-components-samples/pages/introduction.html",
     "relUrl": "/pages/introduction.html"
-  },"29": {
+  },"43": {
     "doc": "Introduction",
     "title": "About Visualize Components Toolkit",
     "content": "The aim of this project is to provide components that are ready-to-use, modern, customizable, accessible and open source. ",
     "url": "/js-visualize-components-samples/pages/introduction.html#about-visualize-components-toolkit",
     "relUrl": "/pages/introduction.html#about-visualize-components-toolkit"
-  },"30": {
+  },"44": {
     "doc": "Introduction",
     "title": "Requirements",
     "content": "In order to utilize this library, you will need access to a running instance of JasperReports Server (version &gt;= 8.0) configured to provide visualize.js. You can utilize these packages in your existing ReactJS project, or utilize them in another framework. ",
     "url": "/js-visualize-components-samples/pages/introduction.html#requirements",
     "relUrl": "/pages/introduction.html#requirements"
-  },"31": {
+  },"45": {
     "doc": "Introduction",
     "title": "Installation",
     "content": "Installation of packages can be done with either npm or yarn, as you see fit for your project. Packages are hosted on the public npm registry, and should be available without any additional configurations. Packages are organized under the @jaspersoft scope. npm . &gt; npm install --save @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components . yarn . &gt; yarn add @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components . ",
     "url": "/js-visualize-components-samples/pages/introduction.html#installation",
     "relUrl": "/pages/introduction.html#installation"
-  },"32": {
+  },"46": {
     "doc": "Introduction",
     "title": "Getting Started",
     "content": "You need to have access to visualize.js on the pages where these components will be used. To do this you can include it using a script tag or utilize the jv-tools package to load the script programmatically. More info about this can be found here: Loading visualize.js. ",
     "url": "/js-visualize-components-samples/pages/introduction.html#getting-started",
     "relUrl": "/pages/introduction.html#getting-started"
-  },"33": {
+  },"47": {
     "doc": "JV tools",
     "title": "jv-tools Package",
     "content": "The jv-tools package is a collection of utility functions for working with the component toolkit. Currently this is the home of two important pieces: a loader and typescript interfaces for working with visualize in your IDE. ",
     "url": "/js-visualize-components-samples/pages/tools/jv-tools.html#jv-tools-package",
     "relUrl": "/pages/tools/jv-tools.html#jv-tools-package"
-  },"34": {
+  },"48": {
     "doc": "JV tools",
     "title": "Installation",
     "content": "Installing the jv-tools package can be done with your package tool, npm or yarn . npm install @jaspersoft/jv-tools or yarn add @jaspersoft/jv-tools . visualizeJsLoader . The main utility you will use from jv-tools is the visualizeJsLoader function. This function allows you to load visualize from a provided URL. It will then create a script tag to load the script, making it available to work with in code. Optionally you can maintain loading of visualize on your own and allowing it to be set on the global scope, if this is done visualizeJsLoader will return the one from global scope instead of loading a new one. Authentication . To authenticate to your JRS server, you must provide credentials, you can do this with an Authentication object. { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . Parameters . | name - username for the JRS server where the visualize.js script will be loaded from | password - password for the JRS server where the visualize.js script will be loaded from | organization - (optional) organization for the user | locale - (optional) user locale to use | . ",
     "url": "/js-visualize-components-samples/pages/tools/jv-tools.html#installation",
     "relUrl": "/pages/tools/jv-tools.html#installation"
-  },"35": {
+  },"49": {
     "doc": "JV tools",
     "title": "JV tools",
     "content": " ",
     "url": "/js-visualize-components-samples/pages/tools/jv-tools.html",
     "relUrl": "/pages/tools/jv-tools.html"
-  },"36": {
+  },"50": {
     "doc": "Loading visualize.js",
     "title": "Loading visualize.js",
     "content": "Loading visualize.js . This function works in a browser environment (assumes access to DOM), by dynamically inserting a script tag to load visualize.js. In your own code, when initializing your page, you can use this utility method to more easily load and store as you wish the visualize.js object. Alternatively, if you are already including visulize using a script tag on the page, it will be stored in a global scope and will simply be returned by this function. In a react based application, you can use the useEffect hook to handle this as in the example below. const credentials: Authentication = { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", }; const [vContainer, setVContainer] = useState( null as { v: VisualizeType } | null, ); useEffect(() =&gt; { const loadVisualize = visualizejsLoader(visualizeUrl); console.log(\"Loading visualize.js...\"); loadVisualize() .then((visualizeFactory: VisualizeFactory) =&gt; { // Connecting to JRS. console.log(\"visualize.js loaded. Connecting to JRS...\"); visualizeFactory( { auth: { ...credentials, locale: \"en_US\", }, }, (v: VisualizeClient) =&gt; { console.log(\"Visualize client connected.\"); setVContainer({ v }); }, (e: any) =&gt; { console.log(String(e)); }, ); }) .catch((error: Error) =&gt; { console.log(\"Error loading visualize.js: \", error); }); }, []); useEffect(() =&gt; { if (!vContainer || !vContainer.v) { return; } renderInputControls( vContainer.v, reportUri, document.getElementById(\"basic-controls-section\") as HTMLElement, { success: () =&gt; { console.log(\"Basic controls rendered successfully\"); }, error: (error) =&gt; { console.log(\"Error when rendering the Basic controls: \", error); }, config: { bool: { type: \"switch\" }, }, events: { change: (ics, validationResult) =&gt; { console.log(\"validationResult =&gt; \", validationResult); console.log(\"ics =&gt; \", ics); }, }, }, ); }, [vContainer]); . In this sample, we eventually set vContainer which has one property, v, containing what is called the V Object, which can be used across several of the visualize components. ",
     "url": "/js-visualize-components-samples/pages/tools/loading-vizjs.html",
     "relUrl": "/pages/tools/loading-vizjs.html"
-  },"37": {
+  },"51": {
+    "doc": "Override Styles",
+    "title": "Overriding default styles",
+    "content": "Currently, scheduler are shipped with default styles. These default styles are applied to the scheduler when they are rendered in the HTML element container. In order to prevent any conflicts with your app’s styles, the input control styles have been scoped to the input control container by using a prefix class. The prefix class is jv-. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#overriding-default-styles",
+    "relUrl": "/pages/scheduler/override-styles.html#overriding-default-styles"
+  },"52": {
+    "doc": "Override Styles",
+    "title": "The default styles",
+    "content": "The package @jaspersoft/jv-ui-components provides a stylesheet that contains the default styles for the scheduler. This file can be located in the following path: @jaspersoft/jv-ui-components/dist/jv-ui.css. By default, it is imported in the sample app’s App.tsx file. E.g: . import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Note: The second import is to configure the styles to be applied only to the scheduler UI components. You can choose not to import them at all, or you can import them and override the styles as needed. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#the-default-styles",
+    "relUrl": "/pages/scheduler/override-styles.html#the-default-styles"
+  },"53": {
+    "doc": "Override Styles",
+    "title": "How to overwrite the default styles",
+    "content": "Consider the following code that is rendered for Create schedule button when the scheduler is rendered: . &lt;button class=\"jv-MuiButtonBase-root jv-MuiButton-root jv-MuiButton-contained jv-MuiButton-containedPrimary jv-MuiButton-sizeMedium jv-MuiButton-containedSizeMedium jv-MuiButton-disableElevation jv-MuiButton-root jv-MuiButton-contained jv-MuiButton-containedPrimary jv-MuiButton-sizeMedium jv-MuiButton-containedSizeMedium jv-MuiButton-disableElevation jv-mButton jv-mButtonPrimary mui css-zddlty-MuiButtonBase-root-MuiButton-root\" tabindex=\"0\" type=\"button\"&gt; &lt;span class=\"jv-MuiButton-label jv-mButton-label mui \"&gt;Create schedule&lt;/span&gt; &lt;span class=\"jv-MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root\"&gt;&lt;/span&gt; &lt;/button&gt; . The component that is being rendered contains the CSS rule: .jv-mButtonPrimary.jv-MuiButton-contained.mui which is in charge of the background color of the button. To override this style, you can add the following CSS to your app: .jv-mButtonPrimary.jv-MuiButton-contained.mui { background-color: red; } . Which will make the background color of the button to red. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#how-to-overwrite-the-default-styles",
+    "relUrl": "/pages/scheduler/override-styles.html#how-to-overwrite-the-default-styles"
+  },"54": {
+    "doc": "Override Styles",
+    "title": "UI Components",
+    "content": "All UI components are based on the material UI components v5. As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, you’ll get a version of those components with styling of our own. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#ui-components",
+    "relUrl": "/pages/scheduler/override-styles.html#ui-components"
+  },"55": {
+    "doc": "Override Styles",
+    "title": "Override Styles",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html",
+    "relUrl": "/pages/scheduler/override-styles.html"
+  },"56": {
     "doc": "Override Styles",
     "title": "Overriding default styles",
     "content": "Currently, all input controls are shipped with default styles. These default styles are applied to the input controls when they are rendered in the HTML element container. In order to prevent any conflicts with your app’s styles, the input control styles have been scoped to the input control container by using a prefix class. The prefix class is jv-. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#overriding-default-styles",
     "relUrl": "/pages/input-controls/override-styles.html#overriding-default-styles"
-  },"38": {
+  },"57": {
     "doc": "Override Styles",
     "title": "The default styles",
     "content": "The package @jaspersoft/jv-ui-components provides a stylesheet that contains the default styles for the input controls. This file can be located in the following path: @jaspersoft/jv-ui-components/dist/jv-ui.css. By default, it is imported in the sample app’s index.css and App.tsx files. E.g: . @import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Note: The second import is to configure the styles to be applied only to the input controls UI components. You can choose not to import them at all, or you can import them and override the styles as needed. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#the-default-styles",
     "relUrl": "/pages/input-controls/override-styles.html#the-default-styles"
-  },"39": {
+  },"58": {
     "doc": "Override Styles",
     "title": "How to overwrite the default styles",
     "content": "Consider the following code that is rendered when using a checkbox component for a boolean input control: . &lt;div class=\"jv-mInput jv-mInputSwitch jv-mInputInline jv-mInputLarge mui\"&gt; &lt;label class=\"jv-MuiFormControlLabel-root jv-MuiFormControlLabel-labelPlacementEnd\"&gt; &lt;span class=\"jv-MuiSwitch-root jv-MuiSwitch-sizeMedium jv-mInput-switch mui\"&gt; &lt;span class=\"jv-PrivateSwitchBase-root jv-MuiSwitch-switchBase jv-MuiSwitch-colorPrimary Mui-checked\"&gt; &lt;input class=\"jv-PrivateSwitchBase-input jv-MuiSwitch-input\" type=\"checkbox\" checked=\"\"&gt; &lt;span class=\"jv-MuiSwitch-thumb\"&gt;&lt;/span&gt; &lt;span class=\"jv-MuiTouchRipple-root\"&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=\"jv-MuiSwitch-track\"&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=\"jv-MuiTypography-root jv-MuiFormControlLabel-label jv-mInput-label mui\"&gt;column_boolean&lt;/span&gt; &lt;/label&gt; &lt;/div&gt; . The component that is being rendered contains the CSS rule: .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track which is in charge of the background color of the switch when it is checked. To override this style, you can add the following CSS to your app: .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track { background-color: red; } . Which will make the background color of the switch red when it is checked. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#how-to-overwrite-the-default-styles",
     "relUrl": "/pages/input-controls/override-styles.html#how-to-overwrite-the-default-styles"
-  },"40": {
+  },"59": {
     "doc": "Override Styles",
     "title": "UI Components",
     "content": "All UI components are based on the material UI components v5. (Check the list of all available input controls here). As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, you’ll get a version of those components with styling of our own. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#ui-components",
     "relUrl": "/pages/input-controls/override-styles.html#ui-components"
-  },"41": {
+  },"60": {
     "doc": "Override Styles",
     "title": "Override Styles",
     "content": " ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html",
     "relUrl": "/pages/input-controls/override-styles.html"
-  },"42": {
+  },"61": {
     "doc": "Visualize Types in TypeScript",
     "title": "TypeScript Types",
     "content": "The jv-tools package also exports some types that can be used while writing TypeScript. Currently this is under development, but some types are availble for use now. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#typescript-types",
     "relUrl": "/pages/tools/visualize-types.html#typescript-types"
-  },"43": {
+  },"62": {
     "doc": "Visualize Types in TypeScript",
     "title": "Using types in your project",
     "content": "The types are exported in the jv-tools package, and should be available in your IDE once you’ve added @jaspersoft/jv-tools as a dependency to your project. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#using-types-in-your-project",
     "relUrl": "/pages/tools/visualize-types.html#using-types-in-your-project"
-  },"44": {
+  },"63": {
     "doc": "Visualize Types in TypeScript",
     "title": "Visualize Types in TypeScript",
     "content": " ",
