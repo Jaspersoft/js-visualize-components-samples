@@ -21,51 +21,68 @@ In a react based application, you can use the `useEffect` hook to handle this as
     organization: "organization_1",
   };
 
-  const [visualizeFactoryContainer, setVisualizeFactoryContainer] = useState(
-    null as { viz: VisualizeFactory } | null,
-  );
-
   const [vContainer, setVContainer] = useState(
     null as { v: VisualizeType } | null,
   );
 
-  const [plugin, setPlugin] = useState<InputControls>();
-
   useEffect(() => {
-    const loadVisualize = visualizejsLoader(visualizeUrl);
-    loadVisualize().then((visualizeFactory: VisualizeFactory) => {
-      setVisualizeFactoryContainer({ viz: visualizeFactory });
-    });
+      const loadVisualize = visualizejsLoader(visualizeUrl);
+      console.log("Loading visualize.js...");
+      loadVisualize()
+          .then((visualizeFactory: VisualizeFactory) => {
+              // Connecting to JRS.
+              console.log("visualize.js loaded. Connecting to JRS...");
+              visualizeFactory(
+                  {
+                      auth: {
+                          ...credentials,
+                          locale: "en_US",
+                      },
+                  },
+                  (v: VisualizeClient) => {
+                      console.log("Visualize client connected.");
+                      setVContainer({ v });
+                  },
+                  (e: any) => {
+                      console.log(String(e));
+                  },
+              );
+          })
+          .catch((error: Error) => {
+              console.log("Error loading visualize.js: ", error);
+          });
   }, []);
 
   useEffect(() => {
-    if (credentials && visualizeFactoryContainer) {
-      new Promise<VisualizeType>((resolve, reject) => {
-        visualizeFactoryContainer.viz(
+      if (!vContainer || !vContainer.v) {
+          return;
+      }
+      renderInputControls(
+          vContainer.v,
+          reportUri,
+          document.getElementById("basic-controls-section") as HTMLElement,
           {
-            auth: {
-              name: credentials.name,
-              password: credentials.password,
-              organization: credentials.organization || null,
-              locale: "en_US",
-            },
+              success: () => {
+                  console.log("Basic controls rendered successfully");
+              },
+              error: (error) => {
+                  console.log("Error when rendering the Basic controls: ", error);
+              },
+              config: {
+                  bool: {
+                      type: "switch"
+                  },
+              },
+              events: {
+                  change: (ics, validationResult) => {
+                      console.log("validationResult => ", validationResult);
+                      console.log("ics => ", ics);
+                  },
+              },
           },
-          resolve,
-          reject,
-        );
-      })
-        .then((v: VisualizeType) => {
-          setVContainer({ v });
-        })
-        .catch((e: any) => {
-          console.log(String(e));
-        }); 
-    }
-  }, [visualizeFactoryContainer]);
-
-  useEffect(() => {
-    vContainer && setPlugin(new InputControls(vContainer.v));
+      );
   }, [vContainer]);
+
 
 ```
 

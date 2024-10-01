@@ -62,11 +62,12 @@ trigger the `change` event every time the state of the input controls changes.
 
 To handle validations on the developer side, you have to use the
 [events.change]({{site.baseurl}}/pages/input-controls/events) method when calling
-the `renderControlPanel`. This method will return a second parameter that contains all validations.
+the `renderInputControls`. This method will return a second parameter that contains all validations.
 E.g.:
 
-```javascript
-    plugin.renderControlPanel(
+```typescript
+    renderInputControls(
+      vContainer.v,
       '/My/URI',
       document.getElementById("my-container"),
       {
@@ -95,11 +96,12 @@ where:
 In case all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
 
 ## Handling errors
-To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will 
+To handle errors, you can use the `error` property when calling the renderInputControls method. This method will 
 return an error object when trying to render the input controls, in case of an error.
 E.g.: 
 ```javascript
-    plugin.renderControlPanel(
+    renderInputControls(
+      vContainer.v,
       '/My/URI',
       document.getElementById("my-container"),
       {
