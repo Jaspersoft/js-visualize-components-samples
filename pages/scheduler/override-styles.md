@@ -10,8 +10,7 @@ has_children: false
 
 Currently, scheduler are shipped with default styles. 
 These default styles are applied to the scheduler when they are rendered in the HTML element container.
-In order to prevent any conflicts with your app's styles, the input control styles have been scoped to the input
-control container by using a prefix class. The prefix class is `jv-`.
+In order to prevent any conflicts with your app's styles, the scheduler styles have been scoped to the scheduler container by using a prefix class. The prefix class is `jv-`.
 
 ## The default styles
 

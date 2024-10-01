@@ -75,7 +75,7 @@ E.g.:
 
 ## Handling errors
 To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will 
-return an error object when trying to render the input controls, in case of an error.
+return an error object when trying to render the scheduler UI, in case of an error.
 E.g.: 
 ```javascript
     plugin.renderControlPanel(

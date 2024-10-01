@@ -35,24 +35,26 @@ Also, it won't affect the styles of your application, it will only affect the st
 
 ## Load visualize.js
 
-- Import the visualize.js Loader function from the `@jaspersoft/jv-tools` package.
+- Import the visualizejsLoader function from the `@jaspersoft/jv-tools` package.
 
-```js 
+```typescript 
 import {
     Authentication,
+    BaseInputControlProps,
+    VisualizeClient,
     VisualizeFactory,
     visualizejsLoader,
-    VisualizeType,
 } from "@jaspersoft/jv-tools";
 ```
 
 - Provide the `visualizejsLoader` a valid URL from where the visualize library should be downloaded.
 - In case you don't provide a URL because the visualize.js is already loaded into the window object, then this
-   package will automatically take it from there.
+  package will automatically take it from there.
 - If you provide a valid URL, this method will add a new script tag in your app's document referencing the URL you
-   provided, making the visualize.js library available for your app.
+  provided, making the visualize.js library available for your app.
 - `visualizejsLoader` is a promise so you must execute it and it will return the visualize object (VisualizeFactory).
-   Make sure to store this reference in your app because it will be needed later for logging in the user to JRS.
+  Make sure to store this reference in your app because it will be needed later for logging in the user to JRS.
+- More details about this loading can be found here: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 ## Authentication
 
@@ -99,7 +101,7 @@ renderScheduler(
 ```
 
 * `container`: (DivElement) <div> element from the DOM where the scheduler should be rendered
-* `visualize_object`: (any) visualization object in format {v: visualize_object}
+* `visualize_object`: (VisualizeClient) visualization object
 * `schedulerUIConfig`: (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. [reference]({{site.baseurl}}/pages/scheduler/configuration.html#configuration)
 
 
