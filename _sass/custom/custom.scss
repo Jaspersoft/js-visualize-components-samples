@@ -11,7 +11,7 @@
 
   05. MAIN CONTENT
   -----------------------------------
-  File last modified Sep 26, 2024
+  File last modified Oct 1, 2024
   ----------------------------------- */
 
 /* --------------------- */
@@ -184,6 +184,14 @@ a.nav-list-link {
   color: #ffffff;
   font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
 }
+
+.nav-list .nav-list-item .nav-list-link:focus-visible,
+.nav-list .nav-list-item .nav-list-expander,
+.nav-list .nav-list-item .nav-list-link.active:focus-visible {
+  outline-color: #062e79;
+  outline-offset: 0;
+}
+
 
 .nav-list .nav-list-item .nav-list-expander {
   color: #444444;
