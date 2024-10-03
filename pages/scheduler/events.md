@@ -15,12 +15,32 @@ When configuring the scheduler component, you may provide an object in the event
 In read-only scenarios where you do not wish to process user input, you may omit this configuration.
 ``` js
 events?: {
-    success?: () => void,
+    cancelBtnClick?: () => void,
+    scheduleBtnClick?: () => void,
+    success?: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => void,
     error: ( error: {[key:string]: string} ) => void,
-    cancelBtnClick: () => void,
-    scheduleBtnClick: () => void,
 };
 ```
+
+## Cancel Button Click
+The user must implement a `cancelBtnClick` function to handle actions when the cancel button is clicked in the scheduler control panel. This function is optional.
+
+## Schedule Button Click
+The user needs to implement a `scheduleBtnClick` function to handle actions when the schedule button is clicked in the scheduler control panel. This function will receive two parameters: `isScheduleCreatedSuccessfully` and `jobInformation`.
+- If the job is created successfully:
+  - `isScheduleCreatedSuccessfully` will be `true`.
+  - `jobInformation` will contain the details of the created job.
+
+- If the job creation fails:
+  - `isScheduleCreatedSuccessfully` will be `false`.
+  - `jobInformation` will include the error information.
+
+
+## Successs
+When Scheduler ui plugin is successfully rendered, the success function will be called. This function is optional.
+
+## Error 
+When Scheduler ui plugin throws error while rendering, the success function will be called. This function is optional.
 
 ## Handling validations
 
@@ -35,11 +55,11 @@ E.g.:
       visualizeObj,
       {
         events: {
-            success: () => {
-                console.log("Success");
+            success: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => {
+                console.log("Success", jobInformation);
             },
-            error: (error: any) => {
-                console.log("Error", error);
+            error: (errorObj: {[key:string]: string}) => {
+                console.log("Error", errorObj);
             },
             cancelBtnClick: () => {
                 console.log("Cancel button is clicked");
@@ -55,7 +75,7 @@ E.g.:
 
 ## Handling errors
 To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will 
-return an error object when trying to render the input controls, in case of an error.
+return an error object when trying to render the scheduler UI, in case of an error.
 E.g.: 
 ```javascript
     plugin.renderControlPanel(
