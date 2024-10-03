@@ -570,7 +570,7 @@ hr {
 .site-logo {
   width: 100%;
   height: 100%;
-  background-image: url("http://localhost:4000/js-visualize-components-samples/assets/images/logo-color-js.svg");
+  background-image: url("/js-visualize-components-samples/assets/images/logo-color-js.svg");
   background-repeat: no-repeat;
   background-position: left center;
   background-size: contain;
@@ -7193,7 +7193,7 @@ figure.highlight code {
 
   05. MAIN CONTENT
   -----------------------------------
-  File last modified Sep 26, 2024
+  File last modified Oct 1, 2024
   ----------------------------------- */
 /* --------------------- */
 /* 01. FONT DEFINITION   */
@@ -7349,6 +7349,13 @@ a.nav-list-link {
   border-radius: 6px;
   color: #ffffff;
   font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
+}
+
+.nav-list .nav-list-item .nav-list-link:focus-visible,
+.nav-list .nav-list-item .nav-list-expander,
+.nav-list .nav-list-item .nav-list-link.active:focus-visible {
+  outline-color: #062e79;
+  outline-offset: 0;
 }
 
 .nav-list .nav-list-item .nav-list-expander {
