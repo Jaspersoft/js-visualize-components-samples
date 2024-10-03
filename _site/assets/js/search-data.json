@@ -211,7 +211,7 @@
   },"35": {
     "doc": "Events",
     "title": "Handling validations",
-    "content": "To handle validations on the developer side, you have to use the events.error method when calling the renderControlPanel. This method will return an error parameter that contains all the validations. E.g.: . plugin.renderControlPanel( document.getElementById(\"my-container\"), visualizeObj, { events: { success: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) =&gt; { console.log(\"Success\", jobInformation); }, error: (error: any) =&gt; { console.log(\"Error\", error); }, cancelBtnClick: () =&gt; { console.log(\"Cancel button is clicked\"); }, scheduleBtnClick: () =&gt; { console.log(\"Create schedule button is clicked\"); }, } } ) . ",
+    "content": "To handle validations on the developer side, you have to use the events.error method when calling the renderControlPanel. This method will return an error parameter that contains all the validations. E.g.: . plugin.renderControlPanel( document.getElementById(\"my-container\"), visualizeObj, { events: { success: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) =&gt; { console.log(\"Success\", jobInformation); }, error: (errorObj: {[key:string]: string}) =&gt; { console.log(\"Error\", errorObj); }, cancelBtnClick: () =&gt; { console.log(\"Cancel button is clicked\"); }, scheduleBtnClick: () =&gt; { console.log(\"Create schedule button is clicked\"); }, } } ) . ",
     "url": "/js-visualize-components-samples/pages/scheduler/events.html#handling-validations",
     "relUrl": "/pages/scheduler/events.html#handling-validations"
   },"36": {
