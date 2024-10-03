@@ -58,8 +58,8 @@ E.g.:
             success: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => {
                 console.log("Success", jobInformation);
             },
-            error: (error: any) => {
-                console.log("Error", error);
+            error: (errorObj: {[key:string]: string}) => {
+                console.log("Error", errorObj);
             },
             cancelBtnClick: () => {
                 console.log("Cancel button is clicked");
