@@ -190,7 +190,7 @@ stepper: {
       <td style="padding: 12px; border: 1px solid #e0e0e0;">parameters</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">object</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;"></td>
-      <td style="padding: 12px; border: 1px solid #e0e0e0;">It specifies parameters tab properties.<a href="{{site.baseurl}}/pages/scheduler/configuration.html#parameters-tab-configuration">reference</a></td>
+      <td style="padding: 12px; border: 1px solid #e0e0e0;">It specifies parameters tab properties.<a href="{{site.baseurl}}/pages/input-controls/basic-usage.html#rendering-the-input-controls">reference</a></td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">No</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;"></td>
     </tr>
@@ -270,9 +270,6 @@ stepper: {
   </tbody>
 </table>
 
-### Parameters tab configuration
-
-| **Name** | **Type** | **Default** | **Description**                                                                 | Required |
 
 ### Notifications tab configuration
 
