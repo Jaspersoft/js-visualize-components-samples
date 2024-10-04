@@ -136,7 +136,7 @@ stepper: {
           "outputFormat": { "showField": true, "value": ["pdf"] },
           "outputTimeZone": {
             "showField": true,
-            "value": "America/Los_Angeles"
+            "value": ""
           }
       },
       "parameters": {
