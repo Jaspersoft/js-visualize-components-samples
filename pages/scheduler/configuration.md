@@ -121,7 +121,7 @@ stepper: {
           },
           "startTime": {
             "showField": true,
-            "value": ""
+            "value": "now"
           }
       },
       "output": {
@@ -136,7 +136,7 @@ stepper: {
           "outputFormat": { "showField": true, "value": ["pdf"] },
           "outputTimeZone": {
             "showField": true,
-            "value": "America/Los_Angeles"
+            "value": ""
           }
       },
       "parameters": {
@@ -149,7 +149,7 @@ stepper: {
           },
           "reportAccessType": {
             "showField": true,
-            "value": ""
+            "value": "SEND_ATTACHMENT"
           }
       }
     }
@@ -190,7 +190,7 @@ stepper: {
       <td style="padding: 12px; border: 1px solid #e0e0e0;">parameters</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">object</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;"></td>
-      <td style="padding: 12px; border: 1px solid #e0e0e0;">It specifies parameters tab properties.<a href="{{site.baseurl}}/pages/scheduler/configuration.html#parameters-tab-configuration">reference</a></td>
+      <td style="padding: 12px; border: 1px solid #e0e0e0;">It specifies parameters tab properties.<a href="{{site.baseurl}}/pages/input-controls/basic-usage.html#rendering-the-input-controls">reference</a></td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">No</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;"></td>
     </tr>
@@ -262,17 +262,14 @@ stepper: {
     <tr>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">startTime</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">object</td>
-      <td style="padding: 12px; border: 1px solid #e0e0e0;">{ showField: true, value: "" }</td>
+      <td style="padding: 12px; border: 1px solid #e0e0e0;">{ showField: true, value: "now" }</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">It manages visibility and default value of startTime field</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">No</td>
-      <td style="padding: 12px; border: 1px solid #e0e0e0;">The start date and time should not be empty and must be in the future.</td>
+      <td style="padding: 12px; border: 1px solid #e0e0e0;">The value must be either `now` or a valid start date and time. If the value is `now`, the `Now` option will be selected. If the value is a start date and time, it cannot be empty and must be set in the future; in this case, the `Specific date and time` option will be selected.</td>
     </tr>
   </tbody>
 </table>
 
-### Parameters tab configuration
-
-| **Name** | **Type** | **Default** | **Description**                                                                 | Required |
 
 ### Notifications tab configuration
 
@@ -315,10 +312,10 @@ stepper: {
     <tr>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">reportAccessType</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">object</td>
-      <td style="padding: 12px; border: 1px solid #e0e0e0;">{ showField: true, value: "" }</td>
+      <td style="padding: 12px; border: 1px solid #e0e0e0;">{ showField: true, value: "SEND_ATTACHMENT" }</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">It manages visibility and default value of report access field</td>
       <td style="padding: 12px; border: 1px solid #e0e0e0;">No</td>
-      <td style="padding: 12px; border: 1px solid #e0e0e0;">- The folder should not contain invalid characters.</td>
+      <td style="padding: 12px; border: 1px solid #e0e0e0;">The value must be either `SEND_ATTACHMENT` or a valid JRS folder path. If the value is `SEND_ATTACHMENT`, the option to `Include report/dashboard file as attachment` will be selected. If the value is a folder path, it must not include any invalid characters, and the option `Include report/dashboard as repository link` will be selected.</td>
     </tr>
   </tbody>
 </table>
