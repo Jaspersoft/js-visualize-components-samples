@@ -74,92 +74,92 @@
     "doc": "Basic Usage",
     "title": "Basic example",
     "content": " ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#basic-example",
-    "relUrl": "/pages/input-controls/basic-usage.html#basic-example"
-  },"13": {
-    "doc": "Basic Usage",
-    "title": "Configure the default styles",
-    "content": "You have 2 options: . | You could configure the default styles by importing them into your main CSS file like this: @import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . | Or at the top of your main typescript or javascript file: import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . | . Consequently, import the following file to configure the previous CSS file to be used in the Input Controls UI component only: . import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Having this configuration enables you to use the default styles for the input controls UI components. Also, it won’t affect the styles of your application, it will only affect the styles of the input controls. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#configure-the-default-styles",
-    "relUrl": "/pages/input-controls/basic-usage.html#configure-the-default-styles"
-  },"14": {
-    "doc": "Basic Usage",
-    "title": "Load visualize.js",
-    "content": ". | Import the visualizejsLoader function from the @jaspersoft/jv-tools package. | . import { Authentication, BaseInputControlProps, VisualizeClient, VisualizeFactory, visualizejsLoader, } from \"@jaspersoft/jv-tools\"; . | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | More details about this loading can be found here: Loading visualize.js. | . ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#load-visualizejs",
-    "relUrl": "/pages/input-controls/basic-usage.html#load-visualizejs"
-  },"15": {
-    "doc": "Basic Usage",
-    "title": "Authentication",
-    "content": ". | Now that the visualize.js library is loaded in your app, you must authenticate with JasperReports Server. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. As this is a promise, handling the success and error cases is an exercise for the user. | Example authentication object: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | After authenticating the visualize.js object (“V object”) is returned. This is used to interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other operations with visualize.js such as loading a report viewer. | . More info about the JVTools can be found in this guide. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#authentication",
-    "relUrl": "/pages/input-controls/basic-usage.html#authentication"
-  },"16": {
-    "doc": "Basic Usage",
-    "title": "Rendering the input controls",
-    "content": "The JavaScript approach . InputControls package provides a method renderInputControls that accepts 4 parameters: “V object”, uri, container, panel configuration. | vObject: (VisualizeClient) contains the API to interact with the visualize.js library. | uri: (string) path to report or ad hoc view (/path/to/my/reports/SalesReport) | container: (DivElement) &lt;div&gt; element from the DOM where the input controls should be rendered | input control configuration: (JSON) object containing configuration for input controls look and feel and event handling. | . { success?: () =&gt; void; error?: (error: any) =&gt; void; config?: InputControlUserConfig; events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; } . | For more information about the config parameter, refer to this section | success?: () =&gt; void. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided. | error?: (error: any) =&gt; void. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree. | config?. This parameter will help to define the styles of the input controls. Refer to the next section for more info about the structure. | events?. More information can be found at Events | . The React approach . The package @jaspersoft/jv-input-controls provides a React component that uses the InputControls methods to render the input controls UI components. This component is called InputControls and can be used as follows: . &lt;InputControls vObject={vContainer?.v} uri={reportUri} panelDef={panelD} /&gt; . The attributes the InputControls component receives are very similar to what has been explained in the JavaScript approach. The only difference is that it isn’t needed to provide the HTML element because the React component will render the input controls in the DOM. More info about the vContainer can be found in this guide. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#rendering-the-input-controls",
-    "relUrl": "/pages/input-controls/basic-usage.html#rendering-the-input-controls"
-  },"17": {
-    "doc": "Basic Usage",
-    "title": "Configuration of the input controls",
-    "content": "Each and every input control could be defined by the user in the config parameter (for the JavaScript approach) or the panelDef (React approach). This parameter is a wrapper that allows the user to define the type of component to render, receive any modification done by the user in the UI, and receive (if any) information about the validity of the values the user could have typed in any of the input controls. The config parameter has the following structure: . { bool?: { type: \"switch\" | \"checkbox\"; }; singleValueText?: { type: \"textField\"; }; singleValueNumber?: { type: \"number\"; }; singleValueDate?: { type: \"default\" | \"material\"; }; singleValueDatetime?: { type: \"default\" | \"material\"; }; singleValueTime?: { type: \"default\" | \"material\"; }; } . If you want to see more information about the different types of components for the input controls, refer to this guide. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#configuration-of-the-input-controls",
-    "relUrl": "/pages/input-controls/basic-usage.html#configuration-of-the-input-controls"
-  },"18": {
-    "doc": "Basic Usage",
-    "title": "Source code",
-    "content": "For a complete example of how to use the input controls, you can check the following link . ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#source-code",
-    "relUrl": "/pages/input-controls/basic-usage.html#source-code"
-  },"19": {
-    "doc": "Basic Usage",
-    "title": "Basic Usage",
-    "content": " ",
-    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html",
-    "relUrl": "/pages/input-controls/basic-usage.html"
-  },"20": {
-    "doc": "Basic Usage",
-    "title": "Basic example",
-    "content": " ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#basic-example",
     "relUrl": "/pages/scheduler/basic-usage.html#basic-example"
-  },"21": {
+  },"13": {
     "doc": "Basic Usage",
     "title": "Changes in JRS",
     "content": ". | Navigate to Path_to_tomcat/webapps/jasperserver-pro/WEB-INF/applicationContext-security-pro-web.xml | Add the following entries to &lt;property name=\"allowedHeaders\"&gt; property: &lt;value&gt;Fetch-Csrf-Token&lt;/value&gt; &lt;value&gt;Owasp_csrftoken&lt;/value&gt; | . ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#changes-in-jrs",
     "relUrl": "/pages/scheduler/basic-usage.html#changes-in-jrs"
-  },"22": {
+  },"14": {
     "doc": "Basic Usage",
     "title": "Configure the default styles",
     "content": "At the top of your main typescript or javascript file, import the CSS file that will allow you to use the default styles for the scheduler: . import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . Consequently, import the following file to configure the previous CSS file to be used in the Scheduler UI component only: . import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Having this configuration enables you to use the default styles for the Scheduler UI components. Also, it won’t affect the styles of your application, it will only affect the styles of the scheduler. ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#configure-the-default-styles",
     "relUrl": "/pages/scheduler/basic-usage.html#configure-the-default-styles"
-  },"23": {
+  },"15": {
     "doc": "Basic Usage",
     "title": "Load visualize.js",
     "content": ". | Import the visualizejsLoader function from the @jaspersoft/jv-tools package. | . import { Authentication, BaseInputControlProps, VisualizeClient, VisualizeFactory, visualizejsLoader, } from \"@jaspersoft/jv-tools\"; . | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | More details about this loading can be found here: Loading visualize.js. | . ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#load-visualizejs",
     "relUrl": "/pages/scheduler/basic-usage.html#load-visualizejs"
-  },"24": {
+  },"16": {
     "doc": "Basic Usage",
     "title": "Authentication",
     "content": ". | Now that the visualize.js library is loaded in your app, you must authenticate with JasperReports Server. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. As this is a promise, handling the success and error cases is an exercise for the user. | Example authentication object: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | After authenticating the visualize.js object (“V object”) is returned. This is used to interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other operations with visualize.js such as loading a report viewer. | . More info about the JVTools can be found in this guide. ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#authentication",
     "relUrl": "/pages/scheduler/basic-usage.html#authentication"
-  },"25": {
+  },"17": {
     "doc": "Basic Usage",
     "title": "Rendering the scheduler plugin",
     "content": "The JavaScript approach . Import . import { renderScheduler, SchedulerConfig } from \"@jaspersoft/jv-scheduler\"; . Scheduler component has a method renderScheduler that accepts 3 parameters: container, visualize object, scheduler configuration. SchedulerConfig is a typing for scheduler configuration object. renderScheduler( document.getElementById(\"my-container\"), visualize_object, schedulerUIConfig, ); . | container: (DivElement) &lt;div&gt; element from the DOM where the scheduler should be rendered | visualize_object: (VisualizeClient) visualization object | schedulerUIConfig: (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. reference . | For more information about the scheduler configuration parameter, refer to this section | . The React approach . Import . import { Scheduler, SchedulerConfigProps } from \"@jaspersoft/jv-scheduler\"; . The package @jaspersoft/jv-scheduler provides a React component that uses the Scheduler methods to render the Scheduler UI component. This component is called Scheduler and can be used as follows: . &lt;Scheduler schedulerUIConfig={schedulerUIConfig} visualize={visualize} /&gt; . The attributes the Scheduler component receives are very similar to what has been explained in the JavaScript approach. The only difference is that it isn’t needed to provide the HTML element because the React component will render the scheduler in the DOM. More info about the vContainer can be found in this guide. ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html#rendering-the-scheduler-plugin",
     "relUrl": "/pages/scheduler/basic-usage.html#rendering-the-scheduler-plugin"
-  },"26": {
+  },"18": {
     "doc": "Basic Usage",
     "title": "Basic Usage",
     "content": " ",
     "url": "/js-visualize-components-samples/pages/scheduler/basic-usage.html",
     "relUrl": "/pages/scheduler/basic-usage.html"
+  },"19": {
+    "doc": "Basic Usage",
+    "title": "Basic example",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#basic-example",
+    "relUrl": "/pages/input-controls/basic-usage.html#basic-example"
+  },"20": {
+    "doc": "Basic Usage",
+    "title": "Configure the default styles",
+    "content": "You have 2 options: . | You could configure the default styles by importing them into your main CSS file like this: @import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . | Or at the top of your main typescript or javascript file: import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . | . Consequently, import the following file to configure the previous CSS file to be used in the Input Controls UI component only: . import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Having this configuration enables you to use the default styles for the input controls UI components. Also, it won’t affect the styles of your application, it will only affect the styles of the input controls. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#configure-the-default-styles",
+    "relUrl": "/pages/input-controls/basic-usage.html#configure-the-default-styles"
+  },"21": {
+    "doc": "Basic Usage",
+    "title": "Load visualize.js",
+    "content": ". | Import the visualizejsLoader function from the @jaspersoft/jv-tools package. | . import { Authentication, BaseInputControlProps, VisualizeClient, VisualizeFactory, visualizejsLoader, } from \"@jaspersoft/jv-tools\"; . | Provide the visualizejsLoader a valid URL from where the visualize library should be downloaded. | In case you don’t provide a URL because the visualize.js is already loaded into the window object, then this package will automatically take it from there. | If you provide a valid URL, this method will add a new script tag in your app’s document referencing the URL you provided, making the visualize.js library available for your app. | visualizejsLoader is a promise so you must execute it and it will return the visualize object (VisualizeFactory). Make sure to store this reference in your app because it will be needed later for logging in the user to JRS. | More details about this loading can be found here: Loading visualize.js. | . ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#load-visualizejs",
+    "relUrl": "/pages/input-controls/basic-usage.html#load-visualizejs"
+  },"22": {
+    "doc": "Basic Usage",
+    "title": "Authentication",
+    "content": ". | Now that the visualize.js library is loaded in your app, you must authenticate with JasperReports Server. | Use the object returned by the visualizejsLoader (VisualizeFactory) to execute the auth method from visualize.js. As this is a promise, handling the success and error cases is an exercise for the user. | Example authentication object: | . { auth: { name: \"joeuser\", password: \"joeuser\", organization: \"organization_1\", locale: \"en_US\", }, } . | After authenticating the visualize.js object (“V object”) is returned. This is used to interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other operations with visualize.js such as loading a report viewer. | . More info about the JVTools can be found in this guide. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#authentication",
+    "relUrl": "/pages/input-controls/basic-usage.html#authentication"
+  },"23": {
+    "doc": "Basic Usage",
+    "title": "Rendering the input controls",
+    "content": "The JavaScript approach . InputControls package provides a method renderInputControls that accepts 4 parameters: “V object”, uri, container, panel configuration. | vObject: (VisualizeClient) contains the API to interact with the visualize.js library. | uri: (string) path to report or ad hoc view (/path/to/my/reports/SalesReport) | container: (DivElement) &lt;div&gt; element from the DOM where the input controls should be rendered | input control configuration: (JSON) object containing configuration for input controls look and feel and event handling. | . { success?: () =&gt; void; error?: (error: any) =&gt; void; config?: InputControlUserConfig; events?: { change?: ( ic: { [key: string]: any[] }, validationResult: { [key: string]: string } | boolean, ) =&gt; void; }; params?: { [key: string]: string[] }; } . | For more information about the config parameter, refer to this section | success?: () =&gt; void. This method will be triggered only once after the input controls are rendered correctly in the HTML element container provided. | error?: (error: any) =&gt; void. This method will be triggered if and only if, there is an error while either fetching the input controls or when rendering the input controls in the HTML element container. The most common error case is likely to happen when providing an HTML container that is not visible in the HTML tree. | config?. This parameter will help to define the styles of the input controls. Refer to the next section for more info about the structure. | events?. More information can be found at Events | params?. More information can be found at Params | . The React approach . The package @jaspersoft/jv-input-controls provides a React component that uses the InputControls methods to render the input controls UI components. This component is called InputControls and can be used as follows: . &lt;InputControls vObject={vContainer?.v} uri={reportUri} panelDef={panelD} /&gt; . The attributes the InputControls component receives are very similar to what has been explained in the JavaScript approach. The only difference is that it isn’t needed to provide the HTML element because the React component will render the input controls in the DOM. More info about the vContainer can be found in this guide. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#rendering-the-input-controls",
+    "relUrl": "/pages/input-controls/basic-usage.html#rendering-the-input-controls"
+  },"24": {
+    "doc": "Basic Usage",
+    "title": "Configuration of the input controls",
+    "content": "Each and every input control could be defined by the user in the config parameter (for the JavaScript approach) or the panelDef (React approach). This parameter is a wrapper that allows the user to define the type of component to render, receive any modification done by the user in the UI, and receive (if any) information about the validity of the values the user could have typed in any of the input controls. The config parameter has the following structure: . { bool?: { type: \"switch\" | \"checkbox\"; }; singleValueText?: { type: \"textField\"; }; singleValueNumber?: { type: \"number\"; }; singleValueDate?: { type: \"default\" | \"material\"; }; singleValueDatetime?: { type: \"default\" | \"material\"; }; singleValueTime?: { type: \"default\" | \"material\"; }; } . If you want to see more information about the different types of components for the input controls, refer to this guide. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#configuration-of-the-input-controls",
+    "relUrl": "/pages/input-controls/basic-usage.html#configuration-of-the-input-controls"
+  },"25": {
+    "doc": "Basic Usage",
+    "title": "Source code",
+    "content": "For a complete example of how to use the input controls, you can check the following link . ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html#source-code",
+    "relUrl": "/pages/input-controls/basic-usage.html#source-code"
+  },"26": {
+    "doc": "Basic Usage",
+    "title": "Basic Usage",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/input-controls/basic-usage.html",
+    "relUrl": "/pages/input-controls/basic-usage.html"
   },"27": {
     "doc": "Configuration",
     "title": "Configuration",
@@ -245,35 +245,35 @@
     "url": "/js-visualize-components-samples/pages/input-controls/events.html#handling-errors",
     "relUrl": "/pages/input-controls/events.html#handling-errors"
   },"41": {
-    "doc": "Home",
-    "title": "JaspersoftVisualize Components",
-    "content": "Enhance your web app with JasperReports Server, embed reports, or build custom workflows using modern ReactJS components. Get started Modern . Built with TypeScript, Vite, ReactJS, and Material UI, our Visualize Components are designed to operate in any web development environment and integrate seamlessly into your visualize.js projects. Configurable . We've designed the Visualize Components with flexibility in mind. You can extend and customize them to match your application's unique style and requirements. Accessible . Visualize Components come with built-in keyboard navigation and screen reader support, saving you valuable development time and ensuring your projects are inclusive from the start. Open Source . Our components are completely free, giving you the power to bring your applications to life without any restrictions. You have the full freedom to use, customize, and even redistribute it within your own projects. ",
-    "url": "/js-visualize-components-samples/",
-    "relUrl": "/"
-  },"42": {
-    "doc": "Home",
-    "title": "Components",
-    "content": "Input Controls . Easily add interactive filters, date pickers, and other input controls to your web applications. This plugin streamlines the integration of JasperReports Server reports and visualizations, giving users greater control over their data exploration. Get started Scheduler . This powerful component allows users to schedule reports and dashboards with ease. Built on the Visualize.js API, the scheduler integrates seamlessly with JasperReports Server. Get started ",
-    "url": "/js-visualize-components-samples/",
-    "relUrl": "/"
-  },"43": {
-    "doc": "Home",
-    "title": "Home",
-    "content": " ",
-    "url": "/js-visualize-components-samples/",
-    "relUrl": "/"
-  },"44": {
-    "doc": "Input Controls",
-    "title": "Input Controls",
-    "content": "The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
-    "url": "/js-visualize-components-samples/pages/input-controls/",
-    "relUrl": "/pages/input-controls/"
-  },"45": {
     "doc": "Scheduler",
     "title": "Scheduler",
     "content": "The Scheduler plugin is a set of components that allows you to render scheduler ui in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
     "url": "/js-visualize-components-samples/pages/scheduler/",
     "relUrl": "/pages/scheduler/"
+  },"42": {
+    "doc": "Home",
+    "title": "JaspersoftVisualize Components",
+    "content": "Enhance your web app with JasperReports Server, embed reports, or build custom workflows using modern ReactJS components. Get started Modern . Built with TypeScript, Vite, ReactJS, and Material UI, our Visualize Components are designed to operate in any web development environment and integrate seamlessly into your visualize.js projects. Configurable . We've designed the Visualize Components with flexibility in mind. You can extend and customize them to match your application's unique style and requirements. Accessible . Visualize Components come with built-in keyboard navigation and screen reader support, saving you valuable development time and ensuring your projects are inclusive from the start. Open Source . Our components are completely free, giving you the power to bring your applications to life without any restrictions. You have the full freedom to use, customize, and even redistribute it within your own projects. ",
+    "url": "/js-visualize-components-samples/",
+    "relUrl": "/"
+  },"43": {
+    "doc": "Home",
+    "title": "Components",
+    "content": "Input Controls . Easily add interactive filters, date pickers, and other input controls to your web applications. This plugin streamlines the integration of JasperReports Server reports and visualizations, giving users greater control over their data exploration. Get started Scheduler . This powerful component allows users to schedule reports and dashboards with ease. Built on the Visualize.js API, the scheduler integrates seamlessly with JasperReports Server. Get started ",
+    "url": "/js-visualize-components-samples/",
+    "relUrl": "/"
+  },"44": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/js-visualize-components-samples/",
+    "relUrl": "/"
+  },"45": {
+    "doc": "Input Controls",
+    "title": "Input Controls",
+    "content": "The Input Controls plugin is a set of components that allows you to render input controls in your web application. The plugin is built on top of the Visualize.js API and is used to interact with JasperReport Server reports and visualizations. ",
+    "url": "/js-visualize-components-samples/pages/input-controls/",
+    "relUrl": "/pages/input-controls/"
   },"46": {
     "doc": "Introduction",
     "title": "Introduction",
@@ -331,76 +331,88 @@
   },"55": {
     "doc": "Override Styles",
     "title": "Overriding default styles",
-    "content": "Currently, scheduler are shipped with default styles. These default styles are applied to the scheduler when they are rendered in the HTML element container. In order to prevent any conflicts with your app’s styles, the scheduler styles have been scoped to the scheduler container by using a prefix class. The prefix class is jv-. ",
-    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#overriding-default-styles",
-    "relUrl": "/pages/scheduler/override-styles.html#overriding-default-styles"
-  },"56": {
-    "doc": "Override Styles",
-    "title": "The default styles",
-    "content": "The package @jaspersoft/jv-ui-components provides a stylesheet that contains the default styles for the scheduler. This file can be located in the following path: @jaspersoft/jv-ui-components/dist/jv-ui.css. By default, it is imported in the sample app’s App.tsx file. E.g: . import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Note: The second import is to configure the styles to be applied only to the scheduler UI components. You can choose not to import them at all, or you can import them and override the styles as needed. ",
-    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#the-default-styles",
-    "relUrl": "/pages/scheduler/override-styles.html#the-default-styles"
-  },"57": {
-    "doc": "Override Styles",
-    "title": "How to overwrite the default styles",
-    "content": "Consider the following code that is rendered for Create schedule button when the scheduler is rendered: . &lt;button class=\"jv-MuiButtonBase-root jv-MuiButton-root jv-MuiButton-contained jv-MuiButton-containedPrimary jv-MuiButton-sizeMedium jv-MuiButton-containedSizeMedium jv-MuiButton-disableElevation jv-MuiButton-root jv-MuiButton-contained jv-MuiButton-containedPrimary jv-MuiButton-sizeMedium jv-MuiButton-containedSizeMedium jv-MuiButton-disableElevation jv-mButton jv-mButtonPrimary mui css-zddlty-MuiButtonBase-root-MuiButton-root\" tabindex=\"0\" type=\"button\"&gt; &lt;span class=\"jv-MuiButton-label jv-mButton-label mui \"&gt;Create schedule&lt;/span&gt; &lt;span class=\"jv-MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root\"&gt;&lt;/span&gt; &lt;/button&gt; . The component that is being rendered contains the CSS rule: .jv-mButtonPrimary.jv-MuiButton-contained.mui which is in charge of the background color of the button. To override this style, you can add the following CSS to your app: .jv-mButtonPrimary.jv-MuiButton-contained.mui { background-color: red; } . Which will make the background color of the button to red. ",
-    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#how-to-overwrite-the-default-styles",
-    "relUrl": "/pages/scheduler/override-styles.html#how-to-overwrite-the-default-styles"
-  },"58": {
-    "doc": "Override Styles",
-    "title": "UI Components",
-    "content": "All UI components are based on the material UI components v5. As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, you’ll get a version of those components with styling of our own. ",
-    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#ui-components",
-    "relUrl": "/pages/scheduler/override-styles.html#ui-components"
-  },"59": {
-    "doc": "Override Styles",
-    "title": "Override Styles",
-    "content": " ",
-    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html",
-    "relUrl": "/pages/scheduler/override-styles.html"
-  },"60": {
-    "doc": "Override Styles",
-    "title": "Overriding default styles",
     "content": "Currently, all input controls are shipped with default styles. These default styles are applied to the input controls when they are rendered in the HTML element container. In order to prevent any conflicts with your app’s styles, the input control styles have been scoped to the input control container by using a prefix class. The prefix class is jv-. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#overriding-default-styles",
     "relUrl": "/pages/input-controls/override-styles.html#overriding-default-styles"
-  },"61": {
+  },"56": {
     "doc": "Override Styles",
     "title": "The default styles",
     "content": "The package @jaspersoft/jv-ui-components provides a stylesheet that contains the default styles for the input controls. This file can be located in the following path: @jaspersoft/jv-ui-components/dist/jv-ui.css. By default, it is imported in the sample app’s index.css and App.tsx files. E.g: . @import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; . import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Note: The second import is to configure the styles to be applied only to the input controls UI components. You can choose not to import them at all, or you can import them and override the styles as needed. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#the-default-styles",
     "relUrl": "/pages/input-controls/override-styles.html#the-default-styles"
-  },"62": {
+  },"57": {
     "doc": "Override Styles",
     "title": "How to overwrite the default styles",
     "content": "Consider the following code that is rendered when using a checkbox component for a boolean input control: . &lt;div class=\"jv-mInput jv-mInputSwitch jv-mInputInline jv-mInputLarge mui\"&gt; &lt;label class=\"jv-MuiFormControlLabel-root jv-MuiFormControlLabel-labelPlacementEnd\"&gt; &lt;span class=\"jv-MuiSwitch-root jv-MuiSwitch-sizeMedium jv-mInput-switch mui\"&gt; &lt;span class=\"jv-PrivateSwitchBase-root jv-MuiSwitch-switchBase jv-MuiSwitch-colorPrimary Mui-checked\"&gt; &lt;input class=\"jv-PrivateSwitchBase-input jv-MuiSwitch-input\" type=\"checkbox\" checked=\"\"&gt; &lt;span class=\"jv-MuiSwitch-thumb\"&gt;&lt;/span&gt; &lt;span class=\"jv-MuiTouchRipple-root\"&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=\"jv-MuiSwitch-track\"&gt;&lt;/span&gt; &lt;/span&gt; &lt;span class=\"jv-MuiTypography-root jv-MuiFormControlLabel-label jv-mInput-label mui\"&gt;column_boolean&lt;/span&gt; &lt;/label&gt; &lt;/div&gt; . The component that is being rendered contains the CSS rule: .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track which is in charge of the background color of the switch when it is checked. To override this style, you can add the following CSS to your app: .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track { background-color: red; } . Which will make the background color of the switch red when it is checked. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#how-to-overwrite-the-default-styles",
     "relUrl": "/pages/input-controls/override-styles.html#how-to-overwrite-the-default-styles"
-  },"63": {
+  },"58": {
     "doc": "Override Styles",
     "title": "UI Components",
     "content": "All UI components are based on the material UI components v5. (Check the list of all available input controls here). As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, you’ll get a version of those components with styling of our own. ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html#ui-components",
     "relUrl": "/pages/input-controls/override-styles.html#ui-components"
-  },"64": {
+  },"59": {
     "doc": "Override Styles",
     "title": "Override Styles",
     "content": " ",
     "url": "/js-visualize-components-samples/pages/input-controls/override-styles.html",
     "relUrl": "/pages/input-controls/override-styles.html"
+  },"60": {
+    "doc": "Override Styles",
+    "title": "Overriding default styles",
+    "content": "Currently, scheduler are shipped with default styles. These default styles are applied to the scheduler when they are rendered in the HTML element container. In order to prevent any conflicts with your app’s styles, the scheduler styles have been scoped to the scheduler container by using a prefix class. The prefix class is jv-. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#overriding-default-styles",
+    "relUrl": "/pages/scheduler/override-styles.html#overriding-default-styles"
+  },"61": {
+    "doc": "Override Styles",
+    "title": "The default styles",
+    "content": "The package @jaspersoft/jv-ui-components provides a stylesheet that contains the default styles for the scheduler. This file can be located in the following path: @jaspersoft/jv-ui-components/dist/jv-ui.css. By default, it is imported in the sample app’s App.tsx file. E.g: . import \"@jaspersoft/jv-ui-components/dist/jv-ui.css\"; import \"@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup\"; . Note: The second import is to configure the styles to be applied only to the scheduler UI components. You can choose not to import them at all, or you can import them and override the styles as needed. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#the-default-styles",
+    "relUrl": "/pages/scheduler/override-styles.html#the-default-styles"
+  },"62": {
+    "doc": "Override Styles",
+    "title": "How to overwrite the default styles",
+    "content": "Consider the following code that is rendered for Create schedule button when the scheduler is rendered: . &lt;button class=\"jv-MuiButtonBase-root jv-MuiButton-root jv-MuiButton-contained jv-MuiButton-containedPrimary jv-MuiButton-sizeMedium jv-MuiButton-containedSizeMedium jv-MuiButton-disableElevation jv-MuiButton-root jv-MuiButton-contained jv-MuiButton-containedPrimary jv-MuiButton-sizeMedium jv-MuiButton-containedSizeMedium jv-MuiButton-disableElevation jv-mButton jv-mButtonPrimary mui css-zddlty-MuiButtonBase-root-MuiButton-root\" tabindex=\"0\" type=\"button\"&gt; &lt;span class=\"jv-MuiButton-label jv-mButton-label mui \"&gt;Create schedule&lt;/span&gt; &lt;span class=\"jv-MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root\"&gt;&lt;/span&gt; &lt;/button&gt; . The component that is being rendered contains the CSS rule: .jv-mButtonPrimary.jv-MuiButton-contained.mui which is in charge of the background color of the button. To override this style, you can add the following CSS to your app: .jv-mButtonPrimary.jv-MuiButton-contained.mui { background-color: red; } . Which will make the background color of the button to red. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#how-to-overwrite-the-default-styles",
+    "relUrl": "/pages/scheduler/override-styles.html#how-to-overwrite-the-default-styles"
+  },"63": {
+    "doc": "Override Styles",
+    "title": "UI Components",
+    "content": "All UI components are based on the material UI components v5. As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, you’ll get a version of those components with styling of our own. ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html#ui-components",
+    "relUrl": "/pages/scheduler/override-styles.html#ui-components"
+  },"64": {
+    "doc": "Override Styles",
+    "title": "Override Styles",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/scheduler/override-styles.html",
+    "relUrl": "/pages/scheduler/override-styles.html"
   },"65": {
+    "doc": "Overriding default values",
+    "title": "Overriding Default Input Controls Values",
+    "content": "This document explains how to override the default values of input controls with your own predefined values. By default, input controls display initial values fetched from the server. However, you can use the params property to specify different initial values. How to use the params property . | Create a JSON object: In your input controls configuration, add a params property containing a JSON object. | Define input control IDs and values: Each key in the JSON object should match the ID of an input control. The corresponding value should be an array of values you want to set as the initial value for that input control. | . params: { column_boolean_1: [\"false\"], column_string_1: [ \"This is a predefined text different than the stored in the server\", ], column_date_1: [\"2009-03-02\"], column_timestamp_1: [\"2014-03-02T10:00:00\"], column_time_1: [\"14:00:00\"], ProductFamily: [\"Drink\", \"Food\"], } . Important Notes: . | Multi-select controls: Only multi-select input controls (like ProductFamily in the example) accept multiple values in the array. | Single-value controls: For all other input control types, only the first value in the array will be used as the initial value. | Non-existent IDs: If you provide an ID that doesn’t match any input control, it will simply be ignored. No errors will be thrown. | Optional property: The params property is optional. If you don’t provide it, the input controls will display the initial values fetched from the server. | . ",
+    "url": "/js-visualize-components-samples/pages/input-controls/params.html#overriding-default-input-controls-values",
+    "relUrl": "/pages/input-controls/params.html#overriding-default-input-controls-values"
+  },"66": {
+    "doc": "Overriding default values",
+    "title": "Overriding default values",
+    "content": " ",
+    "url": "/js-visualize-components-samples/pages/input-controls/params.html",
+    "relUrl": "/pages/input-controls/params.html"
+  },"67": {
     "doc": "Visualize Types in TypeScript",
     "title": "TypeScript Types",
     "content": "The jv-tools package also exports some types that can be used while writing TypeScript. Currently this is under development, but some types are availble for use now. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#typescript-types",
     "relUrl": "/pages/tools/visualize-types.html#typescript-types"
-  },"66": {
+  },"68": {
     "doc": "Visualize Types in TypeScript",
     "title": "Using types in your project",
     "content": "The types are exported in the jv-tools package, and should be available in your IDE once you’ve added @jaspersoft/jv-tools as a dependency to your project. ",
     "url": "/js-visualize-components-samples/pages/tools/visualize-types.html#using-types-in-your-project",
     "relUrl": "/pages/tools/visualize-types.html#using-types-in-your-project"
-  },"67": {
+  },"69": {
     "doc": "Visualize Types in TypeScript",
     "title": "Visualize Types in TypeScript",
     "content": " ",
