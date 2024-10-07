@@ -9,7 +9,7 @@ has_children: false
 # Overriding Default Input Controls Values
 
 This document explains how to override the default values of input controls with your own predefined values. By default,
-input controls display initial values fetched from the server. However, you can use the params property to specify
+input controls display initial values fetched from the server. However, you can use the `params` property to specify
 different initial values.
 
 ### How to use the `params` property
