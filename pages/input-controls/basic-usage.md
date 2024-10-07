@@ -103,6 +103,7 @@ configuration.
             validationResult: { [key: string]: string } | boolean,
         ) => void;
     };
+    params?: { [key: string]: string[] };
 }
 ```
 
@@ -117,6 +118,7 @@ configuration.
   [next]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info
   about the structure.
 * `events?`. More information can be found at [Events]({{site.baseurl}}/pages/input-controls/events)
+* `params?`. More information can be found at [Params]({{site.baseurl}}/pages/input-controls/params)
 
 ### The React approach
 The package `@jaspersoft/jv-input-controls` provides a React component that uses the InputControls methods to render 
