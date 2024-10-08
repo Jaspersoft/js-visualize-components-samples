@@ -3,9 +3,16 @@
  * This file is subject to the license terms contained
  * in the license file that is distributed with this file.
  */
-
-
-import { createRoot } from "react-dom/client";
+import {createRoot} from "react-dom/client";
 import App from "./App.tsx";
+import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLiveSample.tsx";
 
-createRoot(document.getElementById("root")!).render(<App />);
+const rootEl = document.getElementById("root");
+const icLiveSample = document.getElementById("ic-live-sample");
+
+{
+    rootEl && createRoot(rootEl!).render(<App/>)
+}
+{
+    icLiveSample && createRoot(icLiveSample!).render(<InputControlsLiveSample/>)
+}
