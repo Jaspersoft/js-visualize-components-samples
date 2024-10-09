@@ -1,37 +1,37 @@
 ---
 layout: default
-title: Basic Usage
+title: Basic usage
 nav_order: 1
 parent: Input Controls
 has_children: false
 ---
 
-# Basic example
+# Basic usage
 
 ## Configure the default styles
 
-You have 2 options:
+You have two options for configuring the import of default styles:
 
-* You could configure the default styles by importing them into your main CSS file like this:
+* In your main CSS file:
 ```css
 @import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-* Or at the top of your main typescript or javascript file:
+* At the top of your main typescript or javascript file:
 ``` typescript
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-Consequently, import the following file to configure the previous CSS file to be used in the Input Controls UI 
-component only:
+Additionally, you can add a configuration that enables you to use the default styles for the input controls components only. When you use this configuration, the other styles in your application will not be affected by the Visualize Components CSS.
+
+To add this configuration, import the following file:
 ```typescript
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
 
-Having this configuration enables you to use the default styles for the input controls UI components. 
-Also, it won't affect the styles of your application, it will only affect the styles of the input controls.
 
-## Load visualize.js
+
+## Load Visualize.js
 
 - Import the visualizejsLoader function from the `@jaspersoft/jv-tools` package.
 
@@ -45,20 +45,16 @@ import {
 } from "@jaspersoft/jv-tools";
 ```
 
-- Provide the `visualizejsLoader` a valid URL from where the visualize library should be downloaded.
-- In case you don't provide a URL because the visualize.js is already loaded into the window object, then this
-   package will automatically take it from there.
-- If you provide a valid URL, this method will add a new script tag in your app's document referencing the URL you
-   provided, making the visualize.js library available for your app.
-- `visualizejsLoader` is a promise so you must execute it and it will return the visualize object (VisualizeFactory).
-   Make sure to store this reference in your app because it will be needed later for logging in the user to JRS.
+- Provide the `visualizejsLoader` a valid URL from where the Visualize.js library should be downloaded.
+- If you don't provide a URL because Visualize.js is already loaded into the window object, then this package will automatically take it from there.
+- When you provide a valid URL, this method will add a new script tag in your application's document referencing the URL you provided, making the Visualize.js library available for your application.
+- `visualizejsLoader` is a promise, so you must execute it and it will return the visualize object (VisualizeFactory). Make sure your store this reference in your application because it will be needed later for logging in the user to JRS.
 - More details about this loading can be found here: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 ## Authentication
 
-* Now that the visualize.js library is loaded in your app, you must authenticate with JasperReports Server.
-* Use the object returned by the `visualizejsLoader` (VisualizeFactory) to execute the auth method from visualize.js. As
-  this is a promise, handling the success and error cases is an exercise for the user.
+* Now that the Visualize.js library is loaded in your application, you must authenticate with JasperReports Server.
+* Use the object returned by the `visualizejsLoader` (VisualizeFactory) to execute the auth method from Visualize.js. As this is a promise, handling the success and error cases is an exercise for the user.
 * Example authentication object:
 
 ``` js
@@ -72,24 +68,21 @@ import {
    }
 ```
 
-* After authenticating the visualize.js object ("V object") is returned. This is used to
-  interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other
-  operations with visualize.js such as loading a report viewer.
+* After authenticating, the Visualize.js object ("V object") is returned. This is used to
+  interact with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other operations with Visualize.js such as loading a report viewer.
 
-More info about the JVTools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
+More info about the tools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
 
-## Rendering the input controls
+## Render the input controls
 
 ### The JavaScript approach
 
-InputControls package provides a method `renderInputControls` that accepts 4 parameters: "V object", uri, container, 
-panel
-configuration.
+InputControls package provides a method `renderInputControls` that accepts four parameters: "V object", uri, container, and panel configuration.
 
-* `vObject`: (VisualizeClient) contains the API to interact with the visualize.js library.
-* `uri`: (string) path to report or ad hoc view _(/path/to/my/reports/SalesReport)_
-* `container`: (DivElement) <div> element from the DOM where the input controls should be rendered
-* `input control configuration`: (JSON) object containing configuration for input controls look and feel and event 
+* `vObject` - (VisualizeClient) contains the API to interact with the Visualize.js library.
+* `uri` - (string) path to report or Ad Hoc view _(/path/to/my/reports/SalesReport)_
+* `container` - (DivElement) <div> element from the DOM where the input controls should be rendered
+* `input control configuration` - (JSON) object containing configuration for input controls look and feel and event 
   handling.
 
 ```ts
@@ -109,20 +102,19 @@ configuration.
 
 * For more information about the `config` parameter, refer to
   this [section]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls)
-* `success?: () => void`. This method will be triggered only once after the input controls are rendered correctly in the
+* `success?: () => void` - This method will be triggered only once after the input controls are rendered correctly in the
   HTML element container provided.
-* `error?: (error: any) => void`. This method will be triggered if and only if, there is an error while either fetching
+* `error?: (error: any) => void` - This method will be triggered only if there is an error while either fetching
   the input controls or when rendering the input controls in the HTML element container. The most common error case is
   likely to happen when providing an HTML container that is not visible in the HTML tree.
-* `config?`. This parameter will help to define the styles of the input controls. Refer to the
-  [next]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls) section for more info
+* `config?` - This parameter will help to define the styles of the input controls. Refer to the
+  [next section]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls) for more info
   about the structure.
-* `events?`. More information can be found at [Events]({{site.baseurl}}/pages/input-controls/events)
-* `params?`. More information can be found at [Params]({{site.baseurl}}/pages/input-controls/params)
-
+* `events?` - More information can be found on the [Events]({{site.baseurl}}/pages/input-controls/events) page
+* `params?` - More information can be found on the [Overriding default values]({{site.baseurl}}/pages/input-controls/params) page
 ### The React approach
 The package `@jaspersoft/jv-input-controls` provides a React component that uses the InputControls methods to render 
-the input controls UI components. This component is called `InputControls` and can be used as follows:
+the input controls components. This component is called `InputControls` and can be used as follows:
 
 ```tsx
 <InputControls
@@ -139,12 +131,12 @@ the DOM.
 More info about the `vContainer` can be found in this
 [guide]({{site.baseurl}}/pages/tools/loading-vizjs.html#loading-visualizejs).
 
-## Configuration of the input controls
-Each and every input control could be defined by the user in the `config` parameter
+## Configure the input controls
+Each input control could be defined by the user in the `config` parameter
 (for the [JavaScript approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-javascript-approach)) or the
 `panelDef` ([React approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-react-approach)).
 This parameter is a wrapper that allows the user to define the type of component to render, receive any modification 
-done by the user in the UI, and receive (if any) information about the validity of the values the user could have 
+done by the user in the UI, and receive information (if any) about the validity of the values the user could have 
 typed in any of the input controls. 
 The `config` parameter has the following structure:
 

@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Loading visualize.js
+title: Loading Visualize.js
 nav_order: 1
 has_children: false
-parent: JV tools
+parent: Tools
 ---
 
 ### Loading visualize.js
 
-This function works in a browser environment (assumes access to DOM), by dynamically inserting a script tag to load visualize.js. In your own code, when initializing your page, you can use this utility method to more easily load and store as you wish the visualize.js object.
+This function works in a browser environment (assumes access to DOM) by dynamically inserting a script tag to load Visualize.js. In your own code, when initializing your page, you can use this utility method to more easily load and store the Visualize.js object as you wish.
 
-Alternatively, if you are already including visulize using a script tag on the page, it will be stored in a global scope and will simply be returned by this function. 
+Alternatively, if you are already including Visualize.js using a script tag on the page, it will be stored in a global scope and will simply be returned by this function. 
 
 In a react based application, you can use the `useEffect` hook to handle this as in the example below.
 ```typescript
@@ -27,11 +27,11 @@ In a react based application, you can use the `useEffect` hook to handle this as
 
   useEffect(() => {
       const loadVisualize = visualizejsLoader(visualizeUrl);
-      console.log("Loading visualize.js...");
+      console.log("Loading Visualize.js...");
       loadVisualize()
           .then((visualizeFactory: VisualizeFactory) => {
               // Connecting to JRS.
-              console.log("visualize.js loaded. Connecting to JRS...");
+              console.log("Visualize.js loaded. Connecting to JRS...");
               visualizeFactory(
                   {
                       auth: {
@@ -86,5 +86,4 @@ In a react based application, you can use the `useEffect` hook to handle this as
 
 ```
 
-In this sample, we eventually set vContainer which has one property, `v`, containing what is called the **V Object**, which can be used across several of the visualize components.
-
+In this sample, we eventually set vContainer which has one property, `v`, containing what is called the **V Object**, which can be used across several of the Visualize.js components.

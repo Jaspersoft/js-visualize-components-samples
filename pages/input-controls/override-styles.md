@@ -1,36 +1,34 @@
 ---
 layout: default
-title: Override Styles
+title: Override default styles
 nav_order: 4
 parent: Input Controls
 has_children: false
 ---
 
-# Overriding default styles
+# Override default styles
 
-Currently, all input controls are shipped with default styles. 
-These default styles are applied to the input controls when they are rendered in the HTML element container.
-In order to prevent any conflicts with your app's styles, the input control styles have been scoped to the input
-control container by using a prefix class. The prefix class is `jv-`.
+All input controls are shipped with default styles. These default styles are applied to the input controls when they are rendered in the HTML element container. To prevent any conflicts with your application's styles, the input control styles have been scoped to the input
+control container only by using the prefix `jv-` on all CSS classnames.
 
 ## The default styles
 
 The package `@jaspersoft/jv-ui-components` provides a stylesheet that contains the default styles for the input controls.
-This file can be located in the following path: `@jaspersoft/jv-ui-components/dist/jv-ui.css`.
-By default, it is imported in the sample app's `index.css` and `App.tsx` files. E.g:
+This file can be located at the following path: `@jaspersoft/jv-ui-components/dist/jv-ui.css`.
+It is imported in the sample application's `index.css` and `App.tsx` files as follows:
 ```css
 @import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 ``` ts
-    import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
+import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
-**_Note_**: _The second import is to configure the styles to be applied only to the input controls UI components._
+**_Note_**: _The second import configures the styles to be applied only to the input controls UI components._
 
 You can choose not to import them at all, or you can import them and override the styles as needed.
 
 ## How to overwrite the default styles
 
-Consider the following code that is rendered when using a `checkbox` component for a boolean input control:
+The following code is rendered when using a `checkbox` component for a boolean input control:
 ``` html
 <div class="jv-mInput jv-mInputSwitch jv-mInputInline jv-mInputLarge mui">
     <label class="jv-MuiFormControlLabel-root jv-MuiFormControlLabel-labelPlacementEnd">
@@ -46,20 +44,15 @@ Consider the following code that is rendered when using a `checkbox` component f
     </label>
 </div>
 ```
-The component that is being rendered contains the CSS rule: `.jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track`
-which is in charge of the background color of the switch when it is checked.
-To override this style, you can add the following CSS to your app:
+This checkbox component references the CSS rule `.jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track`,
+which is used to apply the background color of the switch when it is checked.
+To override this style, you can add your own custom CSS to your application. For example, the following rule will make the background color of the switch red when it is checked.:
 ``` css
 .jv-MuiSwitch-colorPrimary.Mui-checked + .jv-MuiSwitch-track {
     background-color: red;
 }
 ```
-Which will make the background color of the switch red when it is checked.
 
 ## UI Components
-All UI components are based on the [material UI](https://v5.mui.com/material-ui/getting-started/) components v5.
-(Check the list of all available input controls [here]({{site.baseurl}}/pages/input-controls/all-ics)).
-
-As mentioned, every component has its own default styles. However, the stylesheet provided overrides the styling of the 
-material UI components. In the end, you will never get the exact same look and feel as in MUI components, instead, 
-you'll get a version of those components with styling of our own.
+All Jaspersoft Visualize Components are based on [Material UI](https://v5.mui.com/material-ui/getting-started/) v5 components.
+(Check the list of all available input controls [here]({{site.baseurl}}/pages/input-controls/all-ics)). However, we created our own CSS file that overrides the default Material UI styles, giving all components the look and feel of Jaspersoft. As a result, you will not get the exact same look and feel as out-of-the-box Material UI components. Instead, you get a version of those components with styling of our own.
