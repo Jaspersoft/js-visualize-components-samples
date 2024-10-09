@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "tsc -b && vite build"
+    "build": "tsc -b && vite build --emptyOutDir"
   },
   "dependencies": {
     "ace-builds": "^1.36.2",

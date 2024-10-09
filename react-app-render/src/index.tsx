@@ -6,6 +6,7 @@
 import {createRoot} from "react-dom/client";
 import App from "./App.tsx";
 import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLiveSample.tsx";
+import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 
 const rootEl = document.getElementById("root");
 const icLiveSample = document.getElementById("ic-live-sample");

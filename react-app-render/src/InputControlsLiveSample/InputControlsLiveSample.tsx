@@ -1,5 +1,4 @@
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup.ts";
-import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 import {
     renderInputControls,
 } from "@jaspersoft/jv-input-controls";
@@ -109,7 +108,9 @@ const InputControlsLiveSample = () => {
                         </div>
 
                         <div className="jv-mPanel-body jv-uPadding-04 mui">
-                            <div id="basic-controls-section"></div>
+                            <div id="basic-controls-section">
+                                Is Loading...
+                            </div>
                         </div>
                     </div>
                 </div>

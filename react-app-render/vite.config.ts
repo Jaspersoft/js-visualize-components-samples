@@ -12,17 +12,24 @@ export default defineConfig({
     plugins: [react()],
     css: {
         preprocessorOptions: {
-            scss: {
+            // scss: {
+            //     additionalData: `@import "@jaspersoft/jv-ui-components/dist/jv-ui.css";`
+            // },
+            css: {
                 additionalData: `@import "@jaspersoft/jv-ui-components/dist/jv-ui.css";`
             }
         }
     },
     build: {
+        // copyPublicDir: false,
         rollupOptions: {
             input: path.resolve(__dirname, './src/index.tsx'),
             output: {
                 dir: path.resolve("../assets/js/build", './'), // Output directory
-                entryFileNames: 'react-app-render-build.js', // Output filename pattern
+                entryFileNames: `react-app-render-build.js`, // Output filename pattern
+                chunkFileNames: `assets/[name].js`,
+                assetFileNames: `assets/[name].[ext]` // It will generate the jv-ui.css file in the build folder but
+                // with the name of 'index.css' instead of 'jv-ui.css'.
             },
         },
     },
