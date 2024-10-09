@@ -47,7 +47,6 @@ Only one style has been defined for this component, so you could ignore passing 
   }
   ```
 
-
 ##  Number
 For number input controls, use the `number` component.
 Depending on the metadata defined for your number input control, all proper validations will be applied to it automatically. The number input control behaves similar to the text field input control, but it also validates the value written in this
@@ -63,13 +62,11 @@ Only one style has been defined for this component, so you could ignore passing 
   ```
 
 ##  Date
-For date input controls, use the `date` component.
-All proper validations will be applied automatically depending on the metadata defined for your date input control. For example, when you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. 
+For date input controls, use the `date` component. All proper validations will be applied automatically depending on the metadata defined for your date input control. For example, when you have defined a min date and a max date (range of dates) as valid values, then this input control will enable only that range date. 
 
-Additionally, you can keep the default Jaspersoft style of the date input or opt for Material UI styling (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)).
+Additionally, you can keep the default Jaspersoft style of the date input or opt for [Material UI](https://mui.com/x/react-date-pickers/date-picker/) styling. If you don't provide any configuration the default styles will be used.
 
 #### Default styling
-
 For a date component with default Jaspersoft styling, provide the following configuration:
   ```js
   {
@@ -78,8 +75,6 @@ For a date component with default Jaspersoft styling, provide the following conf
        }
   }
   ```
-
-_Note: The default styles will be used if you don't provide any configuration._
 
 #### Material UI styling
 For a date component with Material UI styling, provide the following configuration:
@@ -95,11 +90,9 @@ For a date component with Material UI styling, provide the following configurati
 For datetime input controls, use the `datetime` component.
 All proper validations will be applied automatically depending on the metadata defined for your datetime input control. For example, when you have defined a min datetime and a max datetime (range of dates) as valid values, then this input control will enable only that range date.
 
-Additionally, you can keep the default Jaspersoft style of the datetime input or opt for Material UI styling
-(from [MUI](https://mui.com/x/react-date-pickers/date-picker/)).
+Additionally, you can keep the default Jaspersoft style of the date input or opt for [Material UI](https://mui.com/x/react-date-pickers/date-picker/) styling. If you don't provide any configuration the default styles will be used.
 
 #### Default styling
-
 For a datetime component with default Jaspersoft styling, provide the following configuration:
   ```js
   {
@@ -108,9 +101,6 @@ For a datetime component with default Jaspersoft styling, provide the following 
        }
   }
   ```
-
-_Note: The default styles will be used if you don't provide any configuration._
-
 #### Material UI styling
 For a datetime component with Material UI styling, provide the following configuration:
   ```js
@@ -124,7 +114,7 @@ For a datetime component with Material UI styling, provide the following configu
 ##  Time
 For time input controls, use the `time` component. All proper validations will be applied automatically depending on the metadata defined for your time input control. For example, when you have defined a min time and a max time (range of times) as valid values, then this input control will enable only that range time.
 
-Additionally, you can keep the default Jaspersoft style of the time input or opt for Material UI styling (from [MUI](https://mui.com/x/react-date-pickers/date-picker/)). 
+Additionally, you can keep the default Jaspersoft style of the date input or opt for [Material UI](https://mui.com/x/react-date-pickers/date-picker/) styling. If you don't provide any configuration the default styles will be used.
 
 #### Default styling
 For a time component with default Jaspersoft styling, provide the following configuration:
@@ -135,8 +125,6 @@ For a time component with default Jaspersoft styling, provide the following conf
        }
   }
   ```
-
-_Note: The default styles will be used if you don't provide any configuration._
 
 #### Material UI styling
 For a time component with Material UI styling, provide the following configuration:

@@ -17,7 +17,6 @@ different initial values.
 1. **Create a JSON object**<br>In your input controls configuration, add a `params` property containing a JSON object.
 2. **Define input control IDs and values**<br>Each key in the JSON object should match the ID of an input control. The
    corresponding value should be an array of values you want to set as the initial value for that input control.
-
 ``` typescript
         params: {
           column_boolean_1: ["false"],
@@ -31,7 +30,7 @@ different initial values.
         }
 ```
 
-### Important Notes:
+### Important notes
 
 * **Multi-select controls** <br>Only multi-select input controls (like `ProductFamily` in the example) accept multiple values
   in the array.

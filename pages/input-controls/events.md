@@ -42,16 +42,15 @@ Keys are input control IDs and values are an array of values. For example:
 ```
 * `validationResult` - contains any validation errors that may be present.
 The keys of this object represent the input control IDs while the value will either be an empty array when no validation errors occur, or a string value with a user-readable message regarding the validation failure.
-When all controls have valid input, this parameter will be a boolean value: `false`.
-
-For example:
+When all controls have valid input, this parameter will be a boolean value: `false`. For example:
 ``` json
 {
   "column_time_1": [],
   "column_timestamp_1": "Verify the date is before or exactly 2014-09-11T15:00:00.",
 }
 ```
-##### **_Notes_**
+
+### Important notes
 * When all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
 * This event is being triggered by the InputControl class because the InputControl class is a
 controlled component. The InputControl class will handle the state of the input controls and will 
@@ -119,8 +118,8 @@ A possible situation is when the container provided is not visible. In this case
 }
 ```
 
-### When the report URL is not found in the JRS server.
-Another possible situation is when the report URL is not found in the JRS server. In this case, the error object
+### When the report URL is not found in the JasperReports Server.
+Another possible situation is when the report URL is not found in the JasperReports Server. In this case, the error object
 will contain:
 ```json
 {

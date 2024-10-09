@@ -5,9 +5,9 @@ nav_order: 3
 has_children: true
 ---
 
-# Tools Package
+# Tools
 
-The tools package is a collection of utility functions for working with the components. Currently this is the home of two important pieces: a loader and typescript interfaces for working with Visualize.js in your IDE.
+The tools package is a collection of utility functions for working with the components. Currently this is the home of two important pieces: a loader and TypeScript interfaces for working with Visualize.js in your IDE.
 
 ## Installation
 
@@ -22,7 +22,7 @@ The main utility you will use from the tools is the `visualizeJsLoader` function
 
 #### Authentication
 
-To authenticate to your JRS server, you must provide credentials. You can do this with an Authentication object.
+To authenticate to your JasperReports Server, you must provide credentials. You can do this with an Authentication object.
 
 ```json
 {
@@ -37,9 +37,7 @@ To authenticate to your JRS server, you must provide credentials. You can do thi
 
 ##### Parameters
 
-* `name` - username for the JRS server where the Visualize.js script will be loaded from
-* `password` - password for the JRS server where the Visualize.js script will be loaded from
-* `organization` - (optional) organization for the user
-* `locale` - (optional) user locale to use 
-
-
+* `name` - username for the JasperReports Server where the Visualize.js script will be loaded from
+* `password` - password for the JasperReports Server where the Visualize.js script will be loaded from
+* `organization` - organization for the user (optional)
+* `locale` - user locale to use (optional)

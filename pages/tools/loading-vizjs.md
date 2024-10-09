@@ -6,7 +6,7 @@ has_children: false
 parent: Tools
 ---
 
-### Loading visualize.js
+# Loading Visualize.js
 
 This function works in a browser environment (assumes access to DOM) by dynamically inserting a script tag to load Visualize.js. In your own code, when initializing your page, you can use this utility method to more easily load and store the Visualize.js object as you wish.
 

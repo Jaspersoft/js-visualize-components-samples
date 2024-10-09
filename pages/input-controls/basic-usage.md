@@ -17,12 +17,12 @@ You have two options for configuring the import of default styles:
 @import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-* At the top of your main typescript or javascript file:
+* At the top of your main TypeScript or JavaScript file:
 ``` typescript
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-Additionally, you can add a configuration that enables you to use the default styles for the input controls components only. When you use this configuration, the other styles in your application will not be affected by the Visualize Components CSS.
+Additionally, you can add a configuration that enables you to use the default styles for the input controls components only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
 
 To add this configuration, import the following file:
 ```typescript
@@ -30,11 +30,9 @@ import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
 
 
-
 ## Load Visualize.js
 
 - Import the visualizejsLoader function from the `@jaspersoft/jv-tools` package.
-
 ```typescript 
 import {
     Authentication,
@@ -48,15 +46,14 @@ import {
 - Provide the `visualizejsLoader` a valid URL from where the Visualize.js library should be downloaded.
 - If you don't provide a URL because Visualize.js is already loaded into the window object, then this package will automatically take it from there.
 - When you provide a valid URL, this method will add a new script tag in your application's document referencing the URL you provided, making the Visualize.js library available for your application.
-- `visualizejsLoader` is a promise, so you must execute it and it will return the visualize object (VisualizeFactory). Make sure your store this reference in your application because it will be needed later for logging in the user to JRS.
-- More details about this loading can be found here: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
+- `visualizejsLoader` is a promise, so you must execute it and it will return the Visualize.js object (VisualizeFactory). Make sure your store this reference in your application because it will be needed later for logging in the user to JasperReports Server.
+- More details about this loading can be found at [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 ## Authentication
 
 * Now that the Visualize.js library is loaded in your application, you must authenticate with JasperReports Server.
 * Use the object returned by the `visualizejsLoader` (VisualizeFactory) to execute the auth method from Visualize.js. As this is a promise, handling the success and error cases is an exercise for the user.
 * Example authentication object:
-
 ``` js
    {
       auth: {
@@ -69,7 +66,7 @@ import {
 ```
 
 * After authenticating, the Visualize.js object ("V object") is returned. This is used to
-  interact with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other operations with Visualize.js such as loading a report viewer.
+  interact with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other operations with Visualize.js, such as loading a report viewer.
 
 More info about the tools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
 
@@ -84,7 +81,6 @@ InputControls package provides a method `renderInputControls` that accepts four 
 * `container` - (DivElement) <div> element from the DOM where the input controls should be rendered
 * `input control configuration` - (JSON) object containing configuration for input controls look and feel and event 
   handling.
-
 ```ts
 {
     success?: () => void;
@@ -112,6 +108,7 @@ InputControls package provides a method `renderInputControls` that accepts four 
   about the structure.
 * `events?` - More information can be found on the [Events]({{site.baseurl}}/pages/input-controls/events) page
 * `params?` - More information can be found on the [Overriding default values]({{site.baseurl}}/pages/input-controls/params) page
+
 ### The React approach
 The package `@jaspersoft/jv-input-controls` provides a React component that uses the InputControls methods to render 
 the input controls components. This component is called `InputControls` and can be used as follows:

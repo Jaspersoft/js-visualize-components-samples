@@ -8,7 +8,7 @@ nav_order: 0
 
 <div class="hero">
     <h1 class="title">Jaspersoft<br>Visualize Components</h1>
-    <p class="text">Enhance your web application with JasperReports Server, embed reports, or build custom workflows using modern React components.</p>
+    <p class="text">Enhance your web application with JasperReports Server&#xae;, embed reports, or build custom workflows using modern React components.</p>
     <div class="cta">
         <a class="cta-text" href="pages/introduction.html">Get started</a>
     </div>

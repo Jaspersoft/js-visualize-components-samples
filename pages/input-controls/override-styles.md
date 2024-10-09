@@ -8,8 +8,7 @@ has_children: false
 
 # Override default styles
 
-All input controls are shipped with default styles. These default styles are applied to the input controls when they are rendered in the HTML element container. To prevent any conflicts with your application's styles, the input control styles have been scoped to the input
-control container only by using the prefix `jv-` on all CSS classnames.
+All input controls are shipped with default styles. These default styles are applied to the input controls when they are rendered in the HTML element container. To prevent any conflicts with your application's styles, the input control styles have been scoped to the input control container only by using the prefix `jv-` on all CSS classnames.
 
 ## The default styles
 
@@ -19,10 +18,11 @@ It is imported in the sample application's `index.css` and `App.tsx` files as fo
 ```css
 @import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
+Optionally, there is a configuration that enables you to use the default styles for the input controls components only. When this configuration is used, the other styles in your application will not be affected by the Visualize Components CSS:
+
 ``` ts
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
-**_Note_**: _The second import configures the styles to be applied only to the input controls UI components._
 
 You can choose not to import them at all, or you can import them and override the styles as needed.
 
@@ -53,6 +53,6 @@ To override this style, you can add your own custom CSS to your application. For
 }
 ```
 
-## UI Components
+## About the default styles
 All Jaspersoft Visualize Components are based on [Material UI](https://v5.mui.com/material-ui/getting-started/) v5 components.
 (Check the list of all available input controls [here]({{site.baseurl}}/pages/input-controls/all-ics)). However, we created our own CSS file that overrides the default Material UI styles, giving all components the look and feel of Jaspersoft. As a result, you will not get the exact same look and feel as out-of-the-box Material UI components. Instead, you get a version of those components with styling of our own.
