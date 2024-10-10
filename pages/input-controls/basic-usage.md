@@ -36,7 +36,7 @@ import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```typescript 
 import {
     Authentication,
-    BaseInputControlProps,
+    InputControlProperties,
     VisualizeClient,
     VisualizeFactory,
     visualizejsLoader,
@@ -46,13 +46,13 @@ import {
 - Provide the `visualizejsLoader` a valid URL from where the Visualize.js library should be downloaded.
 - If you don't provide a URL because Visualize.js is already loaded into the window object, then this package will automatically take it from there.
 - When you provide a valid URL, this method will add a new script tag in your application's document referencing the URL you provided, making the Visualize.js library available for your application.
-- `visualizejsLoader` is a promise, so you must execute it and it will return the Visualize.js object (VisualizeFactory). Make sure your store this reference in your application because it will be needed later for logging in the user to JasperReports Server.
-- More details about this loading can be found at [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
+- `visualizejsLoader` is a promise, so you must execute it and it will return the `VisualizeFactory`. Make sure your store this reference in your application because it will be needed later for logging in the user to JRS.
+- More details about this loading can be found at: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 ## Authentication
 
 * Now that the Visualize.js library is loaded in your application, you must authenticate with JasperReports Server.
-* Use the object returned by the `visualizejsLoader` (VisualizeFactory) to execute the auth method from Visualize.js. As this is a promise, handling the success and error cases is an exercise for the user.
+* Use `VisualizeFactory` object returned by the `visualizejsLoader` to authenticate with JasperReports Server. As this is a promise, handling the success and error cases is an exercise for the user.
 * Example authentication object:
 ``` js
    {
@@ -65,8 +65,8 @@ import {
    }
 ```
 
-* After authenticating, the Visualize.js object ("V object") is returned. This is used to
-  interact with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other operations with Visualize.js, such as loading a report viewer.
+* After authenticating, the `VisualizeClient` object (or simply `v` object) is returned. It is used to
+  interact with the Visualize.js API. Store a reference to this object in a global scope of your application to perform other operations with Visualize.js, such as loading a report.
 
 More info about the tools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
 
@@ -74,69 +74,60 @@ More info about the tools can be found in this [guide]({{site.baseurl}}/pages/to
 
 ### The JavaScript approach
 
-InputControls package provides a method `renderInputControls` that accepts four parameters: "V object", uri, container, and panel configuration.
+InputControls package provides a `renderInputControls(v: VisualizeClient, uri: string, container: HTMLElement, config?: InputControlsConfig): void` method. 
 
-* `vObject` - (VisualizeClient) contains the API to interact with the Visualize.js library.
-* `uri` - (string) path to report or Ad Hoc view _(/path/to/my/reports/SalesReport)_
-* `container` - (DivElement) <div> element from the DOM where the input controls should be rendered
-* `input control configuration` - (JSON) object containing configuration for input controls look and feel and event 
-  handling.
+Parameters:
+* `v` - The `VisualizeClient` instance used to interact with Visualize.js API.
+* `uri` - The path to a report or an Ad Hoc View _(/path/to/my/reports/SalesReport)_.
+* `container` - The DOM element to render input controls to.
+* `config` <sup>(optional)</sup> - The configuration object for the input controls. See [configure input controls]({{site.baseurl}}/pages/input-controls/basic-usage#configure-the-input-controls).
+
+Return value:
+* None.
+
+Example:
+```tsx
+renderInputControls(visualizeClient, reportUri, container, inputControlsConfig)
+```
+
+### The React approach
+The `@jaspersoft/jv-input-controls` package provides `InputControls` React component.
+
+Example:
+```tsx
+<InputControls
+    v={visualizeClient}
+    uri={reportUri}
+    config={inputControlsConfig}
+/>
+```
+The `InputControls` component props are similar to `renderInputControls` parameters explained in the 
+[JavaScript approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-javascript-approach).
+
+## Configure the input controls
+The input controls configuration has the following strucuture:
 ```ts
-{
-    success?: () => void;
-    error?: (error: any) => void;
-    config?: InputControlUserConfig;
-    events?: {
-        change?: (
-            ic: { [key: string]: any[] },
-            validationResult: { [key: string]: string } | boolean,
-        ) => void;
-    };
-    params?: { [key: string]: string[] };
+interface InputControlsConfig {
+  success?: (controls: any) => void;
+  error?: (error: any) => void;
+  config?: InputControlsTypeConfig;
+  events?: {
+    change?: (
+      ic: { [key: string]: any[] },
+      validationResult: { [key: string]: string } | boolean,
+    ) => void;
+  };
+  params?: { [key: string]: string[] };
 }
 ```
 
-* For more information about the `config` parameter, refer to
-  this [section]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls)
-* `success?: () => void` - This method will be triggered only once after the input controls are rendered correctly in the
-  HTML element container provided.
-* `error?: (error: any) => void` - This method will be triggered only if there is an error while either fetching
-  the input controls or when rendering the input controls in the HTML element container. The most common error case is
+Members:
+* `success` <sup>(optional)</sup> - Triggered only once after the input controls are rendered correctly in the
+  HTML container.
+* `error` <sup>(optional)</sup> - Triggered if there is an error while either fetching
+  the input controls or when rendering the input controls in the HTML container. The most common error case is
   likely to happen when providing an HTML container that is not visible in the HTML tree.
-* `config?` - This parameter will help to define the styles of the input controls. Refer to the
-  [next section]({{site.baseurl}}/pages/input-controls/basic-usage#configuration-of-the-input-controls) for more info
-  about the structure.
-* `events?` - More information can be found on the [Events]({{site.baseurl}}/pages/input-controls/events) page
-* `params?` - More information can be found on the [Overriding default values]({{site.baseurl}}/pages/input-controls/params) page
-
-### The React approach
-The package `@jaspersoft/jv-input-controls` provides a React component that uses the InputControls methods to render 
-the input controls components. This component is called `InputControls` and can be used as follows:
-
-```tsx
-<InputControls
-    vObject={vContainer?.v}
-    uri={reportUri}
-    panelDef={panelD}
-/>
-```
-The attributes the `InputControls` component receives are very similar to what has been explained in the 
-[JavaScript approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-javascript-approach). The only difference
-is that it isn't needed to provide the HTML element because the React component will render the input controls in 
-the DOM.
-
-More info about the `vContainer` can be found in this
-[guide]({{site.baseurl}}/pages/tools/loading-vizjs.html#loading-visualizejs).
-
-## Configure the input controls
-Each input control could be defined by the user in the `config` parameter
-(for the [JavaScript approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-javascript-approach)) or the
-`panelDef` ([React approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-react-approach)).
-This parameter is a wrapper that allows the user to define the type of component to render, receive any modification 
-done by the user in the UI, and receive information (if any) about the validity of the values the user could have 
-typed in any of the input controls. 
-The `config` parameter has the following structure:
-
+* `config` <sup>(optional)</sup> - Defined the styles of the input controls. Structure:
 ```typescript
 {
     bool?: {
@@ -159,9 +150,9 @@ The `config` parameter has the following structure:
     };
 }
 ``` 
-
-If you want to see more information about the different types of components for the input controls, refer to
-this [guide]({{site.baseurl}}/pages/input-controls/all-ics).
+See [all input controls]({{site.baseurl}}/pages/input-controls/all-ics) for more information.
+* `events` <sup>(optional)</sup> - Configures events listeners. See [events]({{site.baseurl}}/pages/input-controls/events).
+* `params` <sup>(optional)</sup> - Defines initial values of input controls. See [overriding default values]({{site.baseurl}}/pages/input-controls/params).
 
 ## Source code
-For a complete example of how to use the input controls, you can check the following [link](https://github.com/Jaspersoft/js-visualize-components/tree/main/packages/demo-input-controls)
+For a complete example of how to use the input controls, you can check [demo input controls](https://github.com/Jaspersoft/js-visualize-components/tree/main/packages/demo-input-controls) project.
