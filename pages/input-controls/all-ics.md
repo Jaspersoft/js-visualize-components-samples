@@ -7,12 +7,10 @@ has_children: false
 ---
 # All input controls
 
-The Input Controls plugin is a set of components you can use to render input controls in your web application. This guide will help you understand how to use different UI components for specific input control types.
+The Input Controls component allows you to render input controls in your web application. This guide will help you understand how to use different UI components for specific input control types.
 
 ##  Boolean
-For boolean input controls, use the `checkbox` or the `switch` component.
-As mentioned in the [Input Controls]({{site.baseurl}}/pages/input-controls/basic-usage#panel-definition) guide, you could use the 
-`checkbox` for rendering boolean input controls, however, you might want to use the `switch` component instead.
+For boolean input controls, use the `checkbox` or the `switch` component. You can use the `checkbox` for rendering boolean input controls, however, you might want to use the `switch` component instead.
 
 #### Checkbox
   To define a checkbox component, provide the param as follows:
@@ -49,8 +47,7 @@ Only one style has been defined for this component, so you could ignore passing 
 
 ##  Number
 For number input controls, use the `number` component.
-Depending on the metadata defined for your number input control, all proper validations will be applied to it automatically. The number input control behaves similar to the text field input control, but it also validates the value written in this
-input control is a number format.
+Depending on the metadata defined for your number input control, all proper validations will be applied to it automatically. The number input control functions similarly to a text field, but with built-in validation to ensure the entered value is a number.
 
 Only one style has been defined for this component, so you could ignore passing any attribute to this input control. However, the full configuration is:
   ```js
