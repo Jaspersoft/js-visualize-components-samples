@@ -8,11 +8,11 @@ has_children: false
 
 # Events
 
-To work with user input, you may provide a callback function that is called when certain events occur. Currently we only support change events. 
+To work with user input, you may provide a callback function that is called when certain events occur. Currently we only support change event. 
 
 When configuring the Input Controls component, you may provide a JSON object in the events property of your configuration object.
 
-See [Input Controls]({{site.baseurl}}/pages/input-controls/basic-usage#rendering-the-control-panel) for more information on configuring the Input Controls component.
+See [Input Controls]({{site.baseurl}}/pages/input-controls/basic-usage#render-the-input-controls) for more information on configuring the Input Controls component.
 In read-only scenarios where you do not wish to process user input, you can omit this configuration.
 ``` js
 events?: {
@@ -59,13 +59,13 @@ trigger the `change` event every time the state of the input controls changes.
 
 ## Handling validations
 
-To handle validations on the developer side, use the [events.change]({{site.baseurl}}/pages/input-controls/events) method when calling
+To handle validations on the developer side, provide the [events.change]({{site.baseurl}}/pages/input-controls/events) callback method when calling
 the `renderInputControls`. This method will return a second parameter that contains all validations.
 For example:
 
 ```typescript
     renderInputControls(
-      vContainer.v,
+      visualizeClient,
       '/My/URI',
       document.getElementById("my-container"),
       {
@@ -90,11 +90,11 @@ where:
 * "id_1": is the id of the input control
 * "Specify a valid value for type number." is the message that is displayed in the UI.
 
-When all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
+When all values for all input controls are valid, the `validationResult` parameter will be a boolean value `false`.
 
 ## Handling errors
-Use the `error` property when calling the renderInputControls method. When there is an error, this method will 
-return an error object when trying to render the input controls.
+Use the `error` property when calling the `renderInputControls` method. When there is an error, this method will 
+be called with an error object as a parameter.
 For example: 
 ```javascript
     renderInputControls(
