@@ -89,7 +89,7 @@ const schedulerUIConfig: SchedulerConfigProps = {
     cancelBtnClick: () => {
       console.log("Cancel button is clicked");
     },
-    scheduleBtnClick: (isScheduleCreatedSuccessfully, jobInfo) => {
+    scheduleBtnClick: (isScheduleCreatedSuccessfully: boolean, jobInfo: any) => {
       console.log(isScheduleCreatedSuccessfully, jobInfo);
       console.log("Create schedule button is clicked");
     },
