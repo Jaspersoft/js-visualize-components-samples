@@ -2,58 +2,13 @@ import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup.ts";
 import {
     renderInputControls,
 } from "@jaspersoft/jv-input-controls";
-import {
-    Authentication,
-    VisualizeClient,
-    VisualizeFactory,
-    visualizejsLoader,
-} from "@jaspersoft/jv-tools";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-const credentials: Authentication = {
-    name: "joeuser",
-    password: "joeuser",
-    organization: "organization_1",
-};
+
 const reportUri = "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report";
-const visualizeUrl =
-    "https://mobiledemo.jaspersoft.com/jasperserver-pro/client/visualize.js";
 
-const InputControlsLiveSample = () => {
-    const [vContainer, setVContainer] = useState(
-        null as { v: VisualizeClient } | null,
-    );
+const InputControlsLiveSample = ({vContainer}: any) => {
     useEffect(() => {
-        const loadVisualize = visualizejsLoader(visualizeUrl);
-        console.log("Loading visualize.js...");
-        loadVisualize()
-            .then((visualizeFactory: VisualizeFactory) => {
-                // Connecting to JRS.
-                console.log("visualize.js loaded. Connecting to JRS...");
-                visualizeFactory(
-                    {
-                        auth: {
-                            ...credentials,
-                            locale: "en_US",
-                        },
-                    },
-                    (v: VisualizeClient) => {
-                        console.log("Visualize client connected.");
-                        setVContainer({v});
-                    },
-                    (e: any) => {
-                        console.log(String(e));
-                    },
-                );
-            })
-            .catch((error: Error) => {
-                console.log("Error loading visualize.js: ", error);
-            });
-    }, [])
-    useEffect(() => {
-        if (!vContainer || !vContainer.v) {
-            return;
-        }
         renderInputControls(
             vContainer.v,
             reportUri,

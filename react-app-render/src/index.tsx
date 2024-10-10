@@ -4,16 +4,9 @@
  * in the license file that is distributed with this file.
  */
 import {createRoot} from "react-dom/client";
-import App from "./App.tsx";
-import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLiveSample.tsx";
+import Main from "./Main";
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 
 const rootEl = document.getElementById("root");
-const icLiveSample = document.getElementById("ic-live-sample");
+createRoot(rootEl!).render(<Main/>)
 
-{
-    rootEl && createRoot(rootEl!).render(<App/>)
-}
-{
-    icLiveSample && createRoot(icLiveSample!).render(<InputControlsLiveSample/>)
-}
