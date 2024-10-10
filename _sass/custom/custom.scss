@@ -11,7 +11,7 @@
 
   05. MAIN CONTENT
   -----------------------------------
-  File last modified Oct 1, 2024
+  File last modified Oct 8, 2024
   ----------------------------------- */
 
 /* --------------------- */
@@ -76,6 +76,10 @@ th, td {
   font-size: unset;
   min-width: unset;
   padding: unset;
+}
+
+b, strong {
+  font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
 }
 
 
@@ -777,6 +781,7 @@ a.nav-list-link {
 div.highlighter-rouge {
   padding: 0.5rem;
   margin-bottom: 2.25rem;
+  margin-top: .5em;
 } /* code snippets */
 
 .main a {

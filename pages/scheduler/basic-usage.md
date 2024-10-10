@@ -6,37 +6,44 @@ parent: Scheduler
 has_children: false
 ---
 
-# Basic example
+# Basic usage
 
-## Changes in JRS
+## Changes in JasperReports Server
 1. Navigate to Path_to_tomcat/webapps/jasperserver-pro/WEB-INF/applicationContext-security-pro-web.xml
 2. Add the following entries to `<property name="allowedHeaders">` property: <br>
-   `<value>Fetch-Csrf-Token</value>` <br>
-   `<value>Owasp_csrftoken</value>`
+   - `<value>Fetch-Csrf-Token</value>`
+   - `<value>Owasp_csrftoken</value>`
 
 
 
 ## Configure the default styles
 
-At the top of your main typescript or javascript file, import the CSS file that will allow you to use the default 
-styles for the scheduler:
+You have two options for configuring the import of default styles:
+
+* In your main CSS file:
+```css
+@import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
+```
+
+* At the top of your main TypeScript or JavaScript file:
 ``` typescript
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-Consequently, import the following file to configure the previous CSS file to be used in the Scheduler UI 
-component only:
+Additionally, you can add a configuration that enables you to use the default styles for the scheduler component only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
+
+To add this configuration, import the following file:
 ```typescript
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
 
-Having this configuration enables you to use the default styles for the Scheduler UI components. 
+
+Having this configuration enables you to use the default styles for the scheduler component. 
 Also, it won't affect the styles of your application, it will only affect the styles of the scheduler.
 
-## Load visualize.js
+## Load Visualize.js
 
 - Import the visualizejsLoader function from the `@jaspersoft/jv-tools` package.
-
 ```typescript 
 import {
     Authentication,
@@ -47,22 +54,20 @@ import {
 } from "@jaspersoft/jv-tools";
 ```
 
-- Provide the `visualizejsLoader` a valid URL from where the visualize library should be downloaded.
-- In case you don't provide a URL because the visualize.js is already loaded into the window object, then this
+- Provide the `visualizejsLoader` a valid URL from where the Visualize.js library should be downloaded.
+- If you don't provide a URL because Visualize.js is already loaded into the window object, then this
   package will automatically take it from there.
-- If you provide a valid URL, this method will add a new script tag in your app's document referencing the URL you
-  provided, making the visualize.js library available for your app.
-- `visualizejsLoader` is a promise so you must execute it and it will return the visualize object (VisualizeFactory).
-  Make sure to store this reference in your app because it will be needed later for logging in the user to JRS.
-- More details about this loading can be found here: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
+- If you provide a valid URL, this method will add a new script tag in your application's document referencing the URL you provided, making the Visualize.js library available for your application.
+- `visualizejsLoader` is a promise, so you must execute it and it will return the Visualize.js object (VisualizeFactory).
+  Make sure to store this reference in your application because it will be needed later for logging in the user to JasperReports Server.
+- More details about this loading can be found at [Loading Visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 ## Authentication
 
-* Now that the visualize.js library is loaded in your app, you must authenticate with JasperReports Server.
-* Use the object returned by the `visualizejsLoader` (VisualizeFactory) to execute the auth method from visualize.js. As
+* Now that the Visualize.js library is loaded in your application, you must authenticate with JasperReports Server.
+* Use the object returned by the `visualizejsLoader` (VisualizeFactory) to execute the auth method from Visualize.js. As
   this is a promise, handling the success and error cases is an exercise for the user.
 * Example authentication object:
-
 ``` js
    {
       auth: {
@@ -74,13 +79,13 @@ import {
    }
 ```
 
-* After authenticating the visualize.js object ("V object") is returned. This is used to
-  interact with the internal API of visualize.js. Store a reference to this object in a global scope to perform other
-  operations with visualize.js such as loading a report viewer.
+* After authenticating the Visualize.js object ("V object") is returned. This is used to
+  interact with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other
+  operations with Visualize.js such as loading a report viewer.
 
-More info about the JVTools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
+More info about the tools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
 
-## Rendering the scheduler plugin
+## Render the Scheduler plugin
 
 ### The JavaScript approach
 
@@ -88,7 +93,7 @@ More info about the JVTools can be found in this [guide]({{site.baseurl}}/pages/
 ```js 
 import { renderScheduler, SchedulerConfig } from "@jaspersoft/jv-scheduler";
 ```
-Scheduler component has a method `renderScheduler` that accepts 3 parameters: container, visualize object, scheduler configuration.
+Scheduler component has a method `renderScheduler` that accepts three parameters: container, Visualize.js object, and scheduler configuration.
 `SchedulerConfig` is a typing for scheduler configuration object.
 
 ```js
@@ -100,13 +105,13 @@ renderScheduler(
 
 ```
 
-* `container`: (DivElement) <div> element from the DOM where the scheduler should be rendered
-* `visualize_object`: (VisualizeClient) visualization object
-* `schedulerUIConfig`: (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. [reference]({{site.baseurl}}/pages/scheduler/configuration.html#configuration)
+* `container` - (DivElement) <div> element from the DOM where the scheduler should be rendered
+* `visualize_object` - (VisualizeClient) visualization object
+* `schedulerUIConfig` - (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. ([reference]({{site.baseurl}}/pages/scheduler/configuration.html#configuration))
 
 
 * For more information about the `scheduler configuration` parameter, refer to
-  this [section]({{site.baseurl}}/pages/scheduler/configuration.html#configuration)
+  the [Configuration]({{site.baseurl}}/pages/scheduler/configuration.html#configuration) page
 
 
 ### The React approach
@@ -116,7 +121,7 @@ renderScheduler(
 import { Scheduler, SchedulerConfigProps } from "@jaspersoft/jv-scheduler";
 ```
 The package `@jaspersoft/jv-scheduler` provides a React component that uses the Scheduler methods to render 
-the Scheduler UI component. This component is called `Scheduler` and can be used as follows:
+the scheduler component in the UI. This component is called `Scheduler` and can be used as follows:
 
 ```tsx
 <Scheduler

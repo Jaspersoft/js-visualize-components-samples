@@ -8,7 +8,7 @@ nav_order: 0
 
 <div class="hero">
     <h1 class="title">Jaspersoft<br>Visualize Components</h1>
-    <p class="text">Enhance your web app with JasperReports Server, embed reports, or build custom workflows using modern ReactJS components.</p>
+    <p class="text">Enhance your web application with JasperReports Server&#xae;, embed reports, or build custom workflows using modern React components.</p>
     <div class="cta">
         <a class="cta-text" href="pages/introduction.html">Get started</a>
     </div>
@@ -20,7 +20,7 @@ nav_order: 0
 <div class="benefits">
     <div class="card modern">
        <h3>Modern</h3>
-       <p>Built with TypeScript, Vite, ReactJS, and Material UI, our Visualize Components are designed to operate in any web development environment and integrate seamlessly into your visualize.js projects.</p>
+       <p>Built with TypeScript, Vite, React, and Material UI, our Visualize Components are designed to operate in any web development environment and integrate seamlessly into your Visualize.js projects.</p>
     </div>
     <div class="card configurable">
        <h3>Configurable</h3>
