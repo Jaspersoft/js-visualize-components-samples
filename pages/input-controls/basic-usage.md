@@ -110,7 +110,7 @@ The input controls configuration has the following strucuture:
 interface InputControlsConfig {
   success?: (controls: any) => void;
   error?: (error: any) => void;
-  config?: InputControlsTypeConfig;
+  typeConfig?: InputControlsTypeConfig;
   events?: {
     change?: (
       ic: { [key: string]: any[] },
@@ -127,7 +127,7 @@ Members:
 * `error` <sup>(optional)</sup> - Triggered if there is an error while either fetching
   the input controls or when rendering the input controls in the HTML container. The most common error case is
   likely to happen when providing an HTML container that is not visible in the HTML tree.
-* `config` <sup>(optional)</sup> - Defined the styles of the input controls. Structure:
+* `typeConfig` <sup>(optional)</sup> - Defines the styles of the input controls. Structure:
 ```typescript
 {
     bool?: {
