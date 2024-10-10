@@ -22,7 +22,7 @@ You have two options for configuring the import of default styles:
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-Additionally, you can add a configuration that enables you to use the default styles for the input controls components only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
+Additionally, you must add a configuration that enables you to use the default styles for the input controls components only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
 
 To add this configuration, import the following file:
 ```typescript
@@ -105,7 +105,7 @@ The `InputControls` component props are similar to `renderInputControls` paramet
 [JavaScript approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-javascript-approach).
 
 ## Configure the input controls
-The input controls configuration has the following strucuture:
+The input controls configuration has the following structure:
 ```ts
 interface InputControlsConfig {
   success?: (controls: any) => void;

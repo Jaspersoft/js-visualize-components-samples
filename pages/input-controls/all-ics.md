@@ -137,3 +137,8 @@ For a time component with Material UI styling, provide the following configurati
 All proper validations will be applied automatically depending on the metadata defined for your single select input control. For example, when you define a list of values as valid values, then this input control will enable only that list of values.
 
 There are currently no additional configurations for this input control.
+
+##  Multi select
+All proper validations will be applied automatically depending on the metadata defined for your multi select input control. For example, when you define a list of values as valid values, then this input control will enable only that list of values.
+
+There are currently no additional configurations for this input control.

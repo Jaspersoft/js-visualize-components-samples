@@ -30,7 +30,7 @@ You have two options for configuring the import of default styles:
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-Additionally, you can add a configuration that enables you to use the default styles for the scheduler component only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
+Additionally, you must add a configuration that enables you to use the default styles for the scheduler component only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
 
 To add this configuration, import the following file:
 ```typescript
@@ -47,10 +47,9 @@ Also, it won't affect the styles of your application, it will only affect the st
 ```typescript 
 import {
     Authentication,
-    BaseInputControlProps,
-    VisualizeClient,
     VisualizeFactory,
     visualizejsLoader,
+    VisualizeClient,
 } from "@jaspersoft/jv-tools";
 ```
 
@@ -79,8 +78,8 @@ import {
    }
 ```
 
-* After authenticating the Visualize.js object ("V object") is returned. This is used to
-  interact with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other
+* After authenticating, the `VisualizeClient` object (or simply `v` object) is returned. This is used to interact 
+  with the internal API of Visualize.js. Store a reference to this object in a global scope to perform other 
   operations with Visualize.js such as loading a report viewer.
 
 More info about the tools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
@@ -93,21 +92,13 @@ More info about the tools can be found in this [guide]({{site.baseurl}}/pages/to
 ```js 
 import { renderScheduler, SchedulerConfig } from "@jaspersoft/jv-scheduler";
 ```
-Scheduler component has a method `renderScheduler` that accepts three parameters: container, Visualize.js object, and scheduler configuration.
-`SchedulerConfig` is a typing for scheduler configuration object.
 
-```js
-renderScheduler(
-    document.getElementById("my-container"),
-    visualize_object, 
-    schedulerUIConfig,
-);
-
-```
-
+Scheduler package provides a
+`renderScheduler(container: HTMLElement, v: VisualizeClient, config: SchedulerConfigProps): void` method.
+Parameters:
 * `container` - (DivElement) <div> element from the DOM where the scheduler should be rendered
-* `visualize_object` - (VisualizeClient) visualization object
-* `schedulerUIConfig` - (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. ([reference]({{site.baseurl}}/pages/scheduler/configuration.html#configuration))
+* `v` - (VisualizeClient) visualization object
+* `config` - (SchedulerConfig) object containing configuration for scheduler look and feel and event handling. ([reference]({{site.baseurl}}/pages/scheduler/configuration.html#configuration))
 
 
 * For more information about the `scheduler configuration` parameter, refer to

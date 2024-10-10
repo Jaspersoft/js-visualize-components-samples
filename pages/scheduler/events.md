@@ -36,7 +36,7 @@ The user needs to implement a `scheduleBtnClick` function to handle actions when
     - `jobInformation` will include the error information.
 
 
-## Successs
+## Success
 When Scheduler plugin is successfully rendered, the success function will be called. This function is optional.
 
 ## Error
@@ -44,13 +44,11 @@ When Scheduler plugin throws error while rendering, the success function will be
 
 ## Handling validations
 
-To handle validations on the developer side, you have to use the
-[events.error]({{site.baseurl}}/pages/scheduler/events.html#handling-errors) method when calling
-the `renderControlPanel`. This method will return an error parameter that contains all the validations.
-For example:
+To handle validations on the developer side, you have to use the [events.error]({{site.baseurl}}/pages/scheduler/events.html#handling-errors) method when calling the 
+`renderScheduler`. This method will return an error parameter that contains all the validations. For example:
 
 ```javascript
-    plugin.renderControlPanel(
+    renderScheduler(
       document.getElementById("my-container"),
       visualizeObj,
       {
@@ -74,18 +72,20 @@ For example:
 
 
 ## Handling errors
-To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will
+To handle errors, you can use the `error` property when calling the renderScheduler method. This method will
 return an error object when trying to render the scheduler UI in case of an error.
 For example:
-```javascript
-    plugin.renderControlPanel(
-      '/My/URI',
-      document.getElementById("my-container"),
-      {
-        error: (error) => {
-            console.log("error => ", error);
+```typescript
+    renderScheduler(
+        document.getElementById("my-container"),
+        visualizeObj,
+        {
+          events: {
+            error: (error: { [key: string]: string }) => {
+              console.log("error => ", error);
+            }
+          },
         }
-      }
     )
 ```
 
