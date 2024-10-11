@@ -10,8 +10,10 @@
   04. HOME PAGE
 
   05. MAIN CONTENT
+
+  06. OVERRIDES
   -----------------------------------
-  File last modified Oct 8, 2024
+  File last modified Oct 10, 2024
   ----------------------------------- */
 
 /* --------------------- */
@@ -57,6 +59,7 @@
 /* ---------------- */
 /* 02. BASE RULES   */
 /* ---------------- */
+// HTML elements
 a {
   color: #0078bd;
 }
@@ -80,6 +83,22 @@ th, td {
 
 b, strong {
   font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
+}
+
+// Special
+p.compact-short {
+  margin: 0 0 2px 0;
+  padding: 0;
+}
+
+p.compact-long {
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+
+p.compact-short:last-of-type,
+p.compact-long:last-of-type {
+  margin-bottom: 0;
 }
 
 
@@ -397,11 +416,11 @@ a.nav-list-link {
   border-radius: 8px;
   display: block;
   //height: 400px;
-/*  box-shadow: -54px 94px 30px 0 rgba(14, 53, 83, 0.00),
-  -35px 60px 28px 0 rgba(14, 53, 83, 0.01),
-  -19px 34px 23px 0 rgba(14, 53, 83, 0.03),
-  -9px 15px 17px 0 rgba(14, 53, 83, 0.04),
-  -2px 4px 10px 0 rgba(14, 53, 83, 0.05);*/
+  /*  box-shadow: -54px 94px 30px 0 rgba(14, 53, 83, 0.00),
+    -35px 60px 28px 0 rgba(14, 53, 83, 0.01),
+    -19px 34px 23px 0 rgba(14, 53, 83, 0.03),
+    -9px 15px 17px 0 rgba(14, 53, 83, 0.04),
+    -2px 4px 10px 0 rgba(14, 53, 83, 0.05);*/
   margin: 48px 0;
   width: 696px;
 }
@@ -754,6 +773,9 @@ a.nav-list-link {
     max-width: 800px;
     margin-left: 350px;
   }
+  .main:has(table.configuration) {
+    max-width: 1000px;
+  }
 }
 @media (min-width: 66.5rem) { /* 1064px */
   .main {
@@ -893,4 +915,88 @@ div.highlighter-rouge {
   overflow-x: auto;
   height: 526px;
   padding: 10px;
+}
+
+
+/* ---------------- */
+/* 06. OVERRIDES    */
+/* ---------------- */
+.table-wrapper {
+  border-radius: 0 !important;
+  box-shadow: unset;
+}
+
+table {
+  border-collapse: collapse;
+  line-height: 1.4;
+}
+
+thead th,
+td {
+  border-bottom: 1px solid #e5eaed;
+  font-size: 14px;
+  padding: 12px 20px;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  color: #212121;
+  font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
+  white-space: nowrap;
+}
+
+th:first-of-type,
+td:first-of-type {
+  padding-left: 0;
+}
+
+tbody tr:last-of-type td {
+  border-bottom: 1px solid #e5eaed;
+}
+
+.configuration code {
+  background-color: white;
+  border: unset;
+  font-size: 12px;
+}
+
+.configuration code p {
+  font-size: inherit;
+  margin: 0 0 2px 12px;
+  padding: 0;
+  white-space: nowrap;
+}
+
+
+/* -------------- */
+/* 07. UTILITY    */
+/* -------------- */
+.spacer-12 {
+  height: 12px;
+  width: 12px;
+}
+
+.spacer-16 {
+  height: 16px;
+  width: 16px;
+}
+
+.spacer-20 {
+  height: 20px;
+  width: 20px;
+}
+
+.spacer-24 {
+  height: 24px;
+  width: 24px;
+}
+
+.dark {
+  color: #212121;
+}
+
+code.inline {
+  font-size: 14px;
+  font-weight: inline;
 }
