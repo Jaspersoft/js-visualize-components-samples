@@ -52,9 +52,3 @@
 4. Access the project at [http://localhost:4000/js-visualize-components-samples/](http://localhost:4000/js-visualize-components-samples/)
 
 
-### Steps to deploy to GitHub Pages 
-
-1. Build project using `bundle exec jekyll build`
-1. Commit `_site` subtree to `gh-pages` branch: `git subtree split --branch gh-pages --prefix _site/`
-1. Wait for GitHub deployment to finish
-1. Access site at [GitHub Pages URL](https://jaspersoft.github.io/js-visualize-components-samples/).
