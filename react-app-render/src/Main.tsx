@@ -2,7 +2,7 @@ import useVisualize from "./visualize/useVisualize";
 import {useEffect, useState} from "react";
 import {applicationPageStart, inputControlsPageStart, schedulerPageStart} from "./constants/liveSamplesConstants";
 import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLiveSample";
-import {SchedulerLiveSample} from "./SchedulerLiveSample/SchedulerLiveSample";
+// import {SchedulerLiveSample} from "./SchedulerLiveSample/SchedulerLiveSample";
 import App from "./endToEndPluginFlow/App";
 
 const visualizeUrl = "https://localhost:8443/jasperserver-pro/client/visualize.js";

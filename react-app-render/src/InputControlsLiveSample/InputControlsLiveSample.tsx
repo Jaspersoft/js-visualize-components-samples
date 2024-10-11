@@ -20,7 +20,7 @@ const InputControlsLiveSample = ({vContainer}: any) => {
                 error: (error) => {
                     console.log("Error when rendering the Basic controls: ", error);
                 },
-                config: {
+                typeConfig: {
                     singleValueDatetime: {
                         type: "default", // even if it isn't provided, this will be the default component
                     },
