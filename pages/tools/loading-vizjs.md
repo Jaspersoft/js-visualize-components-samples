@@ -99,7 +99,7 @@ And now we will render input controls using `VisualizeClient` instance and `rend
                 error: (error) => {
                     console.log("Error rendering input controls: ", error);
                 },
-                config: {
+                typeConfig: {
                     bool: {
                         type: "switch"
                     },
