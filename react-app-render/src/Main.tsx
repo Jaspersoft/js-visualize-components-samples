@@ -5,7 +5,8 @@ import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLive
 // import {SchedulerLiveSample} from "./SchedulerLiveSample/SchedulerLiveSample";
 import App from "./endToEndPluginFlow/App";
 
-const visualizeUrl = "https://localhost:8443/jasperserver-pro/client/visualize.js";
+const visualizeUrl = "https://mobiledemo.jaspersoft.com/jasperserver-pro/client/visualize.js";
+// const visualizeUrl = "https://localhost:8443/jasperserver-pro/client/visualize.js";
 
 const getLiveSamplePage = (pageName: string, vContainer: any) => {
     switch (pageName){
