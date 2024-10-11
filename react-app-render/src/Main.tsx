@@ -1,5 +1,5 @@
 import useVisualize from "./visualize/useVisualize";
-import {useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {applicationPageStart, inputControlsPageStart, schedulerPageStart} from "./constants/liveSamplesConstants";
 import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLiveSample";
 // import {SchedulerLiveSample} from "./SchedulerLiveSample/SchedulerLiveSample";
@@ -23,7 +23,7 @@ const getLiveSamplePage = (pageName: string, vContainer: any) => {
 
 const Main = () => {
     const vContainer = useVisualize(visualizeUrl);
-    const [sampleComponent, setSampleComponent] = useState<React.ReactNode | null>(null)
+    const [sampleComponent, setSampleComponent] = useState<ReactNode | null>(null)
 
 
     useEffect(() => {
