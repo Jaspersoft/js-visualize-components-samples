@@ -46,8 +46,7 @@ import {
 - Provide the `visualizejsLoader` a valid URL from where the Visualize.js library should be downloaded.
 - If you don't provide a URL because Visualize.js is already loaded into the window object, then this package will automatically take it from there.
 - When you provide a valid URL, this method will add a new script tag in your application's document referencing the URL you provided, making the Visualize.js library available for your application.
-- `visualizejsLoader` is a promise, so you must execute it and it will return the `VisualizeFactory`. Make sure your store this reference in your application because it will be needed later for logging in the user to JRS.
-- More details about this loading can be found at: [Loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
+- `visualizejsLoader` is a promise, so you must execute it and it will return the `VisualizeFactory`. Make sure your store this reference in your application because it will be needed later for logging in the user to JasperReports Server.
 
 ## Authentication
 
@@ -68,7 +67,7 @@ import {
 * After authenticating, the `VisualizeClient` object (or simply `v` object) is returned. It is used to
   interact with the Visualize.js API. Store a reference to this object in a global scope of your application to perform other operations with Visualize.js, such as loading a report.
 
-More info about the tools can be found in this [guide]({{site.baseurl}}/pages/tools/loading-vizjs).
+More details about Visualize.js loader can be found at [loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
 ## Render the input controls
 
