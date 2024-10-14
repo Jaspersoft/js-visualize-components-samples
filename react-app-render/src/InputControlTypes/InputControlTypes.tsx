@@ -1,7 +1,7 @@
 import {CodeForInputControlTypes} from "../constants/codeForInputControlTypes.ts";
 import InputControlType from "./InputControlType.tsx";
 
-const InputControlTypes = (vContainer: any) => {
+const InputControlTypes = ({vContainer}: any) => {
     return (<>
         {CodeForInputControlTypes.map((icType, index) => {
             return <InputControlType {...icType}

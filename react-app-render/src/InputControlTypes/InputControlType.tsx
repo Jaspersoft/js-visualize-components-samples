@@ -90,7 +90,7 @@ const InputControlType = (props: {
             <div className="main-container"
                  style={{display: showEditor ? "none" : "block"}}>
                 <PreviewCode uri={props.reportUri}
-                             vizObj={props.vContainer}
+                             vContainer={props.vContainer}
                              refId={refId}/>
             </div>
         </div>

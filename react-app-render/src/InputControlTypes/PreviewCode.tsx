@@ -1,12 +1,11 @@
 import {renderInputControls} from "@jaspersoft/jv-input-controls";
 import {useEffect} from "react";
 
-const PreviewCode = ({uri, refId, vizObj}: { uri: string, refId: string, vizObj: any }) => {
-
+const PreviewCode = ({uri, refId, vContainer}: { uri: string, refId: string, vContainer: any }) => {
     useEffect(() => {
-        if (vizObj?.vContainer?.v) {
+        if (vContainer?.v) {
             renderInputControls(
-                vizObj.vContainer.v,
+                vContainer.v,
                 uri,
                 document.getElementById(refId) as HTMLElement,
                 {
@@ -26,10 +25,10 @@ const PreviewCode = ({uri, refId, vizObj}: { uri: string, refId: string, vizObj:
             );
         }
 
-    }, [vizObj]);
+    }, [vContainer]);
     return (
         <>
-            {vizObj?.vContainer?.v && <div id="controls-demo-page">
+            {vContainer?.v && <div id="controls-demo-page">
                 <div className="jv-lColumns">
                     <div className="jv-lColumns-column jr-uWidth-300px">
                         <div className="jv-mPanel mui">
@@ -46,7 +45,7 @@ const PreviewCode = ({uri, refId, vizObj}: { uri: string, refId: string, vizObj:
                     </div>
                 </div>
             </div>}
-            {!vizObj?.vContainer?.v && <div>Loading...</div>}
+            {!vContainer?.v && <div>Loading...</div>}
         </>
     );
 };
