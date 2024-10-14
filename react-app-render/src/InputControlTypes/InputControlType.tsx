@@ -18,6 +18,7 @@ const InputControlType = (props: {
     jsContent: string,
     reactContent: string,
     vContainer: any,
+    reportUri: string,
     id: number | string
 }) => {
     const [contentType, setContentType] = useState("js");
@@ -88,7 +89,7 @@ const InputControlType = (props: {
 
             <div className="main-container"
                  style={{display: showEditor ? "none" : "block"}}>
-                <PreviewCode uri="/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report"
+                <PreviewCode uri={props.reportUri}
                              vizObj={props.vContainer}
                              refId={refId}/>
             </div>

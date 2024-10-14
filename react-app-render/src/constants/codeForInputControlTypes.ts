@@ -2,6 +2,7 @@ export interface CodeConstants {
     title: string;
     jsCode: string;
     reactCode: string;
+    reportUri: string;
 }
 
 export const CodeForInputControlTypes: CodeConstants[] = [
@@ -37,7 +38,8 @@ export const CodeForInputControlTypes: CodeConstants[] = [
     },
   };
   <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />
-`
+`,
+        reportUri: "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
     },
     {
         title: "Checkbox Boolean Input Control",
@@ -71,7 +73,7 @@ export const CodeForInputControlTypes: CodeConstants[] = [
     },
   };
   <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />
-`
-
+`,
+        reportUri: "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
     }
-]
+];
