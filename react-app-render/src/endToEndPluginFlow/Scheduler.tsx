@@ -34,6 +34,7 @@ export const Scheduler = ({
         style={{ height: "100%" }}
       >
         <JaspersoftScheduler
+            // @ts-ignore
           schedulerUIConfig={schedulerUIConfig}
           visualize={visualize}
         />

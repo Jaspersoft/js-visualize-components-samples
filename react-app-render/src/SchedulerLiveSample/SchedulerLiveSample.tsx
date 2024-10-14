@@ -10,6 +10,7 @@ export const SchedulerLiveSample = ({vContainer}: any) => {
     return (
         <>
         <Scheduler
+            // @ts-ignore
             schedulerUIConfig={schedulerUIConfig}
             visualize={vContainer.v}
         />

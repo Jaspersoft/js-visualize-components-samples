@@ -46,6 +46,7 @@ function App({visualize}: any) {
 
 
     console.log(SchedulerConfig, "SchedulerConfig");
+    // @ts-ignore
     return (
         <>
             <div id="scheduler"></div>
@@ -58,6 +59,8 @@ function App({visualize}: any) {
                   Resource URI :{" "}
                 </span>
                         <span className="pageHeader-subtitle-path-text">
+
+                            {/*@ts-ignore*/}
                   {schedulerUIConfig.resourceURI}
                 </span>
                     </div>
@@ -80,6 +83,7 @@ function App({visualize}: any) {
             ></div>
             <ReportPanel
                 vObject={visualize.v}
+                // @ts-ignore
                 resourceURI={schedulerUIConfig.resourceURI}
             />
             {isPanelOpen && (
@@ -87,6 +91,8 @@ function App({visualize}: any) {
                     visualize={visualize.v}
                     schedulerUIConfig={schedulerUIConfig}
                     isPanelOpen={isPanelOpen}
+                    // @ts-ignore
+                    uri={resourceUri}
                 />
             )}
 
