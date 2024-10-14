@@ -3,10 +3,14 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow_night";
-// import * as ace from 'ace-builds/src-noconflict/ace';
+import * as ace from 'ace-builds/src-noconflict/ace';
 import beautify from 'ace-builds/src-noconflict/ext-beautify';
 import {createRef, useEffect, useState} from "react";
 import {aceEditorModes} from "../constants/liveSamplesConstants.ts";
+
+ace.config.set('basePath', './');
+ace.config.set('modePath', './');
+ace.config.set('themePath', './');
 
 const InputControlType = (props: any) => {
     const [contentType, setContentType] = useState('js');
