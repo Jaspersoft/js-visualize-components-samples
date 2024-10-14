@@ -1,27 +1,51 @@
 import {renderInputControls} from "@jaspersoft/jv-input-controls";
 import {useEffect} from "react";
+import {CommonParamsForInputControl} from "../constants/codeForInputControlTypes.ts";
 
-const PreviewCode = ({uri, refId, vContainer}: { uri: string, refId: string, vContainer: any }) => {
+const PreviewCode = ({uri, refId, vContainer, config}: {
+    uri: string,
+    refId: string,
+    vContainer: any,
+    config?: CommonParamsForInputControl
+}) => {
+
+    const finalConfig: any = {
+        success: () => {
+            console.log("Input controls rendered successfully");
+        },
+        error: (error: any) => {
+            console.log("Error rendering input controls: ", error);
+        },
+        events: {
+            change: (ics: any[], validationResult: any[] | boolean) => {
+                console.log("validationResult => ", validationResult);
+                console.log("ics => ", ics);
+            },
+        },
+    };
+    if (config?.typeConfig) {
+        finalConfig.typeConfig = config.typeConfig;
+    }
+    if (config?.params) {
+        finalConfig.params = config.params;
+    }
+    if (config?.success) {
+        finalConfig.success = config.success;
+    }
+    if (config?.error) {
+        finalConfig.error = config.error;
+    }
+    if (config?.events) {
+        finalConfig.events = config.events;
+    }
+
     useEffect(() => {
         if (vContainer?.v) {
             renderInputControls(
                 vContainer.v,
                 uri,
                 document.getElementById(refId) as HTMLElement,
-                {
-                    success: () => {
-                        console.log("Input controls rendered successfully");
-                    },
-                    error: (error) => {
-                        console.log("Error rendering input controls: ", error);
-                    },
-                    events: {
-                        change: (ics, validationResult) => {
-                            console.log("validationResult => ", validationResult);
-                            console.log("ics => ", ics);
-                        },
-                    },
-                },
+                finalConfig
             );
         }
 

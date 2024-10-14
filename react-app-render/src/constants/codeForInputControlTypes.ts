@@ -1,8 +1,23 @@
+export interface CommonParamsForInputControl {
+    typeConfig?: any;
+    params?: { [key: string]: string[] };
+    success?: (controls: any) => void;
+    error?: (error: any) => void;
+    events?: {
+        change?: (
+            ic: { [key: string]: any[] },
+            validationResult: { [key: string]: string } | boolean,
+        ) => void;
+    };
+}
+
 export interface CodeConstants {
     title: string;
     jsCode: string;
     reactCode: string;
     reportUri: string;
+    // Optional properties:
+    config?: CommonParamsForInputControl;
 }
 
 export const CodeForInputControlTypes: CodeConstants[] = [
@@ -10,7 +25,7 @@ export const CodeForInputControlTypes: CodeConstants[] = [
         title: "Switch Boolean Input Control",
         jsCode: `renderInputControls(
       vContainer.v,
-      "/BOOLEAN/REPORT/URI",
+      "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
       document.getElementById("input-controls-container") as HTMLElement,
       {
         success: () => {
@@ -45,7 +60,7 @@ export const CodeForInputControlTypes: CodeConstants[] = [
         title: "Checkbox Boolean Input Control",
         jsCode: `renderInputControls(
       vContainer.v,
-      "/BOOLEAN/REPORT/URI",
+      "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
       document.getElementById("input-controls-container") as HTMLElement,
       {
         success: () => {
@@ -61,6 +76,16 @@ export const CodeForInputControlTypes: CodeConstants[] = [
             console.log("ics => ", ics);
           },
         },
+        params: {
+            column_boolean_1: ["false"],
+            column_string_1: [
+                "This is a predefined text different than the stored in the server",
+            ],
+            id_1: ["99"],
+            column_date_1: ["2009-03-02"],
+            column_timestamp_1: ["2014-03-02T10:00:00"],
+            column_time_1: ["14:00:00"],
+        }
       },
     )`,
         reactCode: `const panelD: InputControlsConfig = {
@@ -71,9 +96,32 @@ export const CodeForInputControlTypes: CodeConstants[] = [
         if (vs) console.log("Validations: ", vs);
       },
     },
+    params: {
+            column_boolean_1: ["false"],
+            column_string_1: [
+                "This is a predefined text different than the stored in the server",
+            ],
+            id_1: ["99"],
+            column_date_1: ["2009-03-02"],
+            column_timestamp_1: ["2014-03-02T10:00:00"],
+            column_time_1: ["14:00:00"],
+        }
   };
-  <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />
+  <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
 `,
         reportUri: "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
+        config: {
+            params: {
+                column_boolean_1: ["false"],
+                column_string_1: [
+                    "This is a predefined text different than the stored in the server",
+                ],
+                id_1: ["99"],
+                column_date_1: ["2009-03-02"],
+                column_timestamp_1: ["2014-03-02T10:00:00"],
+                column_time_1: ["14:00:00"],
+            },
+        }
+
     }
 ];

@@ -8,6 +8,7 @@ import beautify from "ace-builds/src-noconflict/ext-beautify";
 import {createRef, useEffect, useState} from "react";
 import {aceEditorModes} from "../constants/liveSamplesConstants.ts";
 import PreviewCode from "./PreviewCode.tsx";
+import {CommonParamsForInputControl} from "../constants/codeForInputControlTypes.ts";
 
 ace.config.set("basePath", "./");
 ace.config.set("modePath", "./");
@@ -19,7 +20,8 @@ const InputControlType = (props: {
     reactContent: string,
     vContainer: any,
     reportUri: string,
-    id: number | string
+    id: number | string,
+    config?: CommonParamsForInputControl
 }) => {
     const [contentType, setContentType] = useState("js");
     const [codeContent, setCodeContent] = useState(props.jsContent);
@@ -91,6 +93,7 @@ const InputControlType = (props: {
                  style={{display: showEditor ? "none" : "block"}}>
                 <PreviewCode uri={props.reportUri}
                              vContainer={props.vContainer}
+                             config={props.config}
                              refId={refId}/>
             </div>
         </div>
