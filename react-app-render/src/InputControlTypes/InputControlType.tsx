@@ -9,16 +9,15 @@ import {createRef, useEffect, useState} from "react";
 import {aceEditorModes} from "../constants/liveSamplesConstants.ts";
 
 const InputControlType = (props: any) => {
-    const jsContent = props.jsContent;
-    const [contentType] = useState('js');
-    const [codeContent] = useState(jsContent);
+    const [contentType, setContentType] = useState('js');
+    const [codeContent, setCodeContent] = useState(props.jsContent);
     const ref = createRef<any>();
     const editorRef = createRef<any>();
 
     useEffect(() => {
         if (contentType === 'preview' && !ref.current?.firstChild) {
             let previewContainer = document.createElement('div');
-            previewContainer.innerHTML = jsContent;
+            previewContainer.innerHTML = props.jsContent;
             ref.current?.append(previewContainer);
         }
     }, [ref])
@@ -28,12 +27,37 @@ const InputControlType = (props: any) => {
     }, [editorRef]);
 
 
+    const onTabChange = (e: any, content: string, type: string) => {
+        let currentElement = e.currentTarget;
+        let tablinks = currentElement.parentElement.getElementsByClassName('tablinks');
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        currentElement.className += " active";
+        setCodeContent(content);
+        setContentType(type || 'javascript');
+        const siblingElement = currentElement.parentElement.nextElementSibling,
+            firstChild = siblingElement.firstChild,
+            lastChild = siblingElement.lastChild;
+        if (type === 'preview') {
+            // onPreviewTabClick();
+            firstChild.style.display = 'none';
+            lastChild.style.display = 'block';
+        } else {
+            firstChild.style.display = 'block';
+            lastChild.style.display = 'none';
+        }
+    };
+
+
     return (<>
         <div className="paper">
-            <h3>{props.title||""}</h3>
+            <h3>{props.title || ""}</h3>
             <ul className="tab">
-                <li className="tablinks ">JavaScript</li>
-                <li className="tablinks">React</li>
+                <li className="tablinks active"
+                    onClick={(e) => onTabChange(e, props.jsContent, 'js')}>JavaScript
+                </li>
+                <li className="tablinks" onClick={(e) => onTabChange(e, props.reactContent, 'react')}>React</li>
                 <li className="tablinks">Preview</li>
                 <li className="tablinks" style={{float: 'right'}}>
                     {/*<button className='open-fiddle' onClick={() => {*/}

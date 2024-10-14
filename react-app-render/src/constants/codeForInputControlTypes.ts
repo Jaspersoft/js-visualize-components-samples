@@ -1,14 +1,13 @@
 export interface CodeConstants {
     title: string;
-    code: string;
-    isJS: boolean;
+    jsCode: string;
+    reactCode: string;
 }
 
 export const CodeForInputControlTypes: CodeConstants[] = [
     {
         title: "Switch Boolean Input Control",
-        isJS: true,
-        code: `renderInputControls(
+        jsCode: `renderInputControls(
       vContainer.v,
       "/BOOLEAN/REPORT/URI",
       document.getElementById("input-controls-container") as HTMLElement,
@@ -27,12 +26,22 @@ export const CodeForInputControlTypes: CodeConstants[] = [
           },
         },
       },
-    )`
+    )`,
+        reactCode: `const panelD: InputControlsConfig = {
+    typeConfig: { bool: { type: "switch" } },
+    events: {
+      change: (ics: any, vs: any) => {
+        console.log("ics: ", ics);
+        if (vs) console.log("Validations: ", vs);
+      },
+    },
+  };
+  <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />
+`
     },
     {
         title: "Checkbox Boolean Input Control",
-        isJS: true,
-        code: `renderInputControls(
+        jsCode: `renderInputControls(
       vContainer.v,
       "/BOOLEAN/REPORT/URI",
       document.getElementById("input-controls-container") as HTMLElement,
@@ -51,6 +60,18 @@ export const CodeForInputControlTypes: CodeConstants[] = [
           },
         },
       },
-    )`
+    )`,
+        reactCode: `const panelD: InputControlsConfig = {
+    typeConfig: { bool: { type: "checkbox" } },
+    events: {
+      change: (ics: any, vs: any) => {
+        console.log("ics: ", ics);
+        if (vs) console.log("Validations: ", vs);
+      },
+    },
+  };
+  <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />
+`
+
     }
 ]

@@ -5,8 +5,8 @@ const InputControlTypes = (props: any) => {
     console.log("(InputControlTypes.tsx:5) props => ", props);
 
     return (<>
-        {CodeForInputControlTypes.map(({code, title}) => {
-            return <InputControlType jsContent={code} title={title}/>;
+        {CodeForInputControlTypes.map(({jsCode, title, reactCode}) => {
+            return <InputControlType jsContent={jsCode} title={title} reactContent={reactCode}/>;
         })}
     </>);
 }
