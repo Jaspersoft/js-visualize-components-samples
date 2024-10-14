@@ -23,10 +23,10 @@ events?: {
 ```
 
 ## Cancel button click
-The user must implement a `cancelBtnClick` function to handle actions when the Cancel button is clicked in the scheduler control panel. This function is optional.
+The developer needs implement a `cancelBtnClick` function to handle actions when the Cancel button is clicked in the scheduler control panel. This function is optional.
 
 ## Schedule button click
-The user needs to implement a `scheduleBtnClick` function to handle actions when the Schedule button is clicked in the scheduler control panel. This function will receive two parameters: `isScheduleCreatedSuccessfully` and `jobInformation`.
+The developer needs to implement a `scheduleBtnClick` function to handle actions when the Schedule button is clicked in the scheduler control panel. This function will receive two parameters: `isScheduleCreatedSuccessfully` and `jobInformation`.
 - If the job is created successfully:
     - `isScheduleCreatedSuccessfully` will be `true`.
     - `jobInformation` will contain the details of the created job.
@@ -37,36 +37,34 @@ The user needs to implement a `scheduleBtnClick` function to handle actions when
 
 
 ## Success
-When Scheduler plugin is successfully rendered, the success function will be called. This function is optional.
+When Scheduler is successfully rendered, the success function will be called. This function is optional.
 
 ## Error
-When Scheduler plugin throws error while rendering, the success function will be called. This function is optional.
+When Scheduler throws error while rendering, the error function will be called. This function is optional.
 
-## Handling validations
-
-To handle validations on the developer side, you have to use the [events.error]({{site.baseurl}}/pages/scheduler/events.html#handling-errors) method when calling the 
-`renderScheduler`. This method will return an error parameter that contains all the validations. For example:
+## Example of calling renderScheduler
 
 ```javascript
     renderScheduler(
-      document.getElementById("my-container"),
-      visualizeObj,
-      {
-        events: {
-            success: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => {
-                console.log("Success", jobInformation);
-            },
-            error: (errorObj: {[key:string]: string}) => {
-                console.log("Error", errorObj);
-            },
-            cancelBtnClick: () => {
-                console.log("Cancel button is clicked");
-            },
-            scheduleBtnClick: () => {
-                console.log("Create schedule button is clicked");
-            },
+        visualizeClient,
+        "/path/to/resource",
+        document.getElementById("my-container"),
+        {
+          events: {
+              success: () => {
+                  console.log("Success");
+              },
+              error: (error: {[key:string]: string}) => {
+                  console.log("Error", error);
+              },
+              cancelBtnClick: () => {
+                  console.log("Cancel button is clicked");
+              },
+              scheduleBtnClick: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => {
+                  console.log("Schedule button clicked", isScheduleSuccessful, jobInfo);
+              },
+          }
         }
-      }
     )
 ```
 
@@ -77,8 +75,9 @@ return an error object when trying to render the scheduler UI in case of an erro
 For example:
 ```typescript
     renderScheduler(
+        visualizeClient,
+        "/path/to/resource",
         document.getElementById("my-container"),
-        visualizeObj,
         {
           events: {
             error: (error: { [key: string]: string }) => {

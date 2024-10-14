@@ -123,46 +123,46 @@ stepper: {
     "tabsOrder": ["schedule", "parameters", "notifications", "output"],
     "tabsData": {
       "schedule": {
-          "label": { "showField": true, "value": "" },
+          "label": { "show": true, "value": "" },
           "description": {
             "value": "",
-            "showField": true
+            "show": true
           },
-          "recurrenceInterval": { "showField": true, "value": 1 },
+          "recurrenceInterval": { "show": true, "value": 1 },
           "recurrenceIntervalUnit": {
-            "showField": true,
+            "show": true,
             "value": "DAY"
           },
           "startTime": {
-            "showField": true,
+            "show": true,
             "value": "now"
           }
       },
       "output": {
           "baseOutputFilename": {
-            "showField": true,
+            "show": true,
             "value": ""
           },
           "outputDescription": {
-            "showField": true,
+            "show": true,
             "value": ""
           },
-          "outputFormat": { "showField": true, "value": ["pdf"] },
+          "outputFormat": { "show": true, "value": ["pdf"] },
           "outputTimeZone": {
-            "showField": true,
+            "show": true,
             "value": ""
           }
       },
       "parameters": {
       },
       "notifications": {
-          "address": { "showField": true, "value": [] },
-          "subject": { "showField": true, "value": "" },
+          "address": { "show": true, "value": [] },
+          "subject": { "show": true, "value": "" },
           "messageText": {
             "value": ""
           },
           "reportAccessType": {
-            "showField": true,
+            "show": true,
             "value": "SEND_ATTACHMENT"
           }
       }
@@ -262,13 +262,13 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
       </td>
       <td>Visibility and default value of label field</td>
-      <td>If showField is false, a value is required.</td>
+      <td>If show is false, a value is required.</td>
       <td>The maximum length of value is 100 characters.</td>
     </tr>
     <tr>
@@ -276,7 +276,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
@@ -290,7 +290,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: 1</p>
             }
           </code>
@@ -304,7 +304,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: "DAY"</p>
             }
           </code>
@@ -322,7 +322,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: "now"</p>
             }
           </code>
@@ -355,13 +355,13 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
       </td>
       <td>Visibility and default value of address field</td>
-      <td>If showField is false, a value is required.</td>
+      <td>If show is false, a value is required.</td>
       <td>One or more email addresses should be valid.</td>
     </tr>
     <tr>
@@ -369,13 +369,13 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
       </td>
       <td>Visibility and default value of subject field</td>
-      <td>If showField is false, a value is required.</td>
+      <td>If show is false, a value is required.</td>
       <td>The maximum length is 100 characters.</td>
     </tr>
     <tr>
@@ -383,7 +383,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
@@ -393,16 +393,16 @@ stepper: {
       <td>The maximum length is 2000 characters.</td>
     </tr>
     <tr>
-      <td>reportAccessType</td>
+      <td>resultSendType</td>
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: "SEND_ATTACHMENT"</p>
             }
           </code>
       </td>
-      <td>Visibility and default value of reportAccessType field</td>
+      <td>Visibility and default value of resultSendType field</td>
       <td>No</td>
       <td>The value must be either 'SEND_ATTACHMENT' or a valid JasperReports Server folder path. If the value is 'SEND_ATTACHMENT', the option to 'Include report/dashboard file as attachment' will be selected. If the value is a folder path, it must not include any invalid characters, and the option 'Include report/dashboard as repository link' will be selected.</td>
     </tr>
@@ -430,7 +430,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
@@ -447,7 +447,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
@@ -461,7 +461,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ["pdf"]</p>
             }
           </code>
@@ -475,7 +475,7 @@ stepper: {
       <td>object</td>
       <td><code>
             {
-            <p>showField: true,</p>
+            <p>show: true,</p>
             <p>value: ""</p>
             }
           </code>
