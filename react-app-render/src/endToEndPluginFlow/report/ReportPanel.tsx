@@ -6,7 +6,7 @@
 import { VisualizeClient } from "@jaspersoft/jv-tools";
 import { useEffect } from "react";
 
-interface ReportPanelProps {
+export interface ReportPanelProps {
   resourceURI?: string;
   vObject?: VisualizeClient;
 }
