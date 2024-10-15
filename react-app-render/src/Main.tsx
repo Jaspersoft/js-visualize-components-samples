@@ -14,7 +14,7 @@ import InputControlTypes from "./InputControlTypes/InputControlTypes.tsx";
 
 const visualizeUrl =
   "https://mobiledemo.jaspersoft.com/jasperserver-pro/client/visualize.js";
-// const visualizeUrl = "https://localhost:8443/jasperserver-pro/client/visualize.js";
+// const visualizeUrl = "http://localhost:8080/jasperserver-pro/client/visualize.js";
 
 const resourceUri = "/public/Samples/Reports/9.CustomerDetailReport";
 const getLiveSamplePage = (pageName: string, vContainer: any) => {
@@ -63,4 +63,3 @@ const Main = () => {
 };
 
 export default Main;
-

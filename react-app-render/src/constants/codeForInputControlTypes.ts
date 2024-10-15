@@ -23,105 +23,192 @@ export interface CodeConstants {
 export const CodeForInputControlTypes: CodeConstants[] = [
     {
         title: "Switch Boolean Input Control",
-        jsCode: `renderInputControls(
+        jsCode: `const reportUri = "/public/JVC_IC_Samples/Boolean";
+        const configuration: InputControlsConfig = {};
+        renderInputControls(
       vContainer.v,
-      "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
+      reportUri,
       document.getElementById("input-controls-container") as HTMLElement,
-      {
-        success: () => {
-          console.log("Input controls rendered successfully");
-        },
-        error: (error) => {
-          console.log("Error rendering input controls: ", error);
-        },
-        typeConfig: { bool: { type: "switch" } },
-        events: {
-          change: (ics, validationResult) => {
-            console.log("validationResult => ", validationResult);
-            console.log("ics => ", ics);
-          },
-        },
-      },
+      configuration
     )`,
-        reactCode: `const panelD: InputControlsConfig = {
-    typeConfig: { bool: { type: "switch" } },
-    events: {
-      change: (ics: any, vs: any) => {
-        console.log("ics: ", ics);
-        if (vs) console.log("Validations: ", vs);
-      },
-    },
-  };
+        reactCode: ` const reportUri = "/public/JVC_IC_Samples/Boolean";
+const panelD: InputControlsConfig = {};
   <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />
 `,
-        reportUri: "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
+        reportUri: "/public/JVC_IC_Samples/Boolean",
+        config: {}
     },
     {
         title: "Checkbox Boolean Input Control",
-        jsCode: `renderInputControls(
+        jsCode: `const reportUri = "/public/JVC_IC_Samples/Boolean";
+        const configuration: InputControlsConfig = { typeConfig: { bool: { type: "switch" } },};
+        renderInputControls(
       vContainer.v,
-      "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
+      reportUri,
       document.getElementById("input-controls-container") as HTMLElement,
-      {
-        success: () => {
-          console.log("Input controls rendered successfully");
-        },
-        error: (error) => {
-          console.log("Error rendering input controls: ", error);
-        },
-        typeConfig: { bool: { type: "checkbox" } }, // you can omit this property as it is the default value.
-        events: {
-          change: (ics, validationResult) => {
-            console.log("validationResult => ", validationResult);
-            console.log("ics => ", ics);
-          },
-        },
-        params: {
-            column_boolean_1: ["false"],
-            column_string_1: [
-                "This is a predefined text different than the stored in the server",
-            ],
-            id_1: ["99"],
-            column_date_1: ["2009-03-02"],
-            column_timestamp_1: ["2014-03-02T10:00:00"],
-            column_time_1: ["14:00:00"],
-        }
-      },
+      configuration,
     )`,
-        reactCode: `const panelD: InputControlsConfig = {
-    typeConfig: { bool: { type: "checkbox" } },
-    events: {
-      change: (ics: any, vs: any) => {
-        console.log("ics: ", ics);
-        if (vs) console.log("Validations: ", vs);
-      },
-    },
-    params: {
-            column_boolean_1: ["false"],
-            column_string_1: [
-                "This is a predefined text different than the stored in the server",
-            ],
-            id_1: ["99"],
-            column_date_1: ["2009-03-02"],
-            column_timestamp_1: ["2014-03-02T10:00:00"],
-            column_time_1: ["14:00:00"],
-        }
-  };
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Boolean";
+const panelD: InputControlsConfig = { typeConfig: { bool: { type: "switch" } }, };
   <InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
 `,
-        reportUri: "/public/viz/Adhoc/Ad_Hoc_View_All_filters_Report",
+        reportUri: "/public/JVC_IC_Samples/Boolean",
         config: {
-            params: {
-                column_boolean_1: ["false"],
-                column_string_1: [
-                    "This is a predefined text different than the stored in the server",
-                ],
-                id_1: ["99"],
-                column_date_1: ["2009-03-02"],
-                column_timestamp_1: ["2014-03-02T10:00:00"],
-                column_time_1: ["14:00:00"],
-            },
+            typeConfig: {bool: {type: "switch"}}
         }
-
+    },
+    {
+        title: "Date Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Date";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Date";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Date",
+        config: {}
+    },
+    {
+        title: "Datetime Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Datetime";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Datetime";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Datetime",
+        config: {}
+    },
+    {
+        title: "Datetime Input Control with Material UI",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Datetime";
+        const configuration: InputControlsConfig = {
+            typeConfig: {
+                singleValueDatetime: {
+                    type: "material",
+                },
+            }
+        };
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Datetime";
+const panelD: InputControlsConfig = {
+            typeConfig: {
+                singleValueDatetime: {
+                    type: "material",
+                },
+            }
+        };
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Datetime",
+        config: {
+            typeConfig: {
+                singleValueDatetime: {
+                    type: "material",
+                },
+            }
+        }
+    },
+    {
+        title: "Multi_Select Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Multi_Select";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Multi_Select";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Multi_Select",
+        config: {}
+    },
+    {
+        title: "Number Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Number";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Number";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Number",
+        config: {}
+    },
+    {
+        title: "Single_Select Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Single_Select";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Single_Select";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Single_Select",
+        config: {}
+    },
+    {
+        title: "Text Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Text";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Text";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Text",
+        config: {}
+    },
+    {
+        title: "Time Input Control",
+        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Time";
+        const configuration: InputControlsConfig = {},
+        renderInputControls(
+        vContainer.v,
+        reportUri,
+        document.getElementById("input-controls-container") as HTMLElement,
+        configuration,
+        )`,
+        reactCode: `const reportUri = "/public/JVC_IC_Samples/Time";
+const panelD: InputControlsConfig = {};
+<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
+`,
+        reportUri: "/public/JVC_IC_Samples/Time",
+        config: {}
     }
 ];
