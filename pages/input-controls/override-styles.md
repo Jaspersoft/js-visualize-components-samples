@@ -18,7 +18,7 @@ It is imported in the sample application's `index.css` and `App.tsx` files as fo
 ```css
 @import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
-Optionally, there is a configuration that enables you to use the default styles for the input controls components only. When this configuration is used, the other styles in your application will not be affected by the Visualize Components CSS:
+There is a configuration that enables you to use the default styles for the input controls components only. When this configuration is used, the other styles in your application will not be affected by the Visualize Components CSS:
 
 ``` ts
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
