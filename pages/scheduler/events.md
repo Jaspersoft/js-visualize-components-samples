@@ -8,7 +8,7 @@ has_children: false
 
 # Events
 
-In order to work with user input, you may provide a callback function which is called when certain events occur.
+To work with user input, you may provide a callback function which is called when certain events occur.
 
 When configuring the scheduler component, you may provide an object in the events property of your configuration object.
 
@@ -22,150 +22,131 @@ events?: {
 };
 ```
 
-## Cancel Button Click
-The user must implement a `cancelBtnClick` function to handle actions when the cancel button is clicked in the scheduler control panel. This function is optional.
+## Cancel button click
+The developer needs implement a `cancelBtnClick` function to handle actions when the Cancel button is clicked in the scheduler control panel. This function is optional.
 
-## Schedule Button Click
-The user needs to implement a `scheduleBtnClick` function to handle actions when the schedule button is clicked in the scheduler control panel. This function will receive two parameters: `isScheduleCreatedSuccessfully` and `jobInformation`.
+## Schedule button click
+The developer needs to implement a `scheduleBtnClick` function to handle actions when the Schedule button is clicked in the scheduler control panel. This function will receive two parameters: `isScheduleCreatedSuccessfully` and `jobInformation`.
 - If the job is created successfully:
-  - `isScheduleCreatedSuccessfully` will be `true`.
-  - `jobInformation` will contain the details of the created job.
+    - `isScheduleCreatedSuccessfully` will be `true`.
+    - `jobInformation` will contain the details of the created job.
 
 - If the job creation fails:
-  - `isScheduleCreatedSuccessfully` will be `false`.
-  - `jobInformation` will include the error information.
+    - `isScheduleCreatedSuccessfully` will be `false`.
+    - `jobInformation` will include the error information.
 
 
-## Successs
-When Scheduler ui plugin is successfully rendered, the success function will be called. This function is optional.
+## Success
+When Scheduler is successfully rendered, the success function will be called. This function is optional.
 
-## Error 
-When Scheduler ui plugin throws error while rendering, the success function will be called. This function is optional.
+## Error
+When Scheduler throws error while rendering, the error function will be called. This function is optional.
 
-## Handling validations
-
-To handle validations on the developer side, you have to use the
-[events.error]({{site.baseurl}}/pages/scheduler/events.html#handling-errors) method when calling
-the `renderControlPanel`. This method will return an error parameter that contains all the validations.
-E.g.:
+## Example of calling renderScheduler
 
 ```javascript
-    plugin.renderControlPanel(
-      document.getElementById("my-container"),
-      visualizeObj,
-      {
-        events: {
-            success: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => {
-                console.log("Success", jobInformation);
-            },
-            error: (errorObj: {[key:string]: string}) => {
-                console.log("Error", errorObj);
-            },
-            cancelBtnClick: () => {
-                console.log("Cancel button is clicked");
-            },
-            scheduleBtnClick: () => {
-                console.log("Create schedule button is clicked");
-            },
+    renderScheduler(
+        visualizeClient,
+        "/path/to/resource",
+        document.getElementById("my-container"),
+        {
+          events: {
+              success: () => {
+                  console.log("Success");
+              },
+              error: (error: {[key:string]: string}) => {
+                  console.log("Error", error);
+              },
+              cancelBtnClick: () => {
+                  console.log("Cancel button is clicked");
+              },
+              scheduleBtnClick: (isScheduleCreatedSuccessfully: boolean, jobInformation: any) => {
+                  console.log("Schedule button clicked", isScheduleSuccessful, jobInfo);
+              },
+          }
         }
-      }
     )
 ```
 
 
 ## Handling errors
-To handle errors, you can use the `error` property when calling the renderControlPanel method. This method will 
-return an error object when trying to render the scheduler UI, in case of an error.
-E.g.: 
-```javascript
-    plugin.renderControlPanel(
-      '/My/URI',
-      document.getElementById("my-container"),
-      {
-        error: (error) => {
-            console.log("error => ", error);
+To handle errors, you can use the `error` property when calling the renderScheduler method. This method will
+return an error object when trying to render the scheduler UI in case of an error.
+For example:
+```typescript
+    renderScheduler(
+        visualizeClient,
+        "/path/to/resource",
+        document.getElementById("my-container"),
+        {
+          events: {
+            error: (error: { [key: string]: string }) => {
+              console.log("error => ", error);
+            }
+          },
         }
-      }
     )
 ```
 
-### When the container provided is not found
+Below are possible scenarios that will return an error object, along with the contents of the associated error object.
 
-A possible situation is when the container provided is not available in the DOM. In this case, the error object will contain:
+- ### Container provided is not found
 ```json
 {
   "container.not.found": "Root element is not found"
 }
 ```
 
-
-### When the resourceURI is not present in the config object.
-Another possible situation is, when resourceURI is not present in the scheduler configuration object. In this case, the error object
-will contain:
+- ### resourceURI is not present in the config object.
 ```json
 {
   "resource.uri.missing.configuration": "resourceURI is required in the configuration"
 }
 ```
 
-### When the server is not present in the config object.
-Another possible situation is when server is not present in the scheduler configuration object. In this case, the error object
-will contain:
+- ### Server is not present in the config object.
 ```json
 {
   "server.missing.configuration": "server is required in the configuration"
 }
 ```
 
-### When the contextPath is not present in the config object.
-Another possible situation is when contextPath is not present in the scheduler configuration object. In this case, the error object
-will contain:
+- ### contextPath is not present in the config object.
 ```json
 {
   "contextPath.missing.configuration": "contextPath is required in the configuration"
 }
 ```
 
-### When the resourceURI is not found in the JRS server.
-Another possible situation is when the resourceURI is not found in the JRS server or is incorrect. In this case, the error object
-will contain:
+- ### resourceURI is not found in JasperReports Server or is incorrect.
 ```json
 {
   "resource.uri.not.found": "Resource URI was not found"
 }
 ```
 
-### When the user doesn't have permission to schedule specific resource.
-Another possible situation is when user doesn't have permission to schedule a resource. In this case, the error object
-will contain:
+- ### User doesn't have permission to schedule specific resource.
 ```json
 {
   "resource.access.denied": "You don't have permission to schedule this resource"
 }
 ```
 
-### When the schedule tab is hidden and user hasn't specified value for label field in the configuration.
-Another possible situation is when schedule tab is hidden and user doesn't mention value for the mandatory label field in the configuration. In this case, the error object
-will contain:
+- ### Schedule tab is hidden and no value is specified for label field in the configuration.
 ```json
 {
   "label.missing.value.schedule.tab.hidden.configuration": "Value for label is required in the configuration when schedule tab is hidden"
 }
 ```
 
-
-### When the output tab is hidden and user hasn't specified value for baseOutputFilename field in the configuration.
-Another possible situation is when output tab is hidden and user doesn't mention value for the mandatory baseOutputFilename field in the configuration. In this case, the error object
-will contain:
+- ### Output tab is hidden and no value is specified for baseOutputFilename field in the configuration.
 ```json
 {
   "baseOutputFilename.hidden.missing.value.output.tab.hidden.configuration": "Value for baseOutputFilename is required in the configuration when output tab is hidden"
 }
 ```
 
-### When the notification tab is hidden and user hasn't specified value for address or subject fields in the configuration.
-Another possible scenario occurs when the notification tab is hidden, and the user fails to provide a value for the mandatory address or subject field in the configuration. In this case, the error object
-will contain:
+- ### Notification tab is hidden and no value is specified for address or subject fields in the configuration.
 ```json
 {
   "address.hidden.missing.value.notification.tab.hidden.configuration": "Value for address is required in the configuration when notifications tab is hidden"
@@ -177,8 +158,7 @@ will contain:
 }
 ```
 
-### When the label, address, subject or baseOutputFilename fields are hidden and user hasn't specified values for it in the configuration.
-Another possible scenario is when the user sets showField to false for any of the mandatory fields—label, address, subject, or baseOutputFilename—and does not provide values for them. In this case, the error object will include the corresponding error based on the missing field.
+- ### label, address, subject, and/or baseOutputFilename fields are hidden and no values are specified in the configuration.
 ```json
 {
   "label.hidden.missing.value.configuration": "Value for label is required in the configuration when label is hidden"
@@ -200,8 +180,7 @@ Another possible scenario is when the user sets showField to false for any of th
 }
 ````
 
-### When the value for label is empty or length is more than 100 characters.
-Another possible scenario arises when the user provides a value for the label field in the configuration, but it is either empty or exceeds 100 characters. In this case, the error object will include:
+- ### label value is empty or length is more than 100 characters.
 ```json
 {
   "label.invalid": "Scheduled job name should not be empty."
@@ -213,8 +192,7 @@ Another possible scenario arises when the user provides a value for the label fi
 }
 ```
 
-### When the length of value for description  is more than 100 characters.
-Another possible situation occurs when the user specifies a value for the label field in the configuration, but the value is either empty or longer than 100 characters. In this case, the error object will contain:
+- ### description value is more than 100 characters.
 ```json
 {
   "label.invalid": "Scheduled job name should not be empty."
@@ -226,8 +204,8 @@ Another possible situation occurs when the user specifies a value for the label 
 }
 ```
 
-### When the value for recurrenceInterval is empty or not an integer.
-Another possible scenario arises when the user specifies a value for the recurrenceInterval field in the configuration, but the value is either empty or not an integer. In this case, the error object will contain:```json
+- ### recurrenceInterval value is empty or is not an integer.
+```json
 {
   "error.recurrence": "Recurrence interval should not be empty."
 }
@@ -238,8 +216,7 @@ Another possible scenario arises when the user specifies a value for the recurre
 }
 ```
 
-### When the value for startType is 2 and startDate is empty/invalid or past date.
-Another possible scenario occurs when the user specifies a value of 2 for startType, but the startDate is either empty, invalid, or a past date in the configuration. In this case, the error object will contain:
+- ### startType value is 2 and startDate is empty, invalid, or past date.
 ```json
 {
   "error.start.date": "Start date and time should not be empty or invalid"
@@ -250,8 +227,8 @@ Another possible scenario occurs when the user specifies a value of 2 for startT
   "error.past.date": "Start date and time is in the past. The start date and time must be in the future."
 }
 ```
-### When the value for address is empty or invalid.
-Another possible scenario arises when the user specifies a value for the address field in the configuration, but the value is either empty or not an integer. In this case, the error object will contain:```json
+- ### address value is empty or invalid.
+```json
 {
   "error.notifications.email.empty": "Email address should not be empty.Please one or more email addresses."
 }
@@ -262,8 +239,7 @@ Another possible scenario arises when the user specifies a value for the address
 }
 ```
 
-### When the value for subject is empty or length is more than 100 characters.
-Another possible scenario occurs when the user specifies a value for the subject field in the configuration, but the value is either empty or exceeds 100 characters. In this case, the error object will contain:
+- ### subject value is empty or length exceeds 100 characters.
 ```json
 {
   "error.enter.subject": "Subject should not be empty."
@@ -275,16 +251,14 @@ Another possible scenario occurs when the user specifies a value for the subject
 }
 ```
 
-### When the length of value for messageText  is more than 2000 characters.
-Another possible scenario arises when the user specifies a value for the messageText field in the configuration, but the length exceeds 2000 characters. In this case, the error object will contain:
+- ### messageText value length exceeds 2000 characters.
 ```json
 {
   "error.message.too.long": "The message is too long."
 }
 ```
 
-### When the value for baseOutputFilename is empty or length is more than 200 characters.
-Another possible scenario occurs when the user specifies a value for the baseOutputFilename field in the configuration, but the value is either empty, exceeds 200 characters, or is otherwise invalid. In this case, the error object will contain:
+- ### baseOutputFilename value is empty, exceeds 200 characters, or is otherwise invalid.
 ```json
 {
   "error.file.name": "File name should not be empty."
@@ -301,16 +275,14 @@ Another possible scenario occurs when the user specifies a value for the baseOut
 }
 ```
 
-### When the value for outputFormat is empty.
-Another possible scenario arises when the user specifies a value for the label field in the configuration, but the value is empty. In this case, the error object will contain:
+- ### outputFormat value is empty.
 ```json
 {
   "error.output.format": "Formats should not be empty"
 }
 ```
 
-### When the value for folderURI is empty.
-Another possible scenario occurs when the user specifies a value for the folderURI field in the configuration, but the value is either empty or has an invalid format. In this case, the error object will contain:
+- ### folderURI value is empty or user does not have proper permissions.
 ```json
 {
   "error.output.format": "Formats should not be empty"
