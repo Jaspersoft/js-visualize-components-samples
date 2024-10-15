@@ -86,10 +86,11 @@ import { renderScheduler, SchedulerConfig } from "@jaspersoft/jv-scheduler";
 ```
 
 Scheduler package provides a
-`renderScheduler(v: VisualizeClient, container: HTMLElement, config: SchedulerConfigProps): void` method.
+`renderScheduler(v: VisualizeClient, uri:string, container: HTMLElement, config: SchedulerConfigProps): void` method.
 
 Parameters:
 * `v` - The `VisualizeClient` instance used to interact with Visualize.js API.
+* `uri` - The path to a report or a dashboard _(/path/to/my/reports/SalesReport)_.
 * `container` - The DOM element to render input controls to.
 * `config` <sup>(optional)</sup> - The configuration object for the input controls. See [configure input controls]({{site.baseurl}}/pages/input-controls/basic-usage#configure-the-input-controls).
 
