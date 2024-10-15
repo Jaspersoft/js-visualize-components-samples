@@ -1,11 +1,5 @@
 import useVisualize from "./visualize/useVisualize";
 import { ReactNode, useEffect, useState } from "react";
-import {
-  applicationPageStart,
-  inputControlsPageStart,
-  inputControlsTypesPageStart,
-  schedulerPageStart,
-} from "./constants/liveSamplesConstants";
 import InputControlsLiveSample from "./InputControlsLiveSample/InputControlsLiveSample";
 import { SchedulerLiveSample } from "./SchedulerLiveSample/SchedulerLiveSample";
 import App from "./endToEndPluginFlow/App";
@@ -16,21 +10,12 @@ const visualizeUrl =
   "https://mobiledemo.jaspersoft.com/jasperserver-pro/client/visualize.js";
 // const visualizeUrl = "http://localhost:8080/jasperserver-pro/client/visualize.js";
 
+export const inputControlsPageStart = "/input-controls/live-sample.html";
+export const inputControlsTypesPageStart = "/input-controls/types-samples.html";
+export const schedulerPageStart = "/scheduler/demo.html";
+export const applicationPageStart = "Application.html";
+
 const resourceUri = "/public/Samples/Reports/9.CustomerDetailReport";
-const getLiveSamplePage = (pageName: string, vContainer: any) => {
-  switch (pageName) {
-    case "inputControls":
-      return <InputControlsLiveSample vContainer={vContainer} />;
-    case "inputControlsTypes":
-      return <InputControlTypes vContainer={vContainer} />;
-    case "scheduler":
-      return <SchedulerLiveSample vContainer={vContainer} uri={resourceUri} />;
-    case "application":
-      return <App visualize={vContainer} uri={resourceUri} />;
-    default:
-      return <></>;
-  }
-};
 
 const Main = () => {
   const vContainer = useVisualize(visualizeUrl);
@@ -41,22 +26,21 @@ const Main = () => {
   useEffect(() => {
     if (vContainer) {
       const lastPartOfUrl = window.location.href;
-      let pageName = "";
       if (lastPartOfUrl.endsWith(inputControlsPageStart)) {
-        pageName = "inputControls";
+        setSampleComponent(<InputControlsLiveSample vContainer={vContainer} />);
       } else if (lastPartOfUrl.endsWith(inputControlsTypesPageStart)) {
-        pageName = "inputControlsTypes";
+        setSampleComponent(<InputControlTypes vContainer={vContainer} />);
       } else if (lastPartOfUrl.endsWith(schedulerPageStart)) {
-        pageName = "scheduler";
+        setSampleComponent(
+          <SchedulerLiveSample vContainer={vContainer} uri={resourceUri} />,
+        );
       } else if (lastPartOfUrl.endsWith(applicationPageStart)) {
-        pageName = "application";
+        setSampleComponent(<App visualize={vContainer} uri={resourceUri} />);
       } else if (lastPartOfUrl.endsWith("input-controls/report-sample.html")) {
         setSampleComponent(
           <ReportSample vContainer={vContainer} uri={resourceUri} />,
         );
-        return;
       }
-      setSampleComponent(getLiveSamplePage(pageName, vContainer));
     }
   }, [vContainer]);
   return <>{vContainer ? sampleComponent : <>Loading...</>}</>;
