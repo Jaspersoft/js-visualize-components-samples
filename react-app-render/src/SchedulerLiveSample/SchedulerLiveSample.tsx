@@ -4,16 +4,14 @@ import {
 } from "@jaspersoft/jv-scheduler";
 import { JVDrawer, JVAccordionFull, JVTypography, JVAccordion, JVAccordionSummary, JVAccordionDetails  } from "@jaspersoft/jv-ui-components";
 
-export const SchedulerLiveSample = ({vContainer}: any) => {
+
+
+export const SchedulerLiveSample = ({vContainer, uri}: any) => {
 
 
     return (
         <>
-        <Scheduler
-            // @ts-ignore
-            schedulerUIConfig={schedulerUIConfig}
-            visualize={vContainer.v}
-        />
+            <Scheduler v={vContainer.v} config={schedulerUIConfig} uri={uri} />
             <JVDrawer
                 anchor="right"
                 open={true}

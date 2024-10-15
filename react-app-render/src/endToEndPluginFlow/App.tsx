@@ -17,7 +17,7 @@ import "./App.css";
 import { Scheduler } from "./Scheduler";
 
 
-function App({visualize}: any) {
+function App({visualize, uri}: any) {
 
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
@@ -46,56 +46,51 @@ function App({visualize}: any) {
 
 
     console.log(SchedulerConfig, "SchedulerConfig");
-    // @ts-ignore
     return (
         <>
             <div id="scheduler"></div>
-
-            <div id="header">
-                <h1 className="flexItem pageHeader-title-text">
-                    Visualize Plugin App
-                    <div className="pageHeader-subtitle-path">
+            {visualize ? (
+                <>
+                    <div id="header">
+                        <h1 className="flexItem pageHeader-title-text">
+                            Scheduler App
+                            <div className="pageHeader-subtitle-path">
                 <span className="pageHeader-subtitle-path-label">
-                  Resource URI :{" "}
+                  Schedule For:{" "}
                 </span>
-                        <span className="pageHeader-subtitle-path-text">
-
-                            {/*@ts-ignore*/}
-                  {schedulerUIConfig.resourceURI}
+                                <span className="pageHeader-subtitle-path-text">
+                  {uri}
                 </span>
+                            </div>
+                        </h1>
+                        <JVButton
+                            id="scheduleBtn"
+                            disableElevation
+                            size="large"
+                            color="primary"
+                            variant="contained"
+                            onClick={() => setIsPanelOpen(true)}
+                        >
+                            Schedule
+                        </JVButton>
                     </div>
-                </h1>
-                <JVButton
-                    id="scheduleBtn"
-                    disableElevation
-                    size="large"
-                    color="primary"
-                    variant="contained"
-                    onClick={() => setIsPanelOpen(true)}
-                >
-                    Schedule
-                </JVButton>
-            </div>
-            <div
-                id="pageDimmer"
-                className={`dimmer ${isPanelOpen ? "" : "hidden"}`}
-                style={{zIndex: 999}}
-            ></div>
-            <ReportPanel
-                vObject={visualize.v}
-                // @ts-ignore
-                resourceURI={schedulerUIConfig.resourceURI}
-            />
-            {isPanelOpen && (
-                <Scheduler
-                    visualize={visualize.v}
-                    schedulerUIConfig={schedulerUIConfig}
-                    isPanelOpen={isPanelOpen}
-                    // @ts-ignore
-                    uri={resourceUri}
-                />
+                    <div
+                        id="pageDimmer"
+                        className={`dimmer ${isPanelOpen ? "" : "hidden"}`}
+                        style={{ zIndex: 999 }}
+                    ></div>
+                    <ReportPanel vObject={visualize.v} resourceURI={uri} />
+                    {isPanelOpen && (
+                        <Scheduler
+                            v={visualize.v}
+                            config={schedulerUIConfig}
+                            uri={uri}
+                        />
+                    )}
+                </>
+            ) : (
+                <div>Loading...</div>
             )}
-
         </>
     );
 }

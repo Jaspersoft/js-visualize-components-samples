@@ -6,39 +6,26 @@
 
 import {
   Scheduler as JaspersoftScheduler,
-  SchedulerConfigProps,
+  SchedulerProps,
 } from "@jaspersoft/jv-scheduler";
 import { JVDrawer } from "@jaspersoft/jv-ui-components";
 
-interface SchedulerProps {
-  visualize: any;
-  schedulerUIConfig: SchedulerConfigProps;
-  isPanelOpen: boolean;
-}
-export const Scheduler = ({
-  visualize,
-  schedulerUIConfig,
-  isPanelOpen,
-}: SchedulerProps) => {
+export const Scheduler = ({ v, config, uri }: SchedulerProps) => {
   return (
-    <JVDrawer
-      anchor="right"
-      open={isPanelOpen}
-      style={{ top: "3px" }}
-      classes={{
-        paper: "jv-uOverflow-hide jv-uWidth-750px",
-      }}
-    >
-      <div
-        className="jv-lColumns-column  jv-uOverflow-auto"
-        style={{ height: "100%" }}
+      <JVDrawer
+          anchor="right"
+          open={true}
+          style={{ top: "3px" }}
+          classes={{
+            paper: "jv-uOverflow-hide jv-uWidth-750px",
+          }}
       >
-        <JaspersoftScheduler
-            // @ts-ignore
-          schedulerUIConfig={schedulerUIConfig}
-          visualize={visualize}
-        />
-      </div>
-    </JVDrawer>
+        <div
+            className="jv-lColumns-column  jv-uOverflow-auto"
+            style={{ height: "100%" }}
+        >
+          <JaspersoftScheduler v={v} config={config} uri={uri} />
+        </div>
+      </JVDrawer>
   );
 };
