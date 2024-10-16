@@ -2,13 +2,19 @@ import schedulerUIConfig from "../constants/jv_sheduler_config";
 import {
     Scheduler
 } from "@jaspersoft/jv-scheduler";
-import { JVDrawer, JVAccordionFull, JVTypography, JVAccordion, JVAccordionSummary, JVAccordionDetails  } from "@jaspersoft/jv-ui-components";
+import { JVDrawer,JVCheckboxGroup, JVCheckbox, JVAccordionFull, JVTypography, JVAccordion, JVAccordionSummary, JVAccordionDetails  } from "@jaspersoft/jv-ui-components";
+import {useState} from "react";
 
 
 
 export const SchedulerLiveSample = ({vContainer, uri}: any) => {
 
+    const [showStepper, setShowStepper] = useState(true);
 
+
+    const handleStepperChange = (event: any) => {
+        setShowStepper(event.target.checked)
+    }
     return (
         <>
             <Scheduler v={vContainer.v} config={schedulerUIConfig} uri={uri} />
@@ -35,9 +41,8 @@ export const SchedulerLiveSample = ({vContainer, uri}: any) => {
                             <JVTypography>Show Stepper</JVTypography>
                         </JVAccordionSummary>
                         <JVAccordionDetails className={"jr-mAccordion-body mui"}>
-                            <JVTypography>
-                                The content of Accordions is mounted by default even if the accordion is not expanded.
-                            </JVTypography>
+                                <JVCheckbox label="Show stepper"
+                                             CheckboxProps={{checked: showStepper, name: "stepper", onChange: handleStepperChange}}/>
                         </JVAccordionDetails>
                     </JVAccordion>
                     <JVAccordion size="small">
@@ -49,9 +54,17 @@ export const SchedulerLiveSample = ({vContainer, uri}: any) => {
                             <JVTypography>Show Tabs</JVTypography>
                         </JVAccordionSummary>
                         <JVAccordionDetails className={"jr-mAccordion-body mui"}>
-                            <JVTypography>
-                                The content of Accordions is mounted by default even if the accordion is not expanded.
-                            </JVTypography>
+                            <JVCheckboxGroup size="large" title="Assign responsibility">
+                                <JVCheckbox label="Schedule"
+                                            CheckboxProps={{checked: showStepper, name: "stepper", onChange: handleStepperChange}}/>
+                                <JVCheckbox label="Parameters"
+                                            CheckboxProps={{checked: showStepper, name: "stepper", onChange: handleStepperChange}}/>
+                                <JVCheckbox label="Notifications"
+                                            CheckboxProps={{checked: showStepper, name: "stepper", onChange: handleStepperChange}}/>
+                                <JVCheckbox label="Output"
+                                            CheckboxProps={{checked: showStepper, name: "stepper", onChange: handleStepperChange}}/>
+
+                            </JVCheckboxGroup>
                         </JVAccordionDetails>
                     </JVAccordion>
                     <JVAccordionFull
