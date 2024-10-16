@@ -4,7 +4,7 @@
  * in the license file that is distributed with this file.
  */
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 import {
@@ -20,28 +20,6 @@ import { Scheduler } from "./Scheduler";
 function App({visualize, uri}: any) {
 
     const [isPanelOpen, setIsPanelOpen] = useState(false);
-
-    useEffect(() => {
-        if (!schedulerUIConfig.events) {
-            schedulerUIConfig.events = {};
-        }
-        if (schedulerUIConfig.events) {
-            schedulerUIConfig.events.cancelBtnClick = () => {
-                console.log("cancel button is clicked");
-                setIsPanelOpen(false);
-            };
-            schedulerUIConfig.events.scheduleBtnClick = (
-                isScheduleSuccessful: boolean,
-                jobInfo: any,
-            ) => {
-                console.log("Schedule button clicked", isScheduleSuccessful, jobInfo);
-                if (isScheduleSuccessful) setIsPanelOpen(false);
-            };
-            schedulerUIConfig.events.success = () => {
-                console.log("Schedule panel rendered successfully");
-            };
-        }
-    }, []);
 
 
 
