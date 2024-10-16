@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 import {
-    SchedulerConfig,
+    defaultSchedulerConfig,
 } from "@jaspersoft/jv-scheduler";
 import { JVButton } from "@jaspersoft/jv-ui-components";
 import schedulerUIConfig from "../constants/jv_sheduler_config";
@@ -45,7 +45,7 @@ function App({visualize, uri}: any) {
 
 
 
-    console.log(SchedulerConfig, "SchedulerConfig");
+    console.log(defaultSchedulerConfig, "SchedulerConfig");
     return (
         <>
             <div id="scheduler"></div>
