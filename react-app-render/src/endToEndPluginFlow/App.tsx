@@ -31,8 +31,8 @@ function App({visualize, uri}: any) {
                 setIsPanelOpen(false);
             };
             schedulerUIConfig.events.scheduleBtnClick = (
-                isScheduleSuccessful,
-                jobInfo,
+                isScheduleSuccessful: boolean,
+                jobInfo: any,
             ) => {
                 console.log("Schedule button clicked", isScheduleSuccessful, jobInfo);
                 if (isScheduleSuccessful) setIsPanelOpen(false);
