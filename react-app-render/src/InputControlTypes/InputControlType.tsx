@@ -80,9 +80,10 @@ const InputControlType = (props: {
                                  width="100%"
                                  wrapEnabled
                                  readOnly
-                                 showGutter={false}
-                                 showPrintMargin={false}
+                                 showGutter={true}
+                                 showPrintMargin={true}
                                  setOptions={{useWorker: false}}
+                                 maxLines={18}
                                  ref={editorRef}
                              />
                         </pre>
