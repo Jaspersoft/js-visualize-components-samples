@@ -880,7 +880,21 @@ div.highlighter-rouge {
   color: #5c5962;
   font-size: smaller;
   cursor:pointer;
+  transition: background-color 0.3s ease;
 }
+
+@keyframes copiedAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tablinks .copy-code.copied {
+  background-color: #5c5962;
+  color: white;
+  animation: copiedAnimation 0.3s ease;
+}
+
 .tabcontent {
   display: none;
   padding: 6px 12px;

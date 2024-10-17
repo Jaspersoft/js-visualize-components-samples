@@ -5,7 +5,7 @@ import "ace-builds/src-noconflict/mode-css";
 import "ace-builds/src-noconflict/theme-tomorrow_night";
 import * as ace from "ace-builds/src-noconflict/ace";
 import beautify from "ace-builds/src-noconflict/ext-beautify";
-import {createRef, useEffect, useState} from "react";
+import {createRef, useEffect, useRef, useState} from "react";
 import {aceEditorModes} from "../constants/liveSamplesConstants.ts";
 import PreviewCode from "./PreviewCode.tsx";
 import {CommonParamsForInputControl} from "../constants/codeForInputControlTypes.ts";
@@ -25,8 +25,10 @@ const InputControlType = (props: {
 }) => {
     const [contentType, setContentType] = useState("js");
     const [codeContent, setCodeContent] = useState(props.jsContent);
-    const [showEditor, setShowEditor] = useState(true);
     const editorRef = createRef<any>();
+    const copyCodeBtnRef = useRef(null);
+    let globalTimeout: any;
+
     const refId = "preview-input-controls-container-" + props.id;
 
     useEffect(() => {
@@ -42,11 +44,22 @@ const InputControlType = (props: {
         currentElement.className += " active";
         setCodeContent(content);
         setContentType(type || "javascript");
-        setShowEditor(type !== "preview");
+    };
+
+    const addStylingToBtn = () => {
+        const theBtn = copyCodeBtnRef.current as unknown as HTMLElement;
+        theBtn?.classList?.add("copied");
+        clearTimeout(globalTimeout);
+        globalTimeout = setTimeout(() => {
+            theBtn?.classList?.remove("copied");
+        }, 1000); // Remove the class after 1 second
     };
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(codeContent)
+            .then(() => {
+                addStylingToBtn();
+            })
             .catch(err => {
                 console.error("Failed to copy text: ", err);
             });
@@ -63,13 +76,14 @@ const InputControlType = (props: {
                 <li className="tablinks" onClick={(e) => onTabChange(e, "", "preview")}>Preview</li>
                 {contentType !== "preview" ? <li className="tablinks" style={{float: "right"}}>
                     <button className="copy-code"
+                            ref={copyCodeBtnRef}
                             onClick={copyToClipboard}>Copy Code
                     </button>
                 </li> : null}
             </ul>
 
             <div className="main-container"
-                 style={{display: showEditor ? "block" : "none"}}>
+                 style={{display: contentType !== "preview" ? "block" : "none"}}>
                 <div className="code-container">
                         <pre className="code-snippet">
                              <AceEditor
@@ -91,7 +105,7 @@ const InputControlType = (props: {
             </div>
 
             <div className="main-container"
-                 style={{display: showEditor ? "none" : "block"}}>
+                 style={{display: contentType === "preview" ? "block" : "none"}}>
                 <PreviewCode uri={props.reportUri}
                              vContainer={props.vContainer}
                              config={props.config}
