@@ -24,7 +24,7 @@ has_children: false
       <td>server</td>
       <td>string</td>
       <td></td>
-      <td>URI of server where JasperReports Server is hosted. (For example, http://localhost:8080/jasperserver-pro)</td>
+      <td>URI of server where JasperReports Server is hosted. (For example, http://localhost:8080)</td>
       <td>Yes</td>
     </tr>
     <tr>

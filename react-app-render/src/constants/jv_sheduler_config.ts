@@ -28,7 +28,7 @@ const schedulerUIConfig = {
         },
         startTime: {
           show: true,
-          value: "2024-10-31 14:11",
+          value: "now",
         },
       },
       output: {
