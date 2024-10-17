@@ -12,6 +12,7 @@ const visualizeUrl =
 
 export const inputControlsPageStart = "/input-controls/live-sample.html";
 export const inputControlsTypesPageStart = "/input-controls/types-samples.html";
+export const reportViewerPageStart = "input-controls/report-sample.html";
 export const schedulerPageStart = "/scheduler/demo.html";
 export const applicationPageStart = "Application.html";
 
@@ -36,7 +37,7 @@ const Main = () => {
         );
       } else if (lastPartOfUrl.endsWith(applicationPageStart)) {
         setSampleComponent(<App visualize={vContainer} uri={resourceUri} />);
-      } else if (lastPartOfUrl.endsWith("input-controls/report-sample.html")) {
+      } else if (lastPartOfUrl.endsWith(reportViewerPageStart)) {
         setSampleComponent(
           <ReportSample vContainer={vContainer} uri={resourceUri} />,
         );

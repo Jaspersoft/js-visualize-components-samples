@@ -7,7 +7,7 @@ const InputControlsLiveSample = ({ vContainer }: any) => {
   return (
     <PreviewCode
       uri={reportUri}
-      vContainer={vContainer.v}
+      vContainer={vContainer}
       refId="basic-controls-section"
     />
   );
