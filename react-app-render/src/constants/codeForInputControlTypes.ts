@@ -22,7 +22,7 @@ export interface CodeConstants {
 
 export const CodeForInputControlTypes: CodeConstants[] = [
     {
-        title: "Switch Boolean Input Control",
+        title: "Checkbox Boolean Input Control",
         jsCode: `const reportUri = "/public/JVC_IC_Samples/Boolean";
         const configuration: InputControlsConfig = {};
         renderInputControls(
@@ -39,7 +39,7 @@ const panelD: InputControlsConfig = {};
         config: {}
     },
     {
-        title: "Checkbox Boolean Input Control",
+        title: "Switch Boolean Input Control",
         jsCode: `const reportUri = "/public/JVC_IC_Samples/Boolean";
         const configuration: InputControlsConfig = { typeConfig: { bool: { type: "switch" } },};
         renderInputControls(
