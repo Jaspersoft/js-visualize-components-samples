@@ -5,7 +5,7 @@
  */
 
 const schedulerUIConfig = {
-  server: "https://localhost:8443",
+  server: "https://mobiledemo.jaspersoft.com",
   dryRun: true,
   contextPath: "/jasperserver-pro",
   stepper: {
@@ -42,7 +42,7 @@ const schedulerUIConfig = {
           show: true,
           value: "Schedule job file description",
         },
-        outputFormat: { show: true, value: ["pdf"] },
+        outputFormat: { show: true, value: ["pdf"], supportedValues: ["pdf", "xls"] },
         // required
         outputTimeZone: {
           show: true,
@@ -60,14 +60,14 @@ const schedulerUIConfig = {
       },
       notifications: {
         // required in config
-        address: { show: true, value: ["test@cloud.com"] },
+        address: { show: true, value: ["test@cloud.com", "abc@cloud.com"] },
         // required in config
         subject: { show: true, value: "Schedule job email subject" },
         messageText: {
-          // show: true,
+          show: true,
           value: "Email message",
         },
-        reportAccessType: {
+        resultSendType: {
           show: true,
           value: "SEND_ATTACHMENT",
         },
