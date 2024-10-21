@@ -15,11 +15,14 @@ import schedulerUIConfig from "../constants/jv_sheduler_config";
 import ReportPanel from "./report/ReportPanel";
 import "./App.css";
 import { Scheduler } from "./Scheduler";
+import { ErrorDialog} from "./Error";
 
 
 function App({visualize, uri}: any) {
 
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const [isErrorDialogOpen, setIsErrorDialogOpen] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
 
     useEffect(() => {
@@ -37,6 +40,14 @@ function App({visualize, uri}: any) {
             schedulerUIConfig.events.success = () => {
                 console.log("Schedule panel rendered successfully");
             };
+
+            schedulerUIConfig.events.error = (error: any) => {
+                setIsPanelOpen(false)
+                setIsErrorDialogOpen(true)
+                Object.keys(error).forEach((key) => {
+                    setErrorMsg(error[key])
+                })
+            }
     })
     console.log(defaultSchedulerConfig, "SchedulerConfig");
     return (
@@ -46,10 +57,10 @@ function App({visualize, uri}: any) {
                 <>
                     <div id="header">
                         <h1 className="flexItem pageHeader-title-text">
-                            Scheduler App
+                            Demo Application
                             <div className="pageHeader-subtitle-path">
                 <span className="pageHeader-subtitle-path-label">
-                  Schedule For:{" "}
+                  Resource URI:{" "}
                 </span>
                                 <span className="pageHeader-subtitle-path-text">
                   {uri}
@@ -80,6 +91,10 @@ function App({visualize, uri}: any) {
                             uri={uri}
                         />
                     )}
+                    { isErrorDialogOpen && <ErrorDialog errorMsg={errorMsg} handleCancelBtn={() => {
+                        setIsErrorDialogOpen(false)
+                    }}
+                    />}
                 </>
             ) : (
                 <div>Loading...</div>

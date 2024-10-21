@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Application
+title: Demo Application
 nav_order: 6
 has_children: false
 ---
