@@ -158,6 +158,12 @@ Below are possible scenarios that will return an error object, along with the co
 }
 ```
 
+```json
+{
+  "address.not.in.proper.format": "Value for address should be an array of strings"
+}
+```
+
 - ### label, address, subject, and/or baseOutputFilename fields are hidden and no values are specified in the configuration.
 ```json
 {

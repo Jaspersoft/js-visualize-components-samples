@@ -140,8 +140,13 @@ export const SchedulerLiveSample = ({vContainer, uri}: any) => {
         const code = JSON.stringify(schedulerConfig, null, 2);
         try {
             await navigator.clipboard.writeText(code);
-            // Show a confirmation message
-            alert('Code copied to clipboard!');
+            const copyCodeEmbedDrawer = document.getElementById('copyCodeEmbedDrawer');
+            if (copyCodeEmbedDrawer) {
+                copyCodeEmbedDrawer.style.display = 'block';
+                setTimeout(() => {
+                    copyCodeEmbedDrawer.style.display = 'none';
+                }, 2000);
+            }
         } catch (err) {
             console.error('Failed to copy text: ', err);
         }
@@ -149,15 +154,36 @@ export const SchedulerLiveSample = ({vContainer, uri}: any) => {
 
     const DialogActionsComponent = (
         <>
-            <JVButton
-                disableElevation
-                size="large"
-                variant="contained"
-                color="primary"
-                onClick={handleCopyCode}
-            >
-                Copy Code
-            </JVButton>
+            <div>
+                <JVButton
+                    disableElevation
+                    size="large"
+                    variant="contained"
+                    color="primary"
+                    onClick={handleCopyCode}
+                >
+                    Copy Code
+                </JVButton>
+                <div
+                    id="copyCodeEmbedDrawer"
+                    className="jr-mMessage jr-mMessageSuccess jr-mMessageTopLeft jr"
+                    style={{
+                        position: 'absolute',
+                        bottom: '40px',
+                        right: '472px',
+                        display: 'none',
+                    }}
+                >
+                    <div className="jr-mMessage-iconContainer jr" data-name="copyCode-icon">
+                        <span className="jr-mMessage-icon jr-mIcon jr-mIconXLarge jr-checkmarkRound jr" />
+                    </div>
+                    <div className="jr-mMessage-textContainer jr" data-name="copyCode-text">
+                        <p className="jr-mMessage-title jr">
+                            Copied!
+                        </p>
+                    </div>
+                </div>
+            </div>
             <JVButton
                 disableElevation
                 size="large"
@@ -193,7 +219,7 @@ export const SchedulerLiveSample = ({vContainer, uri}: any) => {
                             lineHeight: "32px",
                             letterSpacing: 0,
                         }}>
-                            Configuration
+                            Configuration Options
                         </JVTypography>
                         <JVButton size="large"
                                   color="primary"

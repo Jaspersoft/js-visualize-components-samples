@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Demo
+title: Configurator
 nav_order: 5
 parent: Scheduler
 has_children: false
