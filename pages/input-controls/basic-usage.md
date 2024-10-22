@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Basic usage
+title: Basic Usage
 nav_order: 1
 parent: Input Controls
 has_children: false
 ---
 
-# Basic usage
+# Basic Usage
 
-## Configure the default styles
+## Configure the Default Styles
 
 You have two options for configuring the import of default styles:
 
@@ -69,9 +69,9 @@ import {
 
 More details about Visualize.js loader can be found at [loading visualize.js]({{site.baseurl}}/pages/tools/loading-vizjs).
 
-## Render the input controls
+## Render the Input Controls
 
-### The JavaScript approach
+### The JavaScript Approach
 
 InputControls package provides a `renderInputControls(v: VisualizeClient, uri: string, container: HTMLElement, config?: InputControlsConfig): void` method. 
 
@@ -89,7 +89,7 @@ Example:
 renderInputControls(visualizeClient, reportUri, container, inputControlsConfig)
 ```
 
-### The React approach
+### The React Approach
 The `@jaspersoft/jv-input-controls` package provides `InputControls` React component.
 
 Example:
@@ -103,7 +103,7 @@ Example:
 The `InputControls` component props are similar to `renderInputControls` parameters explained in the 
 [JavaScript approach]({{site.baseurl}}/pages/input-controls/basic-usage#the-javascript-approach).
 
-## Configure the input controls
+## Configure the Input Controls
 The input controls configuration has the following structure:
 ```ts
 interface InputControlsConfig {
@@ -153,5 +153,5 @@ See [all input controls]({{site.baseurl}}/pages/input-controls/all-ics) for more
 * `events` <sup>(optional)</sup> - Configures events listeners. See [events]({{site.baseurl}}/pages/input-controls/events).
 * `params` <sup>(optional)</sup> - Defines initial values of input controls. See [overriding default values]({{site.baseurl}}/pages/input-controls/params).
 
-## Source code
+## Source Code
 For a complete example of how to use the input controls, you can check [demo input controls](https://github.com/Jaspersoft/js-visualize-components/tree/main/packages/demo-input-controls) project.

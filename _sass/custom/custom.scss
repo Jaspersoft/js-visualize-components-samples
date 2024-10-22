@@ -13,7 +13,7 @@
 
   06. OVERRIDES
   -----------------------------------
-  File last modified Oct 10, 2024
+  File last modified Oct 21, 2024
   ----------------------------------- */
 
 /* --------------------- */
@@ -65,8 +65,14 @@ a {
 }
 
 body {
-  font-family: source_sans_proregular, "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff !important;
   height: 100%;
+  font-family: source_sans_proregular, "Helvetica Neue", Arial, sans-serif;
+}
+
+body:has(.main) {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 html {

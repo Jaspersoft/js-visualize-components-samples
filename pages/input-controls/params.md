@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Override default values
+title: Override Default Values
 nav_order: 5
 parent: Input Controls
 has_children: false
 ---
 
-# Override default values
+# Override Default Values
 
 This document explains how to override the default values of input controls with your own predefined values. By default,
 input controls display initial values fetched from the server. However, you can use the `params` property to specify
 different initial values.
 
-### How to use the `params` property
+### How to Use the `params` Property
 
 1. **Create a JSON object**<br>In your input controls configuration, add a `params` property containing a JSON object.
 2. **Define input control IDs and values**<br>Each key in the JSON object should match the ID of an input control. The
@@ -30,7 +30,7 @@ different initial values.
         }
 ```
 
-### Important notes
+### Important Notes
 
 * **Multi-select controls** <br>Only multi-select input controls (like `ProductFamily` in the example) accept multiple values
   in the array.

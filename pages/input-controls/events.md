@@ -50,14 +50,14 @@ When all controls have valid input, this parameter will be a boolean value: `fal
 }
 ```
 
-### Important notes
+### Important Notes
 * When all values for all input controls are valid, the param `validationResult` will be a boolean value `false`.
 * This event is being triggered by the InputControl class because the InputControl class is a
 controlled component. The InputControl class will handle the state of the input controls and will 
 update the state of the input controls when the user interacts with them. This is why the InputControl class will
 trigger the `change` event every time the state of the input controls changes.
 
-## Handling validations
+## Handling Validations
 
 To handle validations on the developer side, provide the [events.change]({{site.baseurl}}/pages/input-controls/events) callback method when calling
 the `renderInputControls`. This method will return a second parameter that contains all validations.
@@ -92,7 +92,7 @@ where:
 
 When all values for all input controls are valid, the `validationResult` parameter will be a boolean value `false`.
 
-## Handling errors
+## Handling Errors
 Use the `error` property when calling the `renderInputControls` method. When there is an error, this method will 
 be called with an error object as a parameter.
 For example: 

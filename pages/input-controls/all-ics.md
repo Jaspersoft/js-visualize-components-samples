@@ -1,11 +1,11 @@
 ---
 layout: default
-title: All input controls
+title: All Input Controls
 nav_order: 2
 parent: Input Controls
 has_children: false
 ---
-# All input controls
+# All Input Controls
 
 The Input Controls component allows you to render input controls in your web application. This guide will help you understand how to use different UI components for specific input control types.
 
@@ -63,7 +63,7 @@ For date input controls, use the `date` component. All proper validations will b
 
 Additionally, you can keep the default Jaspersoft style of the date input or opt for [Material UI](https://mui.com/x/react-date-pickers/date-picker/) styling. If you don't provide any configuration the default styles will be used.
 
-#### Default styling
+#### Default Styling
 For a date component with default Jaspersoft styling, provide the following configuration:
   ```js
   {
@@ -73,7 +73,7 @@ For a date component with default Jaspersoft styling, provide the following conf
   }
   ```
 
-#### Material UI styling
+#### Material UI Styling
 For a date component with Material UI styling, provide the following configuration:
   ```js
   {
@@ -89,7 +89,7 @@ All proper validations will be applied automatically depending on the metadata d
 
 Additionally, you can keep the default Jaspersoft style of the date input or opt for [Material UI](https://mui.com/x/react-date-pickers/date-picker/) styling. If you don't provide any configuration the default styles will be used.
 
-#### Default styling
+#### Default Styling
 For a datetime component with default Jaspersoft styling, provide the following configuration:
   ```js
   {
@@ -98,7 +98,7 @@ For a datetime component with default Jaspersoft styling, provide the following 
        }
   }
   ```
-#### Material UI styling
+#### Material UI Styling
 For a datetime component with Material UI styling, provide the following configuration:
   ```js
   {
@@ -113,7 +113,7 @@ For time input controls, use the `time` component. All proper validations will b
 
 Additionally, you can keep the default Jaspersoft style of the date input or opt for [Material UI](https://mui.com/x/react-date-pickers/date-picker/) styling. If you don't provide any configuration the default styles will be used.
 
-#### Default styling
+#### Default Styling
 For a time component with default Jaspersoft styling, provide the following configuration:
   ```js
   {
@@ -123,7 +123,7 @@ For a time component with default Jaspersoft styling, provide the following conf
   }
   ```
 
-#### Material UI styling
+#### Material UI Styling
 For a time component with Material UI styling, provide the following configuration:
   ```js
   {
@@ -133,12 +133,12 @@ For a time component with Material UI styling, provide the following configurati
   }
   ```
 
-##  Single select
+##  Single Select
 All proper validations will be applied automatically depending on the metadata defined for your single select input control. For example, when you define a list of values as valid values, then this input control will enable only that list of values.
 
 There are currently no additional configurations for this input control.
 
-##  Multi select
+##  Multi Select
 All proper validations will be applied automatically depending on the metadata defined for your multi select input control. For example, when you define a list of values as valid values, then this input control will enable only that list of values.
 
 There are currently no additional configurations for this input control.
