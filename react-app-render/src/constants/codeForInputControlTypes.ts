@@ -92,41 +92,6 @@ const panelD: InputControlsConfig = {};
         config: {}
     },
     {
-        title: "Datetime Input Control with Material UI",
-        jsCode: ` const reportUri = "/public/JVC_IC_Samples/Datetime";
-        const configuration: InputControlsConfig = {
-            typeConfig: {
-                singleValueDatetime: {
-                    type: "material",
-                },
-            }
-        };
-        renderInputControls(
-        vContainer.v,
-        reportUri,
-        document.getElementById("input-controls-container") as HTMLElement,
-        configuration,
-        )`,
-        reactCode: `const reportUri = "/public/JVC_IC_Samples/Datetime";
-const panelD: InputControlsConfig = {
-            typeConfig: {
-                singleValueDatetime: {
-                    type: "material",
-                },
-            }
-        };
-<InputControls v={vContainer?.v} uri={reportUri} config={panelD} />;
-`,
-        reportUri: "/public/JVC_IC_Samples/Datetime",
-        config: {
-            typeConfig: {
-                singleValueDatetime: {
-                    type: "material",
-                },
-            }
-        }
-    },
-    {
         title: "Multi_Select Input Control",
         jsCode: ` const reportUri = "/public/JVC_IC_Samples/Multi_Select";
         const configuration: InputControlsConfig = {},
