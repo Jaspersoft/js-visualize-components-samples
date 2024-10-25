@@ -2,6 +2,7 @@
 layout: default
 title: Configuration
 nav_order: 2
+grand_parent: Components
 parent: Scheduler
 has_children: false
 ---
@@ -76,7 +77,7 @@ has_children: false
 
 <div class="spacer-12"></div>
 
-## Stepper configuration
+## Stepper
 
 ### Default
 ```js
@@ -115,7 +116,7 @@ stepper: {
 
 <div class="spacer-12"></div>
 
-##  Tabs configuration
+##  Tabs
 
 ### Default
 ```json
@@ -243,7 +244,7 @@ stepper: {
 
 <div class="spacer-12"></div>
 
-### Schedule tab configuration
+### Schedule Tab
 
 <table class="configuration">
   <thead>
@@ -336,7 +337,7 @@ stepper: {
 
 <div class="spacer-12"></div>
 
-### Notifications tab configuration
+### Notifications Tab
 
 <table class="configuration">
   <thead>
@@ -411,7 +412,7 @@ stepper: {
 
 <div class="spacer-12"></div>
 
-### Output tab configuration
+### Output Tab
 
 <table class="configuration">
   <thead>

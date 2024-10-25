@@ -3,6 +3,7 @@ layout: default
 title: Events
 nav_order: 3
 parent: Input Controls
+grand_parent: Components
 has_children: false
 ---
 

@@ -3,6 +3,7 @@ layout: default
 title: Types Samples
 nav_order: 7
 parent: Input Controls
+grand_parent: Components
 has_children: false
 ---
 # Types Samples

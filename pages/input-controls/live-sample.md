@@ -3,6 +3,7 @@ layout: default
 title: Live Sample
 nav_order: 6
 parent: Input Controls
+grand_parent: Components
 has_children: false
 ---
 # Live Sample

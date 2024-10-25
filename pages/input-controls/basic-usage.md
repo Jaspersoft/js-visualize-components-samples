@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Basic Usage
-nav_order: 1
+nav_order: 2
 parent: Input Controls
+grand_parent: Components
 has_children: false
 ---
 

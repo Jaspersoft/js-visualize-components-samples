@@ -3,6 +3,7 @@ layout: default
 title: All Input Controls
 nav_order: 2
 parent: Input Controls
+grand_parent: Components
 has_children: false
 ---
 # All Input Controls

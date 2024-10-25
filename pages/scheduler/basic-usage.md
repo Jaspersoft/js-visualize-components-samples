@@ -2,6 +2,7 @@
 layout: default
 title: Basic Usage
 nav_order: 1
+grand_parent: Components
 parent: Scheduler
 has_children: false
 ---
@@ -16,7 +17,7 @@ has_children: false
 
 
 
-## Configure the default styles
+## Configure the Default Styles
 
 You have two options for configuring the import of default styles:
 
@@ -78,7 +79,7 @@ More details about Visualize.js loader can be found at [loading visualize.js]({{
 
 ## Render the Scheduler
 
-### The JavaScript approach
+### The JavaScript Approach
 
 #### Import
 ```js 
@@ -102,7 +103,7 @@ Example:
 renderScheduler(visualizeClient, container, schedulerConfig)
 ```
 
-### The React approach
+### The React Approach
 #### Import
 
 ```js 

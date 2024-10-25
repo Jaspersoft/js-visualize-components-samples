@@ -3,6 +3,7 @@ layout: default
 title: Override Default Values
 nav_order: 5
 parent: Input Controls
+grand_parent: Components
 has_children: false
 ---
 
