@@ -5,7 +5,6 @@
  */
 
 import {useEffect, useState} from "react";
-import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 import {
     defaultSchedulerConfig,
 } from "@jaspersoft/jv-scheduler";
