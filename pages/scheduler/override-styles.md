@@ -17,9 +17,7 @@ This file can be located in the following path: `@jaspersoft/jv-ui-components/di
 It is imported in the sample application's `index.css` and `App.tsx` files as follows:
 ``` ts
     import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
-    import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
 ```
-**_Note_**: _The second import is to configure the styles to be applied only to the scheduler UI components._
 
 You can choose not to import them at all, or you can import them and override the styles as needed.
 

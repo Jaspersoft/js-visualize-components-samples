@@ -1,4 +1,3 @@
-import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup.ts";
 import {CodeForInputControlTypes} from "../constants/codeForInputControlTypes.ts";
 import InputControlType from "./InputControlType.tsx";
 

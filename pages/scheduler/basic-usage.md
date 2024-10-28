@@ -31,14 +31,6 @@ You have two options for configuring the import of default styles:
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
 
-Additionally, you must add a configuration that enables you to use the default styles for the scheduler components only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
-
-To add this configuration, import the following file:
-```typescript
-import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
-```
-
-
 ## Load Visualize.js
 
 - Import the visualizejsLoader function from the `@jaspersoft/jv-tools` package.
