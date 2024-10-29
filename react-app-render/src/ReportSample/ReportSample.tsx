@@ -11,7 +11,7 @@ export type ReportSampleProps = {
   uri: string;
 };
 export const ReportSample = (props: ReportSampleProps) => {
-  let reportUri = "/public/Samples/Reports/9g.CustomerDetailReport";
+  let reportUri = props.uri || "/public/Samples/Reports/9g.CustomerDetailReport";
   const [vReport, setVReport] = useState<any>();
   const [controlState, setControlState] = useState<any>();
 

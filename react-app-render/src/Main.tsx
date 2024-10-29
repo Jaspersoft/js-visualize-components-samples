@@ -16,7 +16,7 @@ export const reportViewerPageStart = "input-controls/report-sample.html";
 export const schedulerPageStart = "/scheduler/demo.html";
 export const applicationPageStart = "Application.html";
 
-const resourceUri = "/public/Samples/Reports/9.CustomerDetailReport";
+const resourceUri = "/public/Samples/Reports/07g.RevenueDetailReport";
 
 const Main = () => {
   const vContainer = useVisualize(visualizeUrl);
