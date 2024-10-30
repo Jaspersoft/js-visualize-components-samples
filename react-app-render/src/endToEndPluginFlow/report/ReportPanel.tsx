@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export interface ReportPanelProps {
   resourceURI?: string;
-  vObject?: VisualizeClient;
+  vObject?: VisualizeClient | any;
 }
 
 export default function ReportPanel(props: ReportPanelProps) {
@@ -16,8 +16,21 @@ export default function ReportPanel(props: ReportPanelProps) {
     props.vObject?.report({
       resource: props.resourceURI || "",
       container: "#report-viewer",
+      isolateDom: true,
+      defaultJiveUi: { enabled: false },
     });
   }, []);
 
-  return <div id="report-viewer"></div>;
+  return (
+    <div
+      id="report-viewer"
+      style={{
+        position: "absolute",
+        top: "50px",
+        height: "720px",
+        width: "650px",
+        zIndex: -10,
+      }}
+    ></div>
+  );
 }
