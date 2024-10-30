@@ -36,11 +36,11 @@ export const ReportSample = (props: ReportSampleProps) => {
     }
   }, []);
 
-  useEffect(() => {
+  const updateButtonClick = () => {
     if (vReport) {
       vReport.params(controlState).run();
     }
-  }, [controlState]);
+  };
 
   return (
     <div id="report-viewer-sample">
@@ -49,11 +49,17 @@ export const ReportSample = (props: ReportSampleProps) => {
         uri={reportUri}
         config={panelDefinition}
       />
+      <input
+        type="button"
+        id="update"
+        onClick={updateButtonClick}
+        value="Update Report"
+      />
       <div
         id="report-viewer"
         style={{
           position: "absolute",
-          top: "100px",
+          top: "140px",
           width: "650px",
           height: "720px",
           zIndex: -10,
