@@ -11,7 +11,8 @@ export type ReportSampleProps = {
   uri: string;
 };
 export const ReportSample = (props: ReportSampleProps) => {
-  let reportUri = props.uri || "/public/Samples/Reports/9g.CustomerDetailReport";
+  let reportUri =
+    props.uri || "/public/Samples/Reports/9g.CustomerDetailReport";
   const [vReport, setVReport] = useState<any>();
   const [controlState, setControlState] = useState<any>();
 
@@ -26,8 +27,10 @@ export const ReportSample = (props: ReportSampleProps) => {
   useEffect(() => {
     if (props.vContainer?.v) {
       const reportContainer = props.vContainer?.v.report({
-        resource: reportUri,
         container: "#report-viewer",
+        resource: reportUri,
+        defaultJiveUi: { enabled: false },
+        isolateDom: true,
       });
       setVReport(reportContainer);
     }
@@ -46,7 +49,16 @@ export const ReportSample = (props: ReportSampleProps) => {
         uri={reportUri}
         config={panelDefinition}
       />
-      <div id="report-viewer"></div>
+      <div
+        id="report-viewer"
+        style={{
+          position: "absolute",
+          top: "100px",
+          width: "650px",
+          height: "720px",
+          zIndex: -10,
+        }}
+      ></div>
     </div>
   );
 };
