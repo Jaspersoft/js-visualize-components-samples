@@ -1,6 +1,7 @@
 theme: just-the-docs
 baseurl: /js-visualize-components-samples
 search_enabled: false
+ga_tracking: "G-FYFQTJRZ0Z"
 exclude:
   - react-app-render/
 
