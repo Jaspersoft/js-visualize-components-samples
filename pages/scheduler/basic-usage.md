@@ -2,6 +2,7 @@
 layout: default
 title: Basic Usage
 nav_order: 1
+grand_parent: Components
 parent: Scheduler
 has_children: false
 ---
@@ -16,7 +17,7 @@ has_children: false
 
 
 
-## Configure the default styles
+## Configure the Default Styles
 
 You have two options for configuring the import of default styles:
 
@@ -29,14 +30,6 @@ You have two options for configuring the import of default styles:
 ``` typescript
 import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 ```
-
-Additionally, you must add a configuration that enables you to use the default styles for the scheduler components only. When you use this configuration, the other styles in your application will not be affected by the Jaspersoft Visualize Components CSS.
-
-To add this configuration, import the following file:
-```typescript
-import "@jaspersoft/jv-ui-components/material-ui/JVMuiClassNameSetup";
-```
-
 
 ## Load Visualize.js
 
@@ -78,7 +71,7 @@ More details about Visualize.js loader can be found at [loading visualize.js]({{
 
 ## Render the Scheduler
 
-### The JavaScript approach
+### The JavaScript Approach
 
 #### Import
 ```js 
@@ -102,7 +95,7 @@ Example:
 renderScheduler(visualizeClient, container, schedulerConfig)
 ```
 
-### The React approach
+### The React Approach
 #### Import
 
 ```js 

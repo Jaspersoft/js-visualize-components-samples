@@ -13,7 +13,7 @@
 
   06. OVERRIDES
   -----------------------------------
-  File last modified Oct 10, 2024
+  File last modified Oct 24, 2024
   ----------------------------------- */
 
 /* --------------------- */
@@ -65,8 +65,14 @@ a {
 }
 
 body {
-  font-family: source_sans_proregular, "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff !important;
   height: 100%;
+  font-family: source_sans_proregular, "Helvetica Neue", Arial, sans-serif;
+}
+
+body:has(.main) {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 html {
@@ -172,13 +178,21 @@ h2.site-subtitle {
   margin-left: .5rem;
 }
 
-a.nav-list-link {
+.nav-list .nav-list-item .nav-list-expander,
+.nav-list .nav-list-item > .nav-list .nav-list-item .nav-list-expander {
+  color: #444444;
+  left: 0;
+  right: unset;
+}
+
+a.nav-list-link,
+.nav-list .nav-list-item > .nav-list .nav-list-item .nav-list-link {
   color: #444444;
 }
 
-.nav-list .nav-list-item > .nav-list .nav-list-item .nav-list-link {
-  color: #444444;
-  padding-left: 1.5em;
+.nav-list .nav-list-item.active .nav-list-expander:has(~ .active),
+.nav-list .nav-list-item .nav-list-expander:has(~ .active) {
+  color: #ffffff;
 }
 
 .nav-list .nav-list-item {
@@ -196,15 +210,11 @@ a.nav-list-link {
   background-color: transparent;
 }
 
-.nav-list .nav-list-item.active > .nav-list .nav-list-item.active .nav-list-link {
-  color: #ffffff;
-}
-
 .nav-list .nav-list-item .nav-list-link.active {
   background-image: none;
   background-color: #01529a;
   border-radius: 6px;
-  color: #ffffff;
+  color: #ffffff !important;
   font-family: source_sans_prosemibold, Franklin Gothic, Verdana, Arial, sans-serif;
 }
 
@@ -213,17 +223,6 @@ a.nav-list-link {
 .nav-list .nav-list-item .nav-list-link.active:focus-visible {
   outline-color: #062e79;
   outline-offset: 0;
-}
-
-
-.nav-list .nav-list-item .nav-list-expander {
-  color: #444444;
-  left: 0;
-  right: unset;
-}
-
-.nav-list .nav-list-item .nav-list-expander:has(~ .active) {
-  color: #ffffff;
 }
 
 .nav-list .nav-list-item .nav-list-expander:hover {
@@ -880,7 +879,21 @@ div.highlighter-rouge {
   color: #5c5962;
   font-size: smaller;
   cursor:pointer;
+  transition: background-color 0.3s ease;
 }
+
+@keyframes copiedAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tablinks .copy-code.copied {
+  background-color: #5c5962;
+  color: white;
+  animation: copiedAnimation 0.3s ease;
+}
+
 .tabcontent {
   display: none;
   padding: 6px 12px;

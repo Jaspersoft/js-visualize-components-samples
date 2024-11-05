@@ -29,11 +29,11 @@ Packages are organized under the `@jaspersoft` scope.
 
 #### npm
 ``` bash
-> npm install --save @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components
+> npm install --save @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components @jaspersoft/jv-scheduler
 ```
 #### yarn
 ``` bash
-> yarn add @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components
+> yarn add @jaspersoft/jv-input-controls @jaspersoft/jv-tools @jaspersoft/jv-ui-components @jaspersoft/jv-scheduler
 ```
 
 ## Getting Started

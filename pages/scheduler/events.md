@@ -2,6 +2,7 @@
 layout: default
 title: Events
 nav_order: 3
+grand_parent: Components
 parent: Scheduler
 has_children: false
 ---
@@ -22,10 +23,10 @@ events?: {
 };
 ```
 
-## Cancel button click
+## Cancel Button Click
 The developer needs implement a `cancelBtnClick` function to handle actions when the Cancel button is clicked in the scheduler control panel. This function is optional.
 
-## Schedule button click
+## Schedule Button Click
 The developer needs to implement a `scheduleBtnClick` function to handle actions when the Schedule button is clicked in the scheduler control panel. This function will receive two parameters: `isScheduleCreatedSuccessfully` and `jobInformation`.
 - If the job is created successfully:
     - `isScheduleCreatedSuccessfully` will be `true`.
@@ -42,7 +43,7 @@ When Scheduler is successfully rendered, the success function will be called. Th
 ## Error
 When Scheduler throws error while rendering, the error function will be called. This function is optional.
 
-## Example of calling renderScheduler
+## Example of Calling renderScheduler
 
 ```javascript
     renderScheduler(
@@ -69,7 +70,7 @@ When Scheduler throws error while rendering, the error function will be called. 
 ```
 
 
-## Handling errors
+## Handling Errors
 To handle errors, you can use the `error` property when calling the renderScheduler method. This method will
 return an error object when trying to render the scheduler UI in case of an error.
 For example:
@@ -155,6 +156,12 @@ Below are possible scenarios that will return an error object, along with the co
 ```json
 {
   "subject.hidden.missing.value.notification.tab.hidden.configuration": "Value for subject is required in the configuration when notifications tab is hidden"
+}
+```
+
+```json
+{
+  "address.not.in.proper.format": "Value for address should be an array of strings"
 }
 ```
 

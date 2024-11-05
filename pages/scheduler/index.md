@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Scheduler
-nav_order: 3
+nav_order: 1
+parent: Components
 has_children: true
 ---
 

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Input Controls
-nav_order: 2
+nav_order: 1
+parent: Components
 has_children: true
 ---
 
