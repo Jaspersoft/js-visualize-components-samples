@@ -7,6 +7,7 @@ layout: table_wrappers
 <html lang="{{ site.lang | default: 'en-US' }}">
 {% include head.html %}
 <body>
+<div id="consent_blackbar"></div>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="svg-link" viewBox="0 0 24 24">
         <title>Link</title>
@@ -71,6 +72,12 @@ layout: table_wrappers
             <a href="https://twitter.com/Jaspersoft" class="social" alt="twitter" target="_blank"><img src="{{site.baseurl}}/assets/images/social-round-tw.svg"></a>
             <a href="https://www.linkedin.com/company/jaspersoft/" class="social" alt="linkedin" target="_blank"><img src="{{site.baseurl}}/assets/images/social-round-li.svg"></a>
             <a href="https://www.youtube.com/channel/UCsoRjyDOZAlxD9v_Mhup86g" class="social" alt="youtube" target="_blank"><img src="{{site.baseurl}}/assets/images/social-round-yt.svg"></a>
+            <a href="#"
+               onclick="event.preventDefault(); truste.eu.clickListener()"
+               class="social"
+               alt="cookies">
+                <img src="{{site.baseurl}}/assets/images/controls.svg">
+            </a>
         </div>
 
         <!--This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a theme for Jekyll.-->
