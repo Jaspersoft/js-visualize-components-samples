@@ -5,6 +5,7 @@
  */
 import {createRoot} from "react-dom/client";
 import Main from "./Main";
+import "@jaspersoft/jv-ui-components/dist/jv-ui.css";
 
 const rootEl = document.getElementById("root");
 createRoot(rootEl!).render(<Main/>)

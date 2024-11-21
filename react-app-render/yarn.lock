@@ -777,25 +777,25 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jaspersoft/jv-input-controls@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-input-controls/-/jv-input-controls-0.1.7.tgz#c6d414149884d185585e1c5512f6ac5fa61cbca6"
-  integrity sha512-FV3nIK6vlH/pbBGrXlCEG6CLX6po4Yy7nTnkj4t6kyD1gavkFY8uaEr+s1Tr5GVlEysaQvoBDjie5gbtOyhHNQ==
+"@jaspersoft/jv-input-controls@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-input-controls/-/jv-input-controls-0.1.8.tgz#2810d034bcf0666fdf3772786a71c699b73d9185"
+  integrity sha512-CHpf2vkj26Yvva8yaYQ1+84hu43DTr0LzZlnVDS/1uw9r5jb+Rx+Zd8Uu57fOKQ6KE7Rk1RwIjM+s6pZXLLttg==
   dependencies:
-    "@jaspersoft/jv-tools" "^0.1.7"
-    "@jaspersoft/jv-ui-components" "^0.1.7"
+    "@jaspersoft/jv-tools" "^0.1.8"
+    "@jaspersoft/jv-ui-components" "^0.1.8"
     react "^18.3.1"
     react-dom "^18.3.1"
     react-i18next "^14.1.2"
 
-"@jaspersoft/jv-scheduler@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-scheduler/-/jv-scheduler-0.1.7.tgz#00a65399039d9583d49ecc5fa3ad60e86f83e1bf"
-  integrity sha512-3xDR8hcJ0aEA+xWdjm0QFjo/6h8v20sna+CAvcHfGGTpPYDGVIdXMZOIfTKkhrVG9cyh0LWxKl2IAYE/jASQ6g==
+"@jaspersoft/jv-scheduler@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-scheduler/-/jv-scheduler-0.1.8.tgz#81affa985087212bec465a23410e84d53c830775"
+  integrity sha512-wn2uaKA6sLRLP6Z4aiJqgkBcG4V0nNj5TQ6v/EhGZbEJtC8XK/IkYTSC+2GM+8yduF2RMjwenPfrgjo/IaqJrQ==
   dependencies:
-    "@jaspersoft/jv-input-controls" "^0.1.7"
-    "@jaspersoft/jv-tools" "^0.1.7"
-    "@jaspersoft/jv-ui-components" "^0.1.7"
+    "@jaspersoft/jv-input-controls" "^0.1.8"
+    "@jaspersoft/jv-tools" "^0.1.8"
+    "@jaspersoft/jv-ui-components" "^0.1.8"
     axios "^1.7.2"
     moment "^2.30.1"
     re-resizable "^6.9.17"
@@ -808,17 +808,17 @@
     redux-thunk "2.3.0"
     xregexp "^5.1.1"
 
-"@jaspersoft/jv-tools@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-tools/-/jv-tools-0.1.7.tgz#c89405e89399a95ff8ed9d8ed551c457a077bed9"
-  integrity sha512-+jYwveuP+C3J7WMVWBZTKMvWMVWFh9NxtNy8zD/CscFVr7snNtnbYCJ9id8Vl6zleFpUzpLVKTWyCZbI60cscw==
+"@jaspersoft/jv-tools@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-tools/-/jv-tools-0.1.8.tgz#7b9266e6fe00788bc1a8d5c9431f56b27355bd65"
+  integrity sha512-rCwKu+NlwwHvUEQw6mdOoyWYdiRcF9UuP3Q/w2w8+i9RBR1j3g9pdN7WRap9iSq+KhD2CXS3Jl81rRAA+r2KQA==
   dependencies:
     react "^18.3.1"
 
-"@jaspersoft/jv-ui-components@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-ui-components/-/jv-ui-components-0.1.7.tgz#9d0a995b54d9b76c7a6de51a4df8809f7e631fc1"
-  integrity sha512-yMz6HDZkltdH7B5wVZEXO9iNdzWTDU6vz7YeRdpmwZ/8XmivbDRPp5+FkgTUTHh2URBqLLfUiUvJRMABITbOCQ==
+"@jaspersoft/jv-ui-components@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@jaspersoft/jv-ui-components/-/jv-ui-components-0.1.8.tgz#7fda731efc93eb6f258db64d55cd83f1a8f259b6"
+  integrity sha512-AyAMsrq3Syk+/1LycGc84rSvbnn4xBVW+WQTImKOn1MajPyyrfHOSiHQFiB6KiMQFtNCcbuk/4Dh0NQzXREF2g==
   dependencies:
     "@emotion/is-prop-valid" "1.2.2"
     "@emotion/react" "11.4.1"
