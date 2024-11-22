@@ -8,7 +8,7 @@ import {useEffect, useState} from "react";
 import {
     defaultSchedulerConfig,
 } from "@jaspersoft/jv-scheduler";
-import { JVButton } from "@jaspersoft/jv-ui-components";
+import {JVButton, JVStylesProvider} from "@jaspersoft/jv-ui-components";
 import schedulerUIConfig from "../constants/jv_sheduler_config";
 import ReportPanel from "./report/ReportPanel";
 import "./App.css";
@@ -50,53 +50,55 @@ function App({visualize, uri}: any) {
     console.log(defaultSchedulerConfig, "SchedulerConfig");
     return (
         <>
-            <div id="scheduler"></div>
-            {visualize ? (
-                <>
-                    <div id="header">
-                        <h1 className="flexItem pageHeader-title-text">
-                            Demo Application
-                            <div className="pageHeader-subtitle-path">
-                <span className="pageHeader-subtitle-path-label">
-                  Resource URI:{" "}
-                </span>
-                                <span className="pageHeader-subtitle-path-text">
-                  {uri}
-                </span>
-                            </div>
-                        </h1>
-                        <JVButton
-                            id="scheduleBtn"
-                            disableElevation
-                            size="large"
-                            color="primary"
-                            variant="contained"
-                            onClick={() => setIsPanelOpen(true)}
-                        >
-                            Schedule
-                        </JVButton>
-                    </div>
-                    <div
-                        id="pageDimmer"
-                        className={`dimmer ${isPanelOpen ? "" : "hidden"}`}
-                        style={{ zIndex: 999 }}
-                    ></div>
-                    <ReportPanel vObject={visualize.v} resourceURI={uri} />
-                    {isPanelOpen && (
-                        <Scheduler
-                            v={visualize.v}
-                            config={schedulerUIConfig}
-                            uri={uri}
-                        />
-                    )}
-                    { isErrorDialogOpen && <ErrorDialog errorMsg={errorMsg} handleCancelBtn={() => {
-                        setIsErrorDialogOpen(false)
-                    }}
-                    />}
-                </>
-            ) : (
-                <div>Loading...</div>
-            )}
+            <JVStylesProvider>
+                <div id="scheduler"></div>
+                {visualize ? (
+                    <>
+                        <div id="header">
+                            <h1 className="flexItem pageHeader-title-text">
+                                Demo Application
+                                <div className="pageHeader-subtitle-path">
+                                    <span className="pageHeader-subtitle-path-label">
+                                      Resource URI:{" "}
+                                    </span>
+                                    <span className="pageHeader-subtitle-path-text">
+                                      {uri}
+                                    </span>
+                                </div>
+                            </h1>
+                            <JVButton
+                                id="scheduleBtn"
+                                disableElevation
+                                size="large"
+                                color="primary"
+                                variant="contained"
+                                onClick={() => setIsPanelOpen(true)}
+                            >
+                                Schedule
+                            </JVButton>
+                        </div>
+                        <div
+                            id="pageDimmer"
+                            className={`dimmer ${isPanelOpen ? "" : "hidden"}`}
+                            style={{zIndex: 999}}
+                        ></div>
+                        <ReportPanel vObject={visualize.v} resourceURI={uri}/>
+                        {isPanelOpen && (
+                            <Scheduler
+                                v={visualize.v}
+                                config={schedulerUIConfig}
+                                uri={uri}
+                            />
+                        )}
+                        {isErrorDialogOpen && <ErrorDialog errorMsg={errorMsg} handleCancelBtn={() => {
+                            setIsErrorDialogOpen(false)
+                        }}
+                        />}
+                    </>
+                ) : (
+                    <div>Loading...</div>
+                )}
+            </JVStylesProvider>
         </>
     );
 }
