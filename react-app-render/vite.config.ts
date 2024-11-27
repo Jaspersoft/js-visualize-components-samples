@@ -19,15 +19,22 @@ export default defineConfig({
     },
     build: {
         rollupOptions: {
-            input: path.resolve(__dirname, './src/index.tsx'),
+            input: path.resolve(__dirname, "./src/index.tsx"),
             output: {
-                dir: path.resolve("../assets/js/build", './'), // Output directory
+                dir: path.resolve("../assets/js/build", "./"), // Output directory
                 entryFileNames: `react-app-render-build.js`, // Output filename pattern
                 chunkFileNames: `assets/[name].js`,
                 // It will generate the jv-ui.css file in the build folder but with the name of 'index.css' instead of 'jv-ui.css'.
-                assetFileNames: `assets/[name].[ext]`
+                assetFileNames: (assetInfo) => {
+                    let prefix = "assets/";
+                    if (assetInfo?.originalFileNames?.[0].includes("/images/")) {
+                        prefix = "images/";
+                    } else if (assetInfo?.originalFileNames?.[0].includes("/fonts/")) {
+                        prefix = "fonts/";
+                    }
+                    return `${prefix}[name].[ext]`;
+                }
             }
-
         },
     },
 });
