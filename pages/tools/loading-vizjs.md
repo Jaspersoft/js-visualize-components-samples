@@ -42,7 +42,7 @@ type Authentication = {
 ```
 
 ### Sample of authentication in React application
-In the following sample we will use the `useEffect` hook to load Visualize.js, authenticate with the JasperReports Server and store `VisualizeClient` instance in `vContainer` as `v` property:
+In the following sample we will use the `useVisualize` custom hook to load Visualize.js, authenticate with the JasperReports Server and store `VisualizeClient` instance in `vContainer` as `v` property:
 ```typescript
   const myAuth: Authentication = {
     name: "joeuser",
@@ -51,36 +51,22 @@ In the following sample we will use the `useEffect` hook to load Visualize.js, a
     locale: "en_US"
   };
 
-  const [vContainer, setVContainer] = useState(
-    null as { v: VisualizeClient } | null,
-  );
+const errorCallback = (errorCaught: Error | VisualizeGenericError | string) => {
+    console.log("check the error! ", errorCaught);
+};
 
-  useEffect(() => {
-      const loadVisualize = visualizejsLoader(visualizeUrl);
-      console.log("Loading Visualize.js...");
-      loadVisualize()
-          .then((visualizeFactory: VisualizeFactory) => {
-              // Connecting to JRS.
-              console.log("Visualize.js loaded. Connecting to JasperReports Server...");
-              visualizeFactory(
-                  {
-                      auth: myAuth
-                  },
-                  (v: VisualizeClient) => {
-                      console.log("Visualize client connected.");
-                      setVContainer({ v });
-                  },
-                  (e: any) => {
-                    console.log("Error connecting to JasperReports Server.");
-                      console.log(String(e));
-                  },
-              );
-          })
-          .catch((error: Error) => {
-              console.log("Error loading visualize.js: ", error);
-          });
-  }, []);
+const vContainer = useVisualize(
+    {
+        server: "<JRS SERVER URL>",
+        visualizePath: "<URL TO VISUALIZE.JS>",
+        auth: myAuth,
+    },
+    { errorCallback },
+);
+
 ```
+_Note_: for more info about the properties allowed in the useVisualize hook, refer to this
+[section]({{site.baseurl}}/pages/tools/tools-breaking-changes#sample-values-for)
 
 And now we will render input controls using `VisualizeClient` instance and `renderInputControls` function:
 ```typescript
